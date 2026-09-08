@@ -1,0 +1,2125 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Contact | Gospel Wonders Mission Church</title>
+
+<link rel="icon" href="keith.PNG">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+
+/* =========================
+   ROOT
+========================= */
+
+:root{
+    --navy:#07111f;
+    --navy2:#0c1b2e;
+    --navy3:#101f32;
+    --gold:#d7ad55;
+    --gold2:#f0d48a;
+    --white:#ffffff;
+    --text:#dce4ee;
+    --muted:#91a0b3;
+    --border:rgba(255,255,255,.10);
+    --glass:rgba(255,255,255,.055);
+}
+
+
+/* =========================
+   RESET
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:"Inter",sans-serif;
+    background:var(--navy);
+    color:var(--white);
+    overflow-x:hidden;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+button,
+input,
+textarea{
+    font-family:inherit;
+}
+
+
+/* =========================
+   LOADER
+========================= */
+
+.loader{
+    position:fixed;
+    inset:0;
+    background:var(--navy);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    z-index:9999;
+    transition:.6s ease;
+}
+
+.loader.hide{
+    opacity:0;
+    visibility:hidden;
+}
+
+.loader-cross{
+    width:65px;
+    height:65px;
+    border:2px solid var(--gold);
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:var(--gold);
+    font-size:28px;
+    animation:pulse 1.5s infinite;
+}
+
+@keyframes pulse{
+
+    0%,100%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.12);
+    }
+
+}
+
+
+/* =========================
+   ANNOUNCEMENT
+========================= */
+
+.announcement{
+    background:var(--gold);
+    color:var(--navy);
+    padding:9px 20px;
+    text-align:center;
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:.4px;
+}
+
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar{
+    position:fixed;
+    top:36px;
+    left:0;
+    width:100%;
+    z-index:1000;
+    padding:16px 6%;
+    transition:.4s ease;
+}
+
+.navbar.scrolled{
+    top:0;
+    background:rgba(7,17,31,.94);
+    backdrop-filter:blur(16px);
+    box-shadow:0 8px 30px rgba(0,0,0,.25);
+}
+
+.nav-inner{
+    max-width:1250px;
+    margin:auto;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+
+/* LOGO */
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.logo img{
+    width:46px;
+    height:46px;
+    object-fit:cover;
+    border-radius:50%;
+    border:2px solid var(--gold);
+    padding:2px;
+    background:var(--navy);
+    transition:.3s ease;
+}
+
+.logo:hover img{
+    transform:scale(1.08);
+    box-shadow:0 0 18px rgba(215,173,85,.4);
+}
+
+.logo-text{
+    display:flex;
+    flex-direction:column;
+}
+
+.logo-text strong{
+    font-family:"Cormorant Garamond",serif;
+    font-size:23px;
+}
+
+.logo-text span{
+    color:var(--gold);
+    font-size:8px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+}
+
+
+/* NAV LINKS */
+
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:25px;
+}
+
+.nav-links a{
+    color:#dce4ee;
+    font-size:13px;
+    font-weight:600;
+    position:relative;
+    transition:.3s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active{
+    color:var(--gold);
+}
+
+.nav-links a.active::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-8px;
+    width:100%;
+    height:2px;
+    background:var(--gold);
+}
+
+
+/* MOBILE MENU */
+
+.menu-btn{
+    display:none;
+    color:var(--gold);
+    font-size:24px;
+    cursor:pointer;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    min-height:68vh;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+
+    position:relative;
+    overflow:hidden;
+
+    background:
+    linear-gradient(
+        rgba(7,17,31,.78),
+        rgba(7,17,31,.94)
+    ),
+    url("church-contact.jpg")
+    center/cover no-repeat;
+}
+
+.hero::before{
+    content:"";
+
+    position:absolute;
+
+    width:430px;
+    height:430px;
+
+    border:1px solid rgba(215,173,85,.22);
+    border-radius:50%;
+
+    top:-210px;
+    right:-120px;
+}
+
+.hero::after{
+    content:"";
+
+    position:absolute;
+
+    width:300px;
+    height:300px;
+
+    border:1px solid rgba(215,173,85,.15);
+    border-radius:50%;
+
+    bottom:-170px;
+    left:-100px;
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+
+    max-width:850px;
+
+    padding:145px 20px 80px;
+}
+
+.hero-small{
+    color:var(--gold);
+    text-transform:uppercase;
+    letter-spacing:5px;
+    font-size:12px;
+    font-weight:700;
+}
+
+.hero h1{
+    font-family:"Cormorant Garamond",serif;
+    font-size:clamp(58px,8vw,95px);
+    line-height:.95;
+    margin:18px 0;
+}
+
+.hero p{
+    max-width:680px;
+    margin:auto;
+
+    color:#c9d2de;
+
+    font-size:15px;
+    line-height:1.8;
+}
+
+
+/* =========================
+   SECTION
+========================= */
+
+.section{
+    padding:100px 6%;
+}
+
+.container{
+    max-width:1150px;
+    margin:auto;
+}
+
+.section-heading{
+    max-width:700px;
+    margin:0 auto 55px;
+    text-align:center;
+}
+
+.section-heading span{
+    color:var(--gold);
+
+    text-transform:uppercase;
+    letter-spacing:4px;
+
+    font-size:11px;
+    font-weight:700;
+}
+
+.section-heading h2{
+    font-family:"Cormorant Garamond",serif;
+    font-size:52px;
+
+    margin:10px 0;
+}
+
+.section-heading p{
+    color:var(--muted);
+    line-height:1.8;
+}
+
+
+/* =========================
+   CONTACT GRID
+========================= */
+
+.contact-grid{
+    display:grid;
+    grid-template-columns:.85fr 1.15fr;
+    gap:30px;
+    align-items:stretch;
+}
+
+
+/* =========================
+   CONTACT INFO
+========================= */
+
+.contact-info{
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+}
+
+.info-card{
+    background:var(--glass);
+    border:1px solid var(--border);
+
+    border-radius:18px;
+
+    padding:25px;
+
+    display:flex;
+    align-items:flex-start;
+
+    gap:17px;
+
+    transition:.35s ease;
+}
+
+.info-card:hover{
+    transform:translateY(-5px);
+    border-color:rgba(215,173,85,.45);
+    box-shadow:0 18px 40px rgba(0,0,0,.2);
+}
+
+.info-icon{
+    min-width:50px;
+    width:50px;
+    height:50px;
+
+    border-radius:50%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:rgba(215,173,85,.10);
+    color:var(--gold);
+
+    font-size:19px;
+}
+
+.info-card h3{
+    font-family:"Cormorant Garamond",serif;
+    font-size:25px;
+    margin-bottom:5px;
+}
+
+.info-card p{
+    color:var(--muted);
+    font-size:12px;
+    line-height:1.7;
+}
+
+.info-card a{
+    color:var(--muted);
+    font-size:12px;
+    transition:.3s;
+}
+
+.info-card a:hover{
+    color:var(--gold);
+}
+
+
+/* =========================
+   CONTACT FORM
+========================= */
+
+.contact-form{
+    background:
+    linear-gradient(
+        145deg,
+        #0c1b2e,
+        #081421
+    );
+
+    border:1px solid var(--border);
+
+    border-radius:22px;
+
+    padding:38px;
+
+    box-shadow:0 25px 60px rgba(0,0,0,.22);
+}
+
+.form-title{
+    margin-bottom:25px;
+}
+
+.form-title h3{
+    font-family:"Cormorant Garamond",serif;
+    font-size:35px;
+}
+
+.form-title p{
+    color:var(--muted);
+    font-size:12px;
+    margin-top:5px;
+}
+
+.form-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:17px;
+}
+
+.form-group{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+}
+
+.form-group.full{
+    grid-column:1/-1;
+}
+
+.form-group label{
+    color:#cbd5e1;
+    font-size:11px;
+    font-weight:600;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select{
+
+    width:100%;
+
+    background:#07111f;
+
+    border:1px solid var(--border);
+
+    border-radius:10px;
+
+    padding:14px;
+
+    outline:none;
+
+    color:white;
+
+    font-size:13px;
+
+    transition:.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus{
+    border-color:var(--gold);
+    box-shadow:0 0 0 3px rgba(215,173,85,.06);
+}
+
+.form-group textarea{
+    min-height:145px;
+    resize:vertical;
+}
+
+.send-btn{
+    width:100%;
+
+    border:none;
+
+    padding:15px;
+
+    border-radius:10px;
+
+    margin-top:20px;
+
+    background:var(--gold);
+    color:var(--navy);
+
+    font-weight:800;
+    font-size:13px;
+
+    cursor:pointer;
+
+    transition:.3s ease;
+}
+
+.send-btn:hover{
+    background:var(--gold2);
+    transform:translateY(-2px);
+}
+
+
+/* =========================
+   SOCIAL CARDS
+========================= */
+
+.social-section{
+    background:#081421;
+}
+
+.social-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+    max-width:950px;
+    margin:auto;
+}
+
+.social-card{
+    background:var(--glass);
+
+    border:1px solid var(--border);
+
+    border-radius:18px;
+
+    padding:28px 15px;
+
+    text-align:center;
+
+    transition:.35s ease;
+}
+
+.social-card:hover{
+    transform:translateY(-7px);
+    border-color:rgba(215,173,85,.5);
+}
+
+.social-card i{
+    color:var(--gold);
+    font-size:25px;
+    margin-bottom:13px;
+}
+
+.social-card h4{
+    font-size:14px;
+    margin-bottom:5px;
+}
+
+.social-card p{
+    color:var(--muted);
+    font-size:10px;
+}
+
+
+/* =========================
+   MAP
+========================= */
+
+.map-section{
+    padding-top:30px;
+}
+
+.map-box{
+    width:100%;
+    min-height:390px;
+
+    border:1px solid var(--border);
+    border-radius:22px;
+
+    overflow:hidden;
+
+    background:#0c1b2e;
+
+    position:relative;
+}
+
+.map-box iframe{
+    width:100%;
+    height:390px;
+    border:0;
+}
+
+.map-placeholder{
+    position:absolute;
+    inset:0;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    flex-direction:column;
+
+    background:
+    linear-gradient(
+        rgba(7,17,31,.94),
+        rgba(7,17,31,.94)
+    );
+
+    text-align:center;
+
+    padding:30px;
+}
+
+.map-placeholder i{
+    color:var(--gold);
+    font-size:38px;
+    margin-bottom:15px;
+}
+
+.map-placeholder h3{
+    font-family:"Cormorant Garamond",serif;
+    font-size:30px;
+}
+
+.map-placeholder p{
+    color:var(--muted);
+    max-width:450px;
+    font-size:12px;
+    line-height:1.7;
+    margin-top:8px;
+}
+
+
+/* =========================
+   CTA
+========================= */
+
+.cta{
+    text-align:center;
+
+    background:
+    linear-gradient(
+        rgba(7,17,31,.86),
+        rgba(7,17,31,.95)
+    ),
+    url("church-verse.jpg")
+    center/cover fixed;
+}
+
+.cta-inner{
+    max-width:750px;
+    margin:auto;
+}
+
+.cta i{
+    color:var(--gold);
+    font-size:30px;
+    margin-bottom:18px;
+}
+
+.cta h2{
+    font-family:"Cormorant Garamond",serif;
+    font-size:48px;
+}
+
+.cta p{
+    color:var(--muted);
+    line-height:1.8;
+    margin:15px 0 25px;
+}
+
+.cta-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:9px;
+
+    background:var(--gold);
+    color:var(--navy);
+
+    padding:13px 23px;
+
+    border-radius:30px;
+
+    font-size:12px;
+    font-weight:800;
+
+    transition:.3s;
+}
+
+.cta-btn:hover{
+    background:var(--gold2);
+    transform:translateY(-3px);
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    background:#040b14;
+    padding:65px 6% 25px;
+}
+
+.footer-grid{
+    max-width:1150px;
+    margin:auto;
+
+    display:grid;
+    grid-template-columns:1.5fr 1fr 1fr;
+
+    gap:50px;
+}
+
+.footer-logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:15px;
+}
+
+.footer-logo img{
+    width:50px;
+    height:50px;
+
+    border-radius:50%;
+    object-fit:cover;
+
+    border:2px solid var(--gold);
+    padding:2px;
+}
+
+footer h3{
+    color:var(--gold);
+    font-size:15px;
+    margin-bottom:18px;
+}
+
+footer p,
+footer a{
+    color:#8492a5;
+    font-size:12px;
+    line-height:1.8;
+}
+
+.footer-links{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+}
+
+.footer-links a:hover{
+    color:var(--gold);
+}
+
+.socials{
+    display:flex;
+    gap:10px;
+    margin-top:18px;
+}
+
+.socials a{
+    width:38px;
+    height:38px;
+
+    border-radius:50%;
+
+    border:1px solid var(--border);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:var(--gold);
+
+    transition:.3s;
+}
+
+.socials a:hover{
+    background:var(--gold);
+    color:var(--navy);
+}
+
+.copyright{
+    max-width:1150px;
+    margin:45px auto 0;
+
+    padding-top:20px;
+
+    border-top:1px solid rgba(255,255,255,.08);
+
+    text-align:center;
+
+    color:#657285;
+    font-size:11px;
+}
+
+
+/* =========================
+   BACK TO TOP
+========================= */
+
+#topBtn{
+    position:fixed;
+
+    right:20px;
+    bottom:20px;
+
+    width:45px;
+    height:45px;
+
+    border:none;
+    border-radius:50%;
+
+    background:var(--gold);
+    color:var(--navy);
+
+    cursor:pointer;
+
+    display:none;
+
+    align-items:center;
+    justify-content:center;
+
+    z-index:900;
+}
+
+
+/* =========================
+   REVEAL
+========================= */
+
+.reveal{
+    opacity:0;
+    transform:translateY(30px);
+    transition:1s ease;
+}
+
+.reveal.visible{
+    opacity:1;
+    transform:translateY(0);
+}
+
+
+/* =========================
+   SUCCESS MESSAGE
+========================= */
+
+.success-message{
+    display:none;
+
+    margin-top:15px;
+
+    padding:13px;
+
+    border-radius:10px;
+
+    background:rgba(215,173,85,.09);
+
+    border:1px solid rgba(215,173,85,.25);
+
+    color:var(--gold2);
+
+    font-size:12px;
+
+    text-align:center;
+}
+
+.success-message.show{
+    display:block;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:950px){
+
+    .nav-links{
+        position:absolute;
+
+        top:75px;
+        right:6%;
+
+        width:240px;
+
+        background:#081523;
+
+        border:1px solid var(--border);
+
+        border-radius:15px;
+
+        padding:20px;
+
+        display:none;
+
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .nav-links.open{
+        display:flex;
+    }
+
+    .menu-btn{
+        display:block;
+    }
+
+    .contact-grid{
+        grid-template-columns:1fr;
+    }
+
+    .social-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+}
+
+
+@media(max-width:650px){
+
+    .announcement{
+        font-size:10px;
+    }
+
+    .navbar{
+        top:31px;
+        padding:12px 5%;
+    }
+
+    .navbar.scrolled{
+        top:0;
+    }
+
+    .logo img{
+        width:40px;
+        height:40px;
+    }
+
+    .logo-text strong{
+        font-size:19px;
+    }
+
+    .logo-text span{
+        font-size:6px;
+        letter-spacing:2px;
+    }
+
+    .hero-content{
+        padding-top:130px;
+    }
+
+    .hero h1{
+        font-size:55px;
+    }
+
+    .section{
+        padding:70px 5%;
+    }
+
+    .section-heading h2{
+        font-size:40px;
+    }
+
+    .contact-form{
+        padding:25px 18px;
+    }
+
+    .form-grid{
+        grid-template-columns:1fr;
+    }
+
+    .form-group.full{
+        grid-column:auto;
+    }
+
+    .social-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr;
+        gap:30px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     LOADER
+========================= -->
+
+<div class="loader" id="loader">
+
+    <div class="loader-cross">
+
+        <i class="fa-solid fa-cross"></i>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     ANNOUNCEMENT
+========================= -->
+
+<div class="announcement">
+
+    <i class="fa-solid fa-church"></i>
+
+    We would love to hear from you
+
+</div>
+
+
+<!-- =========================
+     NAVBAR
+========================= -->
+
+<header class="navbar" id="navbar">
+
+    <div class="nav-inner">
+
+
+        <a href="index.html" class="logo">
+
+            <img
+                src="keith.PNG"
+                alt="Gospel Wonders Mission Church Logo"
+            >
+
+            <div class="logo-text">
+
+                <strong>Gospel Wonders</strong>
+
+                <span>Mission Church</span>
+
+            </div>
+
+        </a>
+
+
+        <nav class="nav-links" id="navLinks">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="about.html">
+                About
+            </a>
+
+            <a href="ministries.html">
+                Ministries
+            </a>
+
+            <a href="sermons.html">
+                Sermons
+            </a>
+
+            <a href="events.html">
+                Events
+            </a>
+
+            <a href="gallery.html">
+                Gallery
+            </a>
+
+            <a href="contact.html" class="active">
+                Contact
+            </a>
+
+            <a href="giving.html">
+                Give
+            </a>
+
+        </nav>
+
+
+        <div class="menu-btn" id="menuBtn">
+
+            <i class="fa-solid fa-bars"></i>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero">
+
+    <div class="hero-content reveal">
+
+        <span class="hero-small">
+            Get In Touch
+        </span>
+
+        <h1>
+            Contact Us
+        </h1>
+
+        <p>
+            Whether you have a question, need more information,
+            would like to visit us, or simply want to connect,
+            we would be happy to hear from you.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CONTACT
+========================= -->
+
+<section class="section">
+
+    <div class="container">
+
+
+        <div class="section-heading reveal">
+
+            <span>
+                Reach Out
+            </span>
+
+            <h2>
+                We'd Love To Hear From You
+            </h2>
+
+            <p>
+                Connect with Gospel Wonders Mission Church
+                using any of the options below.
+            </p>
+
+        </div>
+
+
+        <div class="contact-grid">
+
+
+            <!-- CONTACT INFORMATION -->
+
+            <div class="contact-info">
+
+
+                <div class="info-card reveal">
+
+                    <div class="info-icon">
+
+                        <i class="fa-solid fa-location-dot"></i>
+
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Our Location
+                        </h3>
+
+                        <p>
+                            Bulenga Gogonya area,<br>
+                            Wakiso District, Uganda.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="info-card reveal">
+
+                    <div class="info-icon">
+
+                        <i class="fa-solid fa-phone"></i>
+
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Phone
+                        </h3>
+
+                        <p>
+                            Call or WhatsApp us using
+                            the official church number.
+                        </p>
+
+                        <!-- REPLACE WITH REAL NUMBER -->
+
+                        <a href="tel:+256XXXXXXXXX">
+                            +256 XXX XXX XXX
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <div class="info-card reveal">
+
+                    <div class="info-icon">
+
+                        <i class="fa-solid fa-envelope"></i>
+
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Email
+                        </h3>
+
+                        <p>
+                            Send us your questions,
+                            prayer requests or messages.
+                        </p>
+
+                        <!-- REPLACE WITH REAL EMAIL -->
+
+                        <a href="mailto:YOUR-EMAIL@example.com">
+                            YOUR-EMAIL@example.com
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <div class="info-card reveal">
+
+                    <div class="info-icon">
+
+                        <i class="fa-solid fa-clock"></i>
+
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Service Times
+                        </h3>
+
+                        <p>
+                            Add the church's confirmed
+                            service and prayer meeting times here.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+            <!-- CONTACT FORM -->
+
+            <div class="contact-form reveal">
+
+
+                <div class="form-title">
+
+                    <h3>
+                        Send Us A Message
+                    </h3>
+
+                    <p>
+                        Fill in the form and send your message
+                        to the church.
+                    </p>
+
+                </div>
+
+
+                <form id="contactForm">
+
+
+                    <div class="form-grid">
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Your Name
+                            </label>
+
+                            <input
+                                type="text"
+                                id="name"
+                                placeholder="Enter your name"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Email Address
+                            </label>
+
+                            <input
+                                type="email"
+                                id="email"
+                                placeholder="Enter your email"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Phone Number
+                            </label>
+
+                            <input
+                                type="tel"
+                                id="phone"
+                                placeholder="Your phone number"
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Subject
+                            </label>
+
+                            <select id="subject">
+
+                                <option value="">
+                                    Select subject
+                                </option>
+
+                                <option>
+                                    General Enquiry
+                                </option>
+
+                                <option>
+                                    Prayer Request
+                                </option>
+
+                                <option>
+                                    Church Visit
+                                </option>
+
+                                <option>
+                                    Ministry
+                                </option>
+
+                                <option>
+                                    Event
+                                </option>
+
+                                <option>
+                                    Giving
+                                </option>
+
+                                <option>
+                                    Other
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-group full">
+
+                            <label>
+                                Your Message
+                            </label>
+
+                            <textarea
+                                id="message"
+                                placeholder="Write your message here..."
+                                required
+                            ></textarea>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="send-btn"
+                    >
+
+                        <i class="fa-solid fa-paper-plane"></i>
+
+                        Send Message
+
+                    </button>
+
+
+                    <div
+                        class="success-message"
+                        id="successMessage"
+                    >
+
+                        Your message has been prepared successfully.
+                        Connect this form to your email service to
+                        receive messages directly.
+
+                    </div>
+
+
+                </form>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     SOCIAL MEDIA
+========================= -->
+
+<section class="section social-section">
+
+    <div class="container">
+
+
+        <div class="section-heading reveal">
+
+            <span>
+                Follow Us
+            </span>
+
+            <h2>
+                Stay Connected
+            </h2>
+
+            <p>
+                Follow the church online for announcements,
+                sermons, events and ministry updates.
+            </p>
+
+        </div>
+
+
+        <div class="social-grid">
+
+
+            <a href="#"
+               class="social-card reveal">
+
+                <i class="fa-brands fa-facebook-f"></i>
+
+                <h4>
+                    Facebook
+                </h4>
+
+                <p>
+                    Church updates
+                </p>
+
+            </a>
+
+
+            <a href="#"
+               class="social-card reveal">
+
+                <i class="fa-brands fa-youtube"></i>
+
+                <h4>
+                    YouTube
+                </h4>
+
+                <p>
+                    Sermons & videos
+                </p>
+
+            </a>
+
+
+            <a href="#"
+               class="social-card reveal">
+
+                <i class="fa-brands fa-instagram"></i>
+
+                <h4>
+                    Instagram
+                </h4>
+
+                <p>
+                    Photos & updates
+                </p>
+
+            </a>
+
+
+            <a href="#"
+               class="social-card reveal">
+
+                <i class="fa-brands fa-tiktok"></i>
+
+                <h4>
+                    TikTok
+                </h4>
+
+                <p>
+                    Short videos
+                </p>
+
+            </a>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     LOCATION
+========================= -->
+
+<section class="section map-section">
+
+    <div class="container">
+
+
+        <div class="section-heading reveal">
+
+            <span>
+                Find Us
+            </span>
+
+            <h2>
+                Visit Gospel Wonders
+            </h2>
+
+            <p>
+                We are located in the Bulenga Gogonya area
+                of Wakiso District, Uganda.
+            </p>
+
+        </div>
+
+
+        <div class="map-box reveal">
+
+            <!--
+                REPLACE THE PLACEHOLDER BELOW WITH
+                THE CHURCH'S ACTUAL GOOGLE MAP EMBED.
+            -->
+
+            <div class="map-placeholder">
+
+                <i class="fa-solid fa-location-dot"></i>
+
+                <h3>
+                    Gospel Wonders Mission Church
+                </h3>
+
+                <p>
+                    Bulenga Gogonya area,
+                    Wakiso District, Uganda.
+                </p>
+
+                <br>
+
+                <a
+                    href="https://www.google.com/maps/search/?api=1&query=Gospel+Wonders+Mission+Church+Bulenga+Gogonya+Uganda"
+                    target="_blank"
+                    class="cta-btn"
+                >
+
+                    <i class="fa-solid fa-map-location-dot"></i>
+
+                    Open In Google Maps
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CTA
+========================= -->
+
+<section class="section cta">
+
+    <div class="cta-inner reveal">
+
+        <i class="fa-solid fa-hands-praying"></i>
+
+        <h2>
+            Need Prayer?
+        </h2>
+
+        <p>
+            If you have a prayer request, we'd be glad to
+            stand with you in prayer.
+        </p>
+
+        <a
+            href="prayer.html"
+            class="cta-btn"
+        >
+
+            <i class="fa-solid fa-heart"></i>
+
+            Submit Prayer Request
+
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <div class="footer-grid">
+
+
+        <div>
+
+            <div class="footer-logo">
+
+                <img
+                    src="keith.PNG"
+                    alt="Gospel Wonders Mission Church Logo"
+                >
+
+                <div class="logo-text">
+
+                    <strong>
+                        Gospel Wonders
+                    </strong>
+
+                    <span>
+                        Mission Church
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <p>
+                Gospel Wonders Mission Church is a Christian church
+                located in the Bulenga Gogonya area of Wakiso District,
+                Uganda.
+            </p>
+
+
+            <div class="socials">
+
+                <a href="#" aria-label="Facebook">
+                    <i class="fa-brands fa-facebook-f"></i>
+                </a>
+
+                <a href="#" aria-label="YouTube">
+                    <i class="fa-brands fa-youtube"></i>
+                </a>
+
+                <a href="#" aria-label="Instagram">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+
+                <a href="#" aria-label="TikTok">
+                    <i class="fa-brands fa-tiktok"></i>
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div>
+
+            <h3>
+                Quick Links
+            </h3>
+
+            <div class="footer-links">
+
+                <a href="index.html">
+                    Home
+                </a>
+
+                <a href="about.html">
+                    About
+                </a>
+
+                <a href="ministries.html">
+                    Ministries
+                </a>
+
+                <a href="sermons.html">
+                    Sermons
+                </a>
+
+                <a href="events.html">
+                    Events
+                </a>
+
+                <a href="gallery.html">
+                    Gallery
+                </a>
+
+                <a href="giving.html">
+                    Give
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div>
+
+            <h3>
+                Contact
+            </h3>
+
+            <div class="footer-links">
+
+                <a href="#">
+                    Bulenga Gogonya
+                </a>
+
+                <a href="tel:+256XXXXXXXXX">
+                    +256 XXX XXX XXX
+                </a>
+
+                <a href="mailto:YOUR-EMAIL@example.com">
+                    YOUR-EMAIL@example.com
+                </a>
+
+                <a href="contact.html">
+                    Contact Us
+                </a>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <div class="copyright">
+
+        © <span id="year"></span>
+        Gospel Wonders Mission Church.
+        All Rights Reserved.
+
+    </div>
+
+</footer>
+
+
+<!-- =========================
+     BACK TO TOP
+========================= -->
+
+<button id="topBtn">
+
+    <i class="fa-solid fa-arrow-up"></i>
+
+</button>
+
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
+<script>
+
+
+/* =========================
+   LOADER
+========================= */
+
+window.addEventListener("load",function(){
+
+    setTimeout(function(){
+
+        document
+        .getElementById("loader")
+        .classList.add("hide");
+
+    },500);
+
+});
+
+
+/* =========================
+   NAVBAR
+========================= */
+
+const navbar =
+document.getElementById("navbar");
+
+window.addEventListener("scroll",function(){
+
+    if(window.scrollY > 60){
+
+        navbar.classList.add("scrolled");
+
+    }else{
+
+        navbar.classList.remove("scrolled");
+
+    }
+
+});
+
+
+/* =========================
+   MOBILE MENU
+========================= */
+
+const menuBtn =
+document.getElementById("menuBtn");
+
+const navLinks =
+document.getElementById("navLinks");
+
+
+menuBtn.addEventListener("click",function(){
+
+    navLinks.classList.toggle("open");
+
+    const icon =
+    menuBtn.querySelector("i");
+
+    if(navLinks.classList.contains("open")){
+
+        icon.classList.replace(
+            "fa-bars",
+            "fa-xmark"
+        );
+
+    }else{
+
+        icon.classList.replace(
+            "fa-xmark",
+            "fa-bars"
+        );
+
+    }
+
+});
+
+
+/* CLOSE MOBILE MENU */
+
+document
+.querySelectorAll(".nav-links a")
+.forEach(function(link){
+
+    link.addEventListener("click",function(){
+
+        navLinks.classList.remove("open");
+
+        const icon =
+        menuBtn.querySelector("i");
+
+        icon.classList.replace(
+            "fa-xmark",
+            "fa-bars"
+        );
+
+    });
+
+});
+
+
+/* =========================
+   SCROLL REVEAL
+========================= */
+
+const revealElements =
+document.querySelectorAll(".reveal");
+
+
+function reveal(){
+
+    revealElements.forEach(function(element){
+
+        const position =
+        element.getBoundingClientRect().top;
+
+        if(position <
+        window.innerHeight - 80){
+
+            element.classList.add("visible");
+
+        }
+
+    });
+
+}
+
+
+window.addEventListener("scroll",reveal);
+window.addEventListener("load",reveal);
+
+
+/* =========================
+   CONTACT FORM
+========================= */
+
+const contactForm =
+document.getElementById("contactForm");
+
+const successMessage =
+document.getElementById("successMessage");
+
+
+contactForm.addEventListener(
+"submit",
+function(e){
+
+    e.preventDefault();
+
+    const name =
+    document.getElementById("name").value.trim();
+
+    const email =
+    document.getElementById("email").value.trim();
+
+    const message =
+    document.getElementById("message").value.trim();
+
+
+    if(
+        name === "" ||
+        email === "" ||
+        message === ""
+    ){
+
+        alert(
+            "Please fill in your name, email and message."
+        );
+
+        return;
+
+    }
+
+
+    successMessage.classList.add("show");
+
+    contactForm.reset();
+
+
+    setTimeout(function(){
+
+        successMessage.classList.remove("show");
+
+    },6000);
+
+});
+
+
+/* =========================
+   BACK TO TOP
+========================= */
+
+const topBtn =
+document.getElementById("topBtn");
+
+
+window.addEventListener("scroll",function(){
+
+    if(window.scrollY > 500){
+
+        topBtn.style.display="flex";
+
+    }else{
+
+        topBtn.style.display="none";
+
+    }
+
+});
+
+
+topBtn.addEventListener("click",function(){
+
+    window.scrollTo({
+
+        top:0,
+
+        behavior:"smooth"
+
+    });
+
+});
+
+
+/* =========================
+   CURRENT YEAR
+========================= */
+
+document.getElementById("year")
+.textContent =
+new Date().getFullYear();
+
+
+</script>
+
+</body>
+</html>
+```
