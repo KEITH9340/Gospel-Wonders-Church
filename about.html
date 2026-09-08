@@ -1,1387 +1,484 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="description"
-          content="Learn about Gospel Wonders Mission Church in Bulenga Gogonya, Wakiso District, Uganda.">
+    <title>Gospel Wonders Mission Church</title>
 
-    <meta name="theme-color" content="#07111f">
-
-    <title>About Us | Gospel Wonders Mission Church</title>
-
-    <link rel="icon" href="icon.png">
+    <!-- FAVICON -->
+    <link rel="icon" type="image/png" href="keith.PNG">
 
     <!-- GOOGLE FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap"
-          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- FONT AWESOME -->
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
 
-<style>
+    <style>
 
-/* =========================================================
-   MASTER RESET
-========================================================= */
+        /* =========================================
+           RESET
+        ========================================= */
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-html {
-    scroll-behavior: smooth;
-}
 
-body {
-    font-family: "Inter", sans-serif;
-    background: #f8fafc;
-    color: #162033;
-    overflow-x: hidden;
-}
+        body {
+            font-family: "Inter", sans-serif;
+            background: #07111f;
+            color: white;
+        }
 
-a {
-    text-decoration: none;
-    color: inherit;
-}
 
-button {
-    font-family: inherit;
-}
+        /* =========================================
+           HEADER
+        ========================================= */
 
-:root {
+        .header {
+            width: 100%;
+            height: 75px;
 
-    --navy: #07111f;
-    --navy2: #0d1b2f;
+            padding: 0 5%;
 
-    --gold: #d7ad55;
-    --gold-light: #f0d28a;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
 
-    --white: #ffffff;
+            position: fixed;
+            top: 0;
+            left: 0;
 
-    --muted: #64748b;
+            z-index: 1000;
 
-    --light: #f8fafc;
+            background: rgba(7, 17, 31, 0.92);
 
-    --shadow:
-        0 20px 60px rgba(7,17,31,.15);
-}
+            backdrop-filter: blur(15px);
 
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
 
-/* =========================================================
-   LOADER
-========================================================= */
 
-#loader {
+        /* =========================================
+           CHURCH LOGO
+        ========================================= */
 
-    position: fixed;
-    inset: 0;
+        .logo {
+            display: flex;
+            align-items: center;
 
-    z-index: 99999;
+            gap: 10px;
 
-    background: var(--navy);
+            text-decoration: none;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+            color: white;
 
-    transition:
-        opacity .6s ease,
-        visibility .6s ease;
-}
+            flex-shrink: 0;
+        }
 
-#loader.hide {
 
-    opacity: 0;
-    visibility: hidden;
-}
+        /* ACTUAL CHURCH LOGO IMAGE */
 
-.loader-content {
+        .logo img {
+            width: 40px;
+            height: 40px;
 
-    text-align: center;
-    color: white;
-}
+            object-fit: contain;
 
-.loader-cross {
+            display: block;
 
-    width: 55px;
-    height: 70px;
+            border-radius: 5px;
 
-    position: relative;
+            transition: 0.3s ease;
+        }
 
-    margin: auto auto 20px;
-}
 
-.loader-cross::before {
+        /* LOGO HOVER */
 
-    content: "";
+        .logo:hover img {
+            transform: scale(1.08);
+        }
 
-    position: absolute;
 
-    width: 12px;
-    height: 65px;
+        /* =========================================
+           LOGO TEXT
+        ========================================= */
 
-    background: var(--gold);
+        .logo-text {
+            display: flex;
 
-    left: 50%;
+            flex-direction: column;
 
-    transform: translateX(-50%);
+            justify-content: center;
 
-    border-radius: 10px;
-}
+            line-height: 1;
+        }
 
-.loader-cross::after {
 
-    content: "";
+        .logo-text strong {
+            font-family: "Cormorant Garamond", serif;
 
-    position: absolute;
+            font-size: 20px;
 
-    width: 45px;
-    height: 12px;
+            font-weight: 700;
 
-    background: var(--gold);
+            color: #d4af37;
 
-    top: 18px;
-    left: 50%;
+            white-space: nowrap;
+        }
 
-    transform: translateX(-50%);
 
-    border-radius: 10px;
-}
+        .logo-text span {
+            margin-top: 4px;
 
-.loader-content p {
+            font-size: 8px;
 
-    font-size: 12px;
+            font-weight: 600;
 
-    letter-spacing: 4px;
+            letter-spacing: 2.5px;
 
-    text-transform: uppercase;
-}
+            text-transform: uppercase;
 
+            color: #ffffff;
 
-/* =========================================================
-   ANNOUNCEMENT BAR
-========================================================= */
+            white-space: nowrap;
+        }
 
-.announcement {
 
-    height: 38px;
+        /* =========================================
+           NAVIGATION
+        ========================================= */
 
-    background: var(--gold);
+        .navbar {
+            display: flex;
 
-    color: var(--navy);
+            align-items: center;
 
-    display: flex;
+            gap: 25px;
+        }
 
-    align-items: center;
-    justify-content: center;
 
-    gap: 10px;
+        .navbar a {
+            text-decoration: none;
 
-    font-size: 12px;
+            color: white;
 
-    font-weight: 700;
+            font-size: 14px;
 
-    position: relative;
+            font-weight: 500;
 
-    z-index: 1001;
-}
+            transition: 0.3s ease;
 
-.announcement i {
+            position: relative;
+        }
 
-    animation: pulse 1.5s infinite;
-}
 
-@keyframes pulse {
+        .navbar a:hover {
+            color: #d4af37;
+        }
 
-    50% {
-        transform: scale(1.25);
-    }
-}
 
+        .navbar a.active {
+            color: #d4af37;
+        }
 
-/* =========================================================
-   NAVIGATION
-========================================================= */
 
-.navbar {
+        .navbar a.active::after {
+            content: "";
 
-    position: fixed;
+            position: absolute;
 
-    top: 38px;
+            left: 0;
+            bottom: -8px;
 
-    left: 0;
+            width: 100%;
+            height: 2px;
 
-    width: 100%;
+            background: #d4af37;
+        }
 
-    z-index: 1000;
 
-    padding: 18px 5%;
+        /* =========================================
+           DONATE BUTTON
+        ========================================= */
 
-    transition: .4s ease;
-}
+        .donate-btn {
+            padding: 10px 18px;
 
-.navbar.scrolled {
+            background: #d4af37;
 
-    top: 0;
+            color: #07111f !important;
 
-    padding: 12px 5%;
+            border-radius: 5px;
 
-    background: rgba(7,17,31,.94);
+            font-weight: 700 !important;
+        }
 
-    backdrop-filter: blur(18px);
 
-    box-shadow:
-        0 8px 35px rgba(0,0,0,.2);
-}
+        .donate-btn:hover {
+            background: #f0d46a;
+        }
 
-.nav-container {
 
-    max-width: 1400px;
+        /* =========================================
+           THEME BUTTON
+        ========================================= */
 
-    margin: auto;
+        .theme-toggle {
+            border: none;
 
-    display: flex;
+            background: transparent;
 
-    align-items: center;
+            color: white;
 
-    justify-content: space-between;
-}
+            font-size: 20px;
 
-.logo {
+            cursor: pointer;
 
-    display: flex;
+            margin-left: 15px;
+        }
 
-    align-items: center;
 
-    gap: 12px;
+        /* =========================================
+           MOBILE MENU BUTTON
+        ========================================= */
 
-    color: white;
-}
+        .menu-toggle {
+            display: none;
 
-.logo-symbol {
+            border: none;
 
-    width: 43px;
-    height: 43px;
+            background: transparent;
 
-    border: 1px solid rgba(215,173,85,.7);
+            color: white;
 
-    border-radius: 50%;
+            font-size: 25px;
 
-    display: flex;
+            cursor: pointer;
+        }
 
-    align-items: center;
-    justify-content: center;
 
-    color: var(--gold);
+        /* =========================================
+           DEMO HERO
+        ========================================= */
 
-    font-size: 18px;
+        .hero {
+            min-height: 100vh;
 
-    background: rgba(255,255,255,.05);
-}
+            padding: 150px 8% 80px;
 
-.logo-text strong {
+            display: flex;
 
-    display: block;
+            align-items: center;
 
-    font-family:
-        "Cormorant Garamond",
-        serif;
+            background:
+                linear-gradient(
+                    rgba(7, 17, 31, 0.78),
+                    rgba(7, 17, 31, 0.92)
+                ),
+                url("church.jpg");
 
-    font-size: 21px;
+            background-size: cover;
 
-    letter-spacing: .5px;
-}
+            background-position: center;
+        }
 
-.logo-text span {
 
-    display: block;
+        .hero-content {
+            max-width: 750px;
+        }
 
-    font-size: 8px;
 
-    letter-spacing: 2.5px;
+        .hero small {
+            color: #d4af37;
 
-    text-transform: uppercase;
+            letter-spacing: 4px;
 
-    color: var(--gold-light);
-}
+            font-weight: 700;
+        }
 
-.nav-links {
 
-    display: flex;
+        .hero h1 {
+            font-family: "Cormorant Garamond", serif;
 
-    align-items: center;
+            font-size: 65px;
 
-    gap: 28px;
+            line-height: 0.95;
 
-    list-style: none;
-}
+            margin: 20px 0;
+        }
 
-.nav-links a {
 
-    color: rgba(255,255,255,.9);
+        .hero h1 span {
+            color: #d4af37;
+        }
 
-    font-size: 13px;
 
-    font-weight: 500;
+        .hero p {
+            max-width: 650px;
 
-    position: relative;
+            line-height: 1.8;
 
-    transition: .3s;
-}
+            color: #d6dbe2;
+        }
 
-.nav-links a::after {
 
-    content: "";
+        .hero-buttons {
+            display: flex;
 
-    position: absolute;
+            gap: 15px;
 
-    left: 0;
+            margin-top: 30px;
+        }
 
-    bottom: -7px;
 
-    width: 0;
-    height: 2px;
+        .btn {
+            padding: 13px 22px;
 
-    background: var(--gold);
+            text-decoration: none;
 
-    transition: .3s;
-}
+            border-radius: 5px;
 
-.nav-links a:hover,
-.nav-links a.active {
+            font-weight: 600;
 
-    color: var(--gold-light);
-}
+            transition: 0.3s ease;
+        }
 
-.nav-links a:hover::after,
-.nav-links a.active::after {
 
-    width: 100%;
-}
+        .btn-primary {
+            background: #d4af37;
 
-.nav-button {
+            color: #07111f;
+        }
 
-    padding: 11px 20px;
 
-    border: 1px solid var(--gold);
+        .btn-primary:hover {
+            background: #f0d46a;
 
-    color: var(--gold-light) !important;
+            transform: translateY(-2px);
+        }
 
-    border-radius: 30px;
-}
 
-.nav-button:hover {
+        .btn-outline {
+            border: 1px solid #d4af37;
 
-    background: var(--gold);
+            color: #d4af37;
+        }
 
-    color: var(--navy) !important;
-}
 
-.nav-button::after {
+        .btn-outline:hover {
+            background: #d4af37;
 
-    display: none;
-}
+            color: #07111f;
+        }
 
-.menu-toggle {
 
-    display: none;
+        /* =========================================
+           MOBILE
+        ========================================= */
 
-    color: white;
+        @media (max-width: 900px) {
 
-    font-size: 25px;
+            .menu-toggle {
+                display: block;
+            }
 
-    cursor: pointer;
-}
 
+            .navbar {
+                position: absolute;
 
-/* =========================================================
-   ABOUT HERO
-========================================================= */
+                top: 75px;
 
-.about-hero {
+                left: 0;
 
-    min-height: 65vh;
+                width: 100%;
 
-    position: relative;
+                padding: 25px;
 
-    display: flex;
+                display: none;
 
-    align-items: center;
+                flex-direction: column;
 
-    background:
+                align-items: center;
 
-        linear-gradient(
-            90deg,
-            rgba(4,12,23,.96),
-            rgba(4,12,23,.62)
-        ),
+                gap: 20px;
 
-        url("church-about.jpg")
-        center/cover no-repeat;
+                background: #07111f;
 
-    overflow: hidden;
-}
+                border-top: 1px solid rgba(212,175,55,0.2);
+            }
 
-.about-hero::after {
 
-    content: "";
+            .navbar.active {
+                display: flex;
+            }
 
-    position: absolute;
 
-    width: 500px;
-    height: 500px;
+            .theme-toggle {
+                margin-left: auto;
 
-    border-radius: 50%;
+                margin-right: 15px;
+            }
 
-    border: 1px solid
-        rgba(215,173,85,.15);
+        }
 
-    right: -200px;
 
-    bottom: -260px;
-}
+        /* =========================================
+           SMALL PHONES
+        ========================================= */
 
-.about-hero-container {
+        @media (max-width: 600px) {
 
-    width: 100%;
+            .header {
+                height: 68px;
 
-    max-width: 1200px;
+                padding: 0 4%;
+            }
 
-    margin: auto;
 
-    padding: 170px 5% 90px;
+            .logo img {
+                width: 36px;
 
-    position: relative;
+                height: 36px;
+            }
 
-    z-index: 2;
-}
 
-.eyebrow {
+            .logo-text strong {
+                font-size: 16px;
+            }
 
-    display: inline-flex;
 
-    align-items: center;
+            .logo-text span {
+                font-size: 7px;
 
-    gap: 12px;
+                letter-spacing: 2px;
+            }
 
-    color: var(--gold-light);
 
-    text-transform: uppercase;
+            .hero {
+                padding: 130px 6% 60px;
+            }
 
-    letter-spacing: 4px;
 
-    font-size: 11px;
+            .hero h1 {
+                font-size: 45px;
+            }
 
-    font-weight: 700;
+        }
 
-    margin-bottom: 20px;
-}
-
-.eyebrow::before {
-
-    content: "";
-
-    width: 35px;
-    height: 1px;
-
-    background: var(--gold);
-}
-
-.about-hero h1 {
-
-    color: white;
-
-    font-family:
-        "Cormorant Garamond",
-        serif;
-
-    font-size:
-        clamp(55px, 8vw, 90px);
-
-    line-height: .9;
-
-    font-weight: 600;
-
-    margin-bottom: 22px;
-}
-
-.about-hero h1 span {
-
-    color: var(--gold-light);
-}
-
-.about-hero p {
-
-    max-width: 650px;
-
-    color:
-        rgba(255,255,255,.72);
-
-    font-size: 15px;
-
-    line-height: 1.8;
-}
-
-
-/* =========================================================
-   GENERAL SECTIONS
-========================================================= */
-
-section {
-
-    padding: 100px 5%;
-}
-
-.section-container {
-
-    max-width: 1200px;
-
-    margin: auto;
-}
-
-.section-heading {
-
-    max-width: 700px;
-
-    margin-bottom: 55px;
-}
-
-.section-heading.center {
-
-    text-align: center;
-
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.section-label {
-
-    color: #aa8237;
-
-    font-size: 10px;
-
-    font-weight: 800;
-
-    letter-spacing: 4px;
-
-    text-transform: uppercase;
-
-    margin-bottom: 12px;
-}
-
-.section-heading h2 {
-
-    font-family:
-        "Cormorant Garamond",
-        serif;
-
-    font-size:
-        clamp(40px,5vw,60px);
-
-    line-height: 1;
-
-    color: var(--navy);
-
-    margin-bottom: 18px;
-}
-
-.section-heading p {
-
-    color: var(--muted);
-
-    line-height: 1.8;
-
-    font-size: 14px;
-}
-
-
-/* =========================================================
-   WHO WE ARE
-========================================================= */
-
-.who-we-are {
-
-    background: white;
-}
-
-.who-grid {
-
-    display: grid;
-
-    grid-template-columns:
-        1fr 1fr;
-
-    gap: 80px;
-
-    align-items: center;
-}
-
-.about-image {
-
-    min-height: 500px;
-
-    position: relative;
-
-    background:
-
-        linear-gradient(
-            135deg,
-            rgba(7,17,31,.05),
-            rgba(7,17,31,.45)
-        ),
-
-        url("church-about.jpg")
-        center/cover no-repeat;
-
-    border-radius: 3px;
-}
-
-.about-image::before {
-
-    content: "";
-
-    position: absolute;
-
-    inset:
-        -15px 15px 15px -15px;
-
-    border: 1px solid var(--gold);
-
-    z-index: -1;
-}
-
-.about-content h2 {
-
-    font-family:
-        "Cormorant Garamond",
-        serif;
-
-    color: var(--navy);
-
-    font-size: 48px;
-
-    line-height: 1;
-
-    margin-bottom: 22px;
-}
-
-.about-content p {
-
-    color: var(--muted);
-
-    font-size: 14px;
-
-    line-height: 1.9;
-
-    margin-bottom: 18px;
-}
-
-.location-pill {
-
-    display: inline-flex;
-
-    align-items: center;
-
-    gap: 10px;
-
-    padding: 13px 18px;
-
-    margin-top: 15px;
-
-    background: #f4f0e7;
-
-    color: #886728;
-
-    font-size: 12px;
-
-    font-weight: 700;
-
-    border-radius: 30px;
-}
-
-.location-pill i {
-
-    color: var(--gold);
-}
-
-
-/* =========================================================
-   MISSION VISION VALUES
-========================================================= */
-
-.mvv {
-
-    background: #f2f5f8;
-}
-
-.mvv-grid {
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
-    gap: 20px;
-}
-
-.mvv-card {
-
-    background: white;
-
-    padding: 40px 32px;
-
-    position: relative;
-
-    transition: .35s;
-
-    border-top:
-        3px solid transparent;
-
-    box-shadow:
-        0 8px 30px
-        rgba(7,17,31,.04);
-}
-
-.mvv-card:hover {
-
-    transform:
-        translateY(-8px);
-
-    border-top-color:
-        var(--gold);
-
-    box-shadow:
-        var(--shadow);
-}
-
-.mvv-icon {
-
-    width: 55px;
-    height: 55px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    background: #f5ecd8;
-
-    color: #a77b2d;
-
-    border-radius: 50%;
-
-    margin-bottom: 24px;
-
-    font-size: 19px;
-}
-
-.mvv-card h3 {
-
-    font-family:
-        "Cormorant Garamond",
-        serif;
-
-    color: var(--navy);
-
-    font-size: 31px;
-
-    margin-bottom: 12px;
-}
-
-.mvv-card p {
-
-    color: var(--muted);
-
-    font-size: 13px;
-
-    line-height: 1.8;
-}
-
-
-/* =========================================================
-   FAITH SECTION
-========================================================= */
-
-.faith {
-
-    background: white;
-}
-
-.faith-content {
-
-    max-width: 850px;
-
-    margin: auto;
-
-    text-align: center;
-}
-
-.faith-content i {
-
-    color: var(--gold);
-
-    font-size: 32px;
-
-    margin-bottom: 25px;
-}
-
-.faith-content h2 {
-
-    font-family:
-        "Cormorant Garamond",
-        serif;
-
-    color: var(--navy);
-
-    font-size:
-        clamp(38px,5vw,58px);
-
-    line-height: 1.05;
-
-    margin-bottom: 22px;
-}
-
-.faith-content p {
-
-    color: var(--muted);
-
-    font-size: 14px;
-
-    line-height: 1.9;
-}
-
-
-/* =========================================================
-   COMMUNITY SECTION
-========================================================= */
-
-.community {
-
-    background:
-
-        linear-gradient(
-            rgba(7,17,31,.95),
-            rgba(7,17,31,.95)
-        ),
-
-        url("church-community.jpg")
-        center/cover fixed;
-
-    color: white;
-
-    text-align: center;
-}
-
-.community-container {
-
-    max-width: 850px;
-
-    margin: auto;
-}
-
-.community .section-label {
-
-    color: var(--gold-light);
-}
-
-.community h2 {
-
-    font-family:
-        "Cormorant Garamond",
-        serif;
-
-    font-size:
-        clamp(42px,5vw,65px);
-
-    line-height: 1;
-
-    margin-bottom: 20px;
-}
-
-.community p {
-
-    color:
-        rgba(255,255,255,.68);
-
-    font-size: 14px;
-
-    line-height: 1.9;
-
-    margin-bottom: 30px;
-}
-
-.btn {
-
-    display: inline-flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    gap: 9px;
-
-    padding: 15px 24px;
-
-    border-radius: 4px;
-
-    font-size: 13px;
-
-    font-weight: 700;
-
-    transition: .3s;
-}
-
-.btn-primary {
-
-    background: var(--gold);
-
-    color: var(--navy);
-}
-
-.btn-primary:hover {
-
-    transform: translateY(-4px);
-
-    box-shadow:
-        0 12px 30px
-        rgba(215,173,85,.3);
-}
-
-
-/* =========================================================
-   PRAYER CTA
-========================================================= */
-
-.prayer {
-
-    background: var(--gold);
-
-    padding: 70px 5%;
-
-    position: relative;
-
-    overflow: hidden;
-}
-
-.prayer::before {
-
-    content: "✦";
-
-    position: absolute;
-
-    right: 8%;
-    top: -80px;
-
-    font-size: 300px;
-
-    color:
-        rgba(255,255,255,.12);
-}
-
-.prayer-container {
-
-    max-width: 1200px;
-
-    margin: auto;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    gap: 30px;
-
-    position: relative;
-
-    z-index: 2;
-}
-
-.prayer h2 {
-
-    font-family:
-        "Cormorant Garamond",
-        serif;
-
-    color: var(--navy);
-
-    font-size: 48px;
-
-    margin-bottom: 8px;
-}
-
-.prayer p {
-
-    color:
-        rgba(7,17,31,.7);
-
-    font-size: 14px;
-}
-
-.prayer .btn {
-
-    background: var(--navy);
-
-    color: white;
-
-    white-space: nowrap;
-}
-
-.prayer .btn:hover {
-
-    transform: translateY(-4px);
-}
-
-
-/* =========================================================
-   FOOTER
-========================================================= */
-
-footer {
-
-    background: #040b14;
-
-    color: white;
-
-    padding:
-        70px 5% 25px;
-}
-
-.footer-grid {
-
-    max-width: 1200px;
-
-    margin: auto;
-
-    display: grid;
-
-    grid-template-columns:
-        1.4fr 1fr 1fr 1fr;
-
-    gap: 50px;
-
-    padding-bottom: 50px;
-}
-
-.footer-brand p {
-
-    color:
-        rgba(255,255,255,.55);
-
-    font-size: 13px;
-
-    line-height: 1.8;
-
-    max-width: 330px;
-
-    margin-top: 20px;
-}
-
-.footer-title {
-
-    color: var(--gold-light);
-
-    font-size: 11px;
-
-    letter-spacing: 2px;
-
-    text-transform: uppercase;
-
-    margin-bottom: 22px;
-}
-
-.footer-links {
-
-    list-style: none;
-}
-
-.footer-links li {
-
-    margin: 12px 0;
-}
-
-.footer-links a {
-
-    color:
-        rgba(255,255,255,.58);
-
-    font-size: 13px;
-
-    transition: .3s;
-}
-
-.footer-links a:hover {
-
-    color: var(--gold-light);
-
-    padding-left: 5px;
-}
-
-.socials {
-
-    display: flex;
-
-    gap: 9px;
-
-    margin-top: 22px;
-}
-
-.socials a {
-
-    width: 38px;
-    height: 38px;
-
-    border:
-        1px solid
-        rgba(255,255,255,.15);
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 50%;
-
-    color:
-        rgba(255,255,255,.7);
-
-    transition: .3s;
-}
-
-.socials a:hover {
-
-    background: var(--gold);
-
-    border-color: var(--gold);
-
-    color: var(--navy);
-
-    transform: translateY(-3px);
-}
-
-.footer-bottom {
-
-    max-width: 1200px;
-
-    margin: auto;
-
-    padding-top: 25px;
-
-    border-top:
-        1px solid
-        rgba(255,255,255,.1);
-
-    display: flex;
-
-    justify-content: space-between;
-
-    gap: 20px;
-
-    color:
-        rgba(255,255,255,.35);
-
-    font-size: 11px;
-}
-
-
-/* =========================================================
-   BACK TO TOP
-========================================================= */
-
-#backTop {
-
-    position: fixed;
-
-    right: 25px;
-    bottom: 25px;
-
-    width: 45px;
-    height: 45px;
-
-    border: none;
-
-    border-radius: 50%;
-
-    background: var(--gold);
-
-    color: var(--navy);
-
-    cursor: pointer;
-
-    opacity: 0;
-
-    visibility: hidden;
-
-    transform:
-        translateY(20px);
-
-    transition: .3s;
-
-    z-index: 999;
-}
-
-#backTop.show {
-
-    opacity: 1;
-
-    visibility: visible;
-
-    transform:
-        translateY(0);
-}
-
-
-/* =========================================================
-   SCROLL REVEAL
-========================================================= */
-
-.reveal {
-
-    opacity: 0;
-
-    transform:
-        translateY(35px);
-
-    transition:
-        opacity .8s ease,
-        transform .8s ease;
-}
-
-.reveal.visible {
-
-    opacity: 1;
-
-    transform:
-        translateY(0);
-}
-
-
-/* =========================================================
-   RESPONSIVE
-========================================================= */
-
-@media (max-width:950px) {
-
-    .nav-links {
-
-        position: fixed;
-
-        top: 0;
-        right: -100%;
-
-        width: min(330px,85%);
-
-        height: 100vh;
-
-        background: #07111f;
-
-        flex-direction: column;
-
-        justify-content: center;
-
-        gap: 28px;
-
-        transition: .4s;
-
-        box-shadow:
-            -20px 0 60px
-            rgba(0,0,0,.3);
-    }
-
-    .nav-links.open {
-        right: 0;
-    }
-
-    .menu-toggle {
-        display: block;
-        z-index: 1002;
-    }
-
-    .who-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .mvv-grid {
-        grid-template-columns:
-            1fr 1fr;
-    }
-
-    .footer-grid {
-        grid-template-columns:
-            1fr 1fr;
-    }
-}
-
-
-@media (max-width:650px) {
-
-    .announcement {
-
-        font-size: 9px;
-
-        padding: 0 10px;
-
-        text-align: center;
-    }
-
-    .logo-text strong {
-        font-size: 17px;
-    }
-
-    .logo-text span {
-        font-size: 6px;
-    }
-
-    .about-hero-container {
-        padding-top: 180px;
-    }
-
-    .about-hero h1 {
-        font-size: 57px;
-    }
-
-    section {
-        padding: 75px 5%;
-    }
-
-    .about-image {
-        min-height: 370px;
-    }
-
-    .mvv-grid,
-    .footer-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .prayer-container {
-
-        flex-direction: column;
-
-        align-items: flex-start;
-    }
-
-    .prayer h2 {
-        font-size: 40px;
-    }
-
-    .footer-bottom {
-
-        flex-direction: column;
-    }
-}
-
-</style>
+    </style>
 
 </head>
 
@@ -1389,884 +486,203 @@ footer {
 <body>
 
 
-<!-- =========================================================
-     LOADER
-========================================================= -->
+    <!-- =========================================
+         NAVIGATION
+    ========================================= -->
 
-<div id="loader">
-
-    <div class="loader-content">
-
-        <div class="loader-cross"></div>
-
-        <p>Gospel Wonders Mission Church</p>
-
-    </div>
-
-</div>
+    <header class="header">
 
 
-<!-- =========================================================
-     ANNOUNCEMENT
-========================================================= -->
-
-<div class="announcement">
-
-    <i class="fa-solid fa-cross"></i>
-
-    <span>
-        Welcome to Gospel Wonders Mission Church
-    </span>
-
-</div>
-
-
-<!-- =========================================================
-     NAVIGATION
-========================================================= -->
-
-<header class="navbar" id="navbar">
-
-    <div class="nav-container">
-
+        <!-- CHURCH LOGO -->
 
         <a href="index.html" class="logo">
 
-            <div class="logo-symbol">
-                <img src="keith.PNG" alt="Gospel Wonders Mission Church Logo">
-            </div>
+            <img
+                src="keith.PNG"
+                alt="Gospel Wonders Mission Church Logo"
+            >
 
             <div class="logo-text">
 
-                <strong>Gospel Wonders</strong>
+                <strong>
+                    Gospel Wonders
+                </strong>
 
-                <span>Mission Church</span>
+                <span>
+                    Mission Church
+                </span>
 
             </div>
 
         </a>
 
 
-        <nav>
+        <!-- MOBILE MENU -->
 
-            <ul class="nav-links" id="navLinks">
+        <button class="menu-toggle" id="menuToggle">
+            <i class="fa-solid fa-bars"></i>
+        </button>
 
-                <li>
-                    <a href="index.html">
-                        Home
-                    </a>
-                </li>
 
-                <li>
-                    <a href="about.html" class="active">
-                        About
-                    </a>
-                </li>
+        <!-- NAVIGATION LINKS -->
 
-                <li>
-                    <a href="ministries.html">
-                        Ministries
-                    </a>
-                </li>
+        <nav class="navbar" id="navbar">
 
-                <li>
-                    <a href="sermons.html">
-                        Sermons
-                    </a>
-                </li>
+            <a href="index.html" class="active">
+                Home
+            </a>
 
-                <li>
-                    <a href="events.html">
-                        Events
-                    </a>
-                </li>
+            <a href="about.HTML">
+                About
+            </a>
 
-                <li>
-                    <a href="gallery.html">
-                        Gallery
-                    </a>
-                </li>
+            <a href="ministries.HTML">
+                Ministries
+            </a>
 
-                <li>
-                    <a href="contact.html"
-                       class="nav-button">
-                        Contact Us
-                    </a>
-                </li>
+            <a href="sermons.HTML">
+                Sermons
+            </a>
 
-            </ul>
+            <a href="events.html">
+                Events
+            </a>
+
+            <a href="gallery.HTML">
+                Gallery
+            </a>
+
+            <a href="contact.html">
+                Contact
+            </a>
+
+            <a href="donate.html" class="donate-btn">
+                Donate
+            </a>
 
         </nav>
 
 
-        <div class="menu-toggle" id="menuToggle">
+        <!-- DARK/LIGHT MODE -->
 
-            <i class="fa-solid fa-bars"></i>
-
-        </div>
-
-    </div>
-
-</header>
+        <button class="theme-toggle" id="themeToggle">
+            🌙
+        </button>
 
 
-<!-- =========================================================
-     ABOUT HERO
-========================================================= -->
-
-<main>
+    </header>
 
 
-<section class="about-hero">
+    <!-- =========================================
+         HERO
+    ========================================= -->
 
-    <div class="about-hero-container reveal">
+    <section class="hero">
 
-        <div class="eyebrow">
-            Who We Are
-        </div>
+        <div class="hero-content">
 
-        <h1>
-            About<br>
-            <span>Our Church.</span>
-        </h1>
+            <small>
+                WELCOME TO
+            </small>
 
-        <p>
-
-            Discover Gospel Wonders Mission Church,
-            a Christian church serving the community
-            of Bulenga Gogonya in Wakiso District,
-            Uganda.
-
-        </p>
-
-    </div>
-
-</section>
-
-
-<!-- =========================================================
-     WHO WE ARE
-========================================================= -->
-
-<section class="who-we-are">
-
-    <div class="section-container who-grid">
-
-
-        <div class="about-image reveal"></div>
-
-
-        <div class="about-content reveal">
-
-            <div class="section-label">
-                Gospel Wonders
-            </div>
-
-            <h2>
-                A Church Built Around Faith.
-            </h2>
+            <h1>
+                GOSPEL
+                <span>WONDERS MISSION CHURCH</span>
+            </h1>
 
             <p>
-
-                Gospel Wonders Mission Church is a
-                Christian church located in the
-                Bulenga Gogonya area of Wakiso District,
-                Uganda.
-
-            </p>
-
-            <p>
-
-                Our desire is to provide a place where
-                people can come together in worship,
-                prayer, fellowship and the Word of God.
-
-            </p>
-
-            <p>
-
-                We welcome people from different
-                backgrounds and invite everyone to
-                discover a deeper relationship with God
-                and grow together as a community.
-
+                Spreading God's Word, transforming lives,
+                and serving communities through faith,
+                love and hope.
             </p>
 
 
-            <div class="location-pill">
+            <div class="hero-buttons">
 
-                <i class="fa-solid fa-location-dot"></i>
-
-                Bulenga Gogonya,
-                Wakiso District, Uganda
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================================================
-     MISSION / VISION / COMMUNITY
-========================================================= -->
-
-<section class="mvv">
-
-    <div class="section-container">
-
-
-        <div class="section-heading center reveal">
-
-            <div class="section-label">
-                Our Foundation
-            </div>
-
-            <h2>
-                What Matters To Us
-            </h2>
-
-            <p>
-
-                These sections can be expanded with
-                the church's official mission, vision
-                and values as you provide them.
-
-            </p>
-
-        </div>
-
-
-        <div class="mvv-grid">
-
-
-            <div class="mvv-card reveal">
-
-                <div class="mvv-icon">
-
-                    <i class="fa-solid fa-cross"></i>
-
-                </div>
-
-                <h3>
-                    Faith
-                </h3>
-
-                <p>
-
-                    We seek to encourage people to grow
-                    in their faith and relationship with
-                    God through worship, prayer and the
-                    Word.
-
-                </p>
-
-            </div>
-
-
-            <div class="mvv-card reveal">
-
-                <div class="mvv-icon">
-
-                    <i class="fa-solid fa-eye"></i>
-
-                </div>
-
-                <h3>
-                    Vision
-                </h3>
-
-                <p>
-
-                    Our vision section will contain the
-                    official vision of Gospel Wonders
-                    Mission Church.
-
-                </p>
-
-            </div>
-
-
-            <div class="mvv-card reveal">
-
-                <div class="mvv-icon">
-
-                    <i class="fa-solid fa-heart"></i>
-
-                </div>
-
-                <h3>
-                    Love
-                </h3>
-
-                <p>
-
-                    We believe in creating a welcoming
-                    community where people can support,
-                    encourage and care for one another.
-
-                </p>
-
-            </div>
-
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================================================
-     FAITH
-========================================================= -->
-
-<section class="faith">
-
-    <div class="faith-content reveal">
-
-        <i class="fa-solid fa-book-bible"></i>
-
-        <div class="section-label">
-            Our Foundation
-        </div>
-
-        <h2>
-            Growing Together In God's Word
-        </h2>
-
-        <p>
-
-            The Christian faith is at the heart of
-            Gospel Wonders Mission Church. Through
-            worship, biblical teaching, prayer and
-            fellowship, we seek to create opportunities
-            for people to grow spiritually and serve
-            others.
-
-        </p>
-
-    </div>
-
-</section>
-
-
-<!-- =========================================================
-     COMMUNITY
-========================================================= -->
-
-<section class="community">
-
-    <div class="community-container reveal">
-
-        <div class="section-label">
-            You Are Welcome
-        </div>
-
-        <h2>
-            There Is A Place For You Here.
-        </h2>
-
-        <p>
-
-            Whether you are visiting for the first time,
-            searching for a church family or simply
-            looking for a place to worship, we welcome
-            you to Gospel Wonders Mission Church.
-
-        </p>
-
-        <a href="contact.html"
-           class="btn btn-primary">
-
-            Get In Touch
-
-            <i class="fa-solid fa-arrow-right"></i>
-
-        </a>
-
-    </div>
-
-</section>
-
-
-<!-- =========================================================
-     PRAYER CTA
-========================================================= -->
-
-<section class="prayer">
-
-    <div class="prayer-container">
-
-        <div>
-
-            <h2>
-                Need Prayer?
-            </h2>
-
-            <p>
-
-                Whatever you are facing, you don't
-                have to walk through it alone.
-
-            </p>
-
-        </div>
-
-
-        <a href="prayer.html"
-           class="btn">
-
-            Submit A Prayer Request
-
-            <i class="fa-solid fa-arrow-right"></i>
-
-        </a>
-
-    </div>
-
-</section>
-
-</main>
-
-
-<!-- =========================================================
-     FOOTER
-========================================================= -->
-
-<footer>
-
-    <div class="footer-grid">
-
-
-        <div class="footer-brand">
-
-            <a href="index.html"
-               class="logo">
-
-                <div class="logo-symbol">
-
-                    <i class="fa-solid fa-cross"></i>
-
-                </div>
-
-                <div class="logo-text">
-
-                    <strong>
-                        Gospel Wonders
-                    </strong>
-
-                    <span>
-                        Mission Church
-                    </span>
-
-                </div>
-
-            </a>
-
-
-            <p>
-
-                A Christian church located in
-                Bulenga Gogonya, Wakiso District,
-                Uganda.
-
-            </p>
-
-
-            <div class="socials">
-
-                <a href="#"
-                   aria-label="Facebook">
-
-                    <i class="fa-brands fa-facebook-f"></i>
-
+                <a href="about.HTML" class="btn btn-primary">
+                    Learn More
                 </a>
 
-                <a href="#"
-                   aria-label="YouTube">
-
-                    <i class="fa-brands fa-youtube"></i>
-
-                </a>
-
-                <a href="#"
-                   aria-label="Instagram">
-
-                    <i class="fa-brands fa-instagram"></i>
-
-                </a>
-
-                <a href="#"
-                   aria-label="WhatsApp">
-
-                    <i class="fa-brands fa-whatsapp"></i>
-
+                <a href="donate.html" class="btn btn-outline">
+                    Support Mission
                 </a>
 
             </div>
 
         </div>
 
+    </section>
 
-        <div>
 
-            <div class="footer-title">
-                Explore
-            </div>
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================= -->
 
-            <ul class="footer-links">
+    <script>
 
-                <li>
-                    <a href="about.html">
-                        About Us
-                    </a>
-                </li>
+        /* MOBILE MENU */
 
-                <li>
-                    <a href="ministries.html">
-                        Ministries
-                    </a>
-                </li>
+        const menuToggle =
+            document.getElementById("menuToggle");
 
-                <li>
-                    <a href="sermons.html">
-                        Sermons
-                    </a>
-                </li>
+        const navbar =
+            document.getElementById("navbar");
 
-                <li>
-                    <a href="events.html">
-                        Events
-                    </a>
-                </li>
 
-            </ul>
+        menuToggle.addEventListener("click", function () {
 
-        </div>
-
-
-        <div>
-
-            <div class="footer-title">
-                Connect
-            </div>
-
-            <ul class="footer-links">
-
-                <li>
-                    <a href="gallery.html">
-                        Gallery
-                    </a>
-                </li>
-
-                <li>
-                    <a href="prayer.html">
-                        Prayer Request
-                    </a>
-                </li>
-
-                <li>
-                    <a href="contact.html">
-                        Contact
-                    </a>
-                </li>
-
-            </ul>
-
-        </div>
-
-
-        <div>
-
-            <div class="footer-title">
-                Location
-            </div>
-
-            <ul class="footer-links">
-
-                <li>
-                    <a href="#">
-                        Bulenga Gogonya
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        Wakiso District
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        Uganda
-                    </a>
-                </li>
-
-            </ul>
-
-        </div>
-
-
-    </div>
-
-
-    <div class="footer-bottom">
-
-        <span>
-
-            © <span id="year"></span>
-            Gospel Wonders Mission Church.
-            All Rights Reserved.
-
-        </span>
-
-        <span>
-
-            Built with Faith • Hope • Love
-
-        </span>
-
-    </div>
-
-</footer>
-
-
-<!-- =========================================================
-     BACK TO TOP
-========================================================= -->
-
-<button id="backTop"
-        aria-label="Back to top">
-
-    <i class="fa-solid fa-arrow-up"></i>
-
-</button>
-
-
-<!-- =========================================================
-     JAVASCRIPT
-========================================================= -->
-
-<script>
-
-/* =========================================================
-   LOADER
-========================================================= */
-
-window.addEventListener("load", () => {
-
-    setTimeout(() => {
-
-        document
-            .getElementById("loader")
-            .classList.add("hide");
-
-    }, 700);
-
-});
-
-
-/* =========================================================
-   NAVBAR SCROLL EFFECT
-========================================================= */
-
-const navbar =
-    document.getElementById("navbar");
-
-window.addEventListener("scroll", () => {
-
-    if (window.scrollY > 50) {
-
-        navbar.classList.add("scrolled");
-
-    } else {
-
-        navbar.classList.remove("scrolled");
-
-    }
-
-});
-
-
-/* =========================================================
-   MOBILE MENU
-========================================================= */
-
-const menuToggle =
-    document.getElementById("menuToggle");
-
-const navLinks =
-    document.getElementById("navLinks");
-
-
-menuToggle.addEventListener("click", () => {
-
-    navLinks.classList.toggle("open");
-
-    const icon =
-        menuToggle.querySelector("i");
-
-
-    if (navLinks.classList.contains("open")) {
-
-        icon.classList.remove("fa-bars");
-
-        icon.classList.add("fa-xmark");
-
-    } else {
-
-        icon.classList.remove("fa-xmark");
-
-        icon.classList.add("fa-bars");
-
-    }
-
-});
-
-
-/* =========================================================
-   CLOSE MOBILE MENU
-========================================================= */
-
-document
-    .querySelectorAll(".nav-links a")
-    .forEach(link => {
-
-        link.addEventListener("click", () => {
-
-            navLinks.classList.remove("open");
+            navbar.classList.toggle("active");
 
             const icon =
                 menuToggle.querySelector("i");
 
-            icon.classList.remove("fa-xmark");
+            if (navbar.classList.contains("active")) {
 
-            icon.classList.add("fa-bars");
+                icon.classList.remove("fa-bars");
+
+                icon.classList.add("fa-xmark");
+
+            } else {
+
+                icon.classList.remove("fa-xmark");
+
+                icon.classList.add("fa-bars");
+
+            }
 
         });
 
-    });
+
+        /* =========================================
+           THEME TOGGLE
+        ========================================= */
+
+        const themeToggle =
+            document.getElementById("themeToggle");
 
 
-/* =========================================================
-   SCROLL REVEAL
-========================================================= */
+        themeToggle.addEventListener("click", function () {
 
-const revealElements =
-    document.querySelectorAll(".reveal");
+            document.body.classList.toggle("light-mode");
 
 
-const revealObserver =
-    new IntersectionObserver(
+            if (
+                document.body.classList.contains("light-mode")
+            ) {
 
-        (entries) => {
+                themeToggle.textContent = "☀️";
 
-            entries.forEach(entry => {
+            } else {
 
-                if (entry.isIntersecting) {
+                themeToggle.textContent = "🌙";
 
-                    entry.target
-                        .classList
-                        .add("visible");
+            }
 
-                    revealObserver
-                        .unobserve(entry.target);
+        });
 
-                }
+    </script>
 
-            });
-
-        },
-
-        {
-            threshold: 0.12
-        }
-
-    );
-
-
-revealElements.forEach(element => {
-
-    revealObserver.observe(element);
-
-});
-
-
-/* =========================================================
-   BACK TO TOP
-========================================================= */
-
-const backTop =
-    document.getElementById("backTop");
-
-
-window.addEventListener("scroll", () => {
-
-    if (window.scrollY > 500) {
-
-        backTop.classList.add("show");
-
-    } else {
-
-        backTop.classList.remove("show");
-
-    }
-
-});
-
-
-backTop.addEventListener("click", () => {
-
-    window.scrollTo({
-
-        top: 0,
-
-        behavior: "smooth"
-
-    });
-
-});
-
-
-/* =========================================================
-   CURRENT YEAR
-========================================================= */
-
-document.getElementById("year")
-    .textContent =
-    new Date().getFullYear();
-
-
-/* =========================================================
-   ACTIVE PAGE
-========================================================= */
-
-const currentPage =
-    window.location.pathname
-        .split("/")
-        .pop() || "index.html";
-
-
-document
-    .querySelectorAll(".nav-links a")
-    .forEach(link => {
-
-        const href =
-            link.getAttribute("href");
-
-        if (href === currentPage) {
-
-            link.classList.add("active");
-
-        }
-
-    });
-
-</script>
 
 </body>
+
 </html>
-```
