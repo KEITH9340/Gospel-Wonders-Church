@@ -1,0 +1,2374 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Events | Gospel Wonders Mission Church</title>
+
+<link rel="icon" href="keith.PNG">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+
+/* =====================================================
+   ROOT
+===================================================== */
+
+:root {
+    --navy: #07111f;
+    --navy-light: #0d1c2e;
+    --navy-dark: #040b14;
+
+    --gold: #d7ad55;
+    --gold-light: #f0cf7a;
+
+    --white: #ffffff;
+    --text: #d7dde5;
+    --muted: #9da8b5;
+
+    --border: rgba(215,173,85,.25);
+}
+
+
+/* =====================================================
+   RESET
+===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--navy);
+    color: var(--white);
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+
+/* =====================================================
+   ANNOUNCEMENT BAR
+===================================================== */
+
+.announcement {
+    height: 38px;
+
+    background: var(--gold);
+    color: var(--navy);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 10px;
+
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: .5px;
+}
+
+.announcement i {
+    font-size: 13px;
+}
+
+
+/* =====================================================
+   NAVBAR
+===================================================== */
+
+.navbar {
+    position: fixed;
+
+    top: 38px;
+    left: 0;
+
+    width: 100%;
+    height: 76px;
+
+    z-index: 1000;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 7%;
+
+    background: rgba(7,17,31,.72);
+
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+
+    border-bottom: 1px solid rgba(255,255,255,.06);
+
+    transition: .35s ease;
+}
+
+.navbar.scrolled {
+    background: rgba(7,17,31,.97);
+    box-shadow: 0 8px 35px rgba(0,0,0,.35);
+}
+
+
+/* =====================================================
+   LOGO
+===================================================== */
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo img {
+    width: 45px;
+    height: 45px;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    border: 2px solid var(--gold);
+
+    padding: 2px;
+
+    background: var(--navy);
+
+    transition: .3s ease;
+}
+
+.logo:hover img {
+    transform: scale(1.08);
+
+    box-shadow:
+        0 0 18px rgba(215,173,85,.35);
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+
+    line-height: 1;
+}
+
+.logo-text strong {
+    color: var(--gold);
+
+    font-family: 'Cormorant Garamond', serif;
+
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.logo-text span {
+    color: var(--white);
+
+    font-size: 8px;
+
+    letter-spacing: 3px;
+
+    margin-top: 5px;
+}
+
+
+/* =====================================================
+   NAV LINKS
+===================================================== */
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.nav-links a {
+    position: relative;
+
+    color: #e7ebef;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    transition: .3s ease;
+}
+
+.nav-links a::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: -8px;
+
+    width: 0;
+    height: 2px;
+
+    background: var(--gold);
+
+    transition: .3s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--gold);
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    width: 100%;
+}
+
+
+/* =====================================================
+   DONATE
+===================================================== */
+
+.donate-btn {
+    padding: 11px 20px;
+
+    border-radius: 30px;
+
+    background: var(--gold);
+
+    color: var(--navy) !important;
+
+    font-weight: 800 !important;
+}
+
+.donate-btn:hover {
+    background: var(--gold-light);
+    transform: translateY(-2px);
+}
+
+
+/* =====================================================
+   MOBILE MENU
+===================================================== */
+
+.menu-toggle {
+    display: none;
+
+    color: var(--gold);
+
+    font-size: 24px;
+
+    cursor: pointer;
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero {
+    min-height: 70vh;
+
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 150px 7% 90px;
+
+    background:
+        linear-gradient(
+            rgba(7,17,31,.72),
+            rgba(7,17,31,.94)
+        ),
+        url("church-events.jpg") center/cover no-repeat;
+}
+
+.hero::before,
+.hero::after {
+    content: "";
+
+    position: absolute;
+
+    border: 1px solid rgba(215,173,85,.22);
+
+    border-radius: 50%;
+}
+
+.hero::before {
+    width: 300px;
+    height: 300px;
+
+    left: -130px;
+    top: 15%;
+}
+
+.hero::after {
+    width: 230px;
+    height: 230px;
+
+    right: -90px;
+    bottom: 8%;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+
+    max-width: 850px;
+}
+
+.hero small {
+    color: var(--gold);
+
+    font-size: 12px;
+    font-weight: 800;
+
+    letter-spacing: 4px;
+
+    text-transform: uppercase;
+}
+
+.hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+
+    font-size: clamp(55px, 8vw, 95px);
+
+    line-height: .9;
+
+    margin: 18px 0;
+}
+
+.hero h1 span {
+    color: var(--gold);
+}
+
+.hero p {
+    max-width: 650px;
+
+    margin: auto;
+
+    color: var(--text);
+
+    line-height: 1.8;
+
+    font-size: 16px;
+}
+
+
+/* =====================================================
+   SECTION
+===================================================== */
+
+.section {
+    padding: 100px 7%;
+}
+
+.section-heading {
+    max-width: 750px;
+
+    margin: 0 auto 55px;
+
+    text-align: center;
+}
+
+.section-heading small {
+    color: var(--gold);
+
+    text-transform: uppercase;
+
+    letter-spacing: 4px;
+
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.section-heading h2 {
+    font-family: 'Cormorant Garamond', serif;
+
+    font-size: clamp(40px,5vw,62px);
+
+    margin: 10px 0;
+}
+
+.section-heading p {
+    color: var(--muted);
+
+    line-height: 1.8;
+}
+
+
+/* =====================================================
+   FEATURED EVENT
+===================================================== */
+
+.featured-event {
+    display: grid;
+
+    grid-template-columns: 1.05fr 1fr;
+
+    overflow: hidden;
+
+    background: var(--navy-light);
+
+    border: 1px solid var(--border);
+
+    border-radius: 25px;
+
+    margin-bottom: 90px;
+
+    box-shadow: 0 25px 60px rgba(0,0,0,.25);
+}
+
+.featured-image {
+    position: relative;
+
+    min-height: 470px;
+}
+
+.featured-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+.featured-image::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(7,17,31,.55)
+        );
+}
+
+.featured-badge {
+    position: absolute;
+
+    top: 20px;
+    left: 20px;
+
+    z-index: 2;
+
+    padding: 9px 15px;
+
+    background: var(--gold);
+
+    color: var(--navy);
+
+    border-radius: 25px;
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1px;
+}
+
+.featured-content {
+    padding: 55px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.featured-content small {
+    color: var(--gold);
+
+    font-size: 11px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 3px;
+
+    font-weight: 800;
+}
+
+.featured-content h3 {
+    font-family: 'Cormorant Garamond', serif;
+
+    font-size: 50px;
+
+    line-height: 1;
+
+    margin: 13px 0 18px;
+}
+
+.featured-content p {
+    color: var(--muted);
+
+    line-height: 1.8;
+
+    margin-bottom: 25px;
+}
+
+
+/* =====================================================
+   EVENT INFO
+===================================================== */
+
+.event-details {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 15px;
+
+    margin-bottom: 28px;
+}
+
+.event-detail {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    color: var(--text);
+
+    font-size: 13px;
+}
+
+.event-detail i {
+    color: var(--gold);
+
+    width: 20px;
+}
+
+
+/* =====================================================
+   BUTTON
+===================================================== */
+
+.btn {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 9px;
+
+    width: fit-content;
+
+    padding: 13px 23px;
+
+    border-radius: 30px;
+
+    background: var(--gold);
+
+    color: var(--navy);
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+    transition: .3s ease;
+}
+
+.btn:hover {
+    background: var(--gold-light);
+
+    transform: translateY(-3px);
+}
+
+
+/* =====================================================
+   COUNTDOWN
+===================================================== */
+
+.countdown-title {
+    margin-top: 30px;
+
+    color: var(--gold);
+
+    font-size: 10px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 2px;
+
+    font-weight: 800;
+}
+
+.countdown {
+    display: flex;
+
+    gap: 10px;
+
+    margin-top: 12px;
+}
+
+.time-box {
+    min-width: 62px;
+
+    padding: 10px 8px;
+
+    text-align: center;
+
+    background: rgba(255,255,255,.04);
+
+    border: 1px solid rgba(215,173,85,.18);
+
+    border-radius: 10px;
+}
+
+.time-box strong {
+    display: block;
+
+    color: var(--gold);
+
+    font-size: 20px;
+}
+
+.time-box span {
+    display: block;
+
+    color: var(--muted);
+
+    font-size: 8px;
+
+    text-transform: uppercase;
+
+    margin-top: 3px;
+}
+
+
+/* =====================================================
+   EVENTS GRID
+===================================================== */
+
+.events-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 28px;
+}
+
+
+/* =====================================================
+   EVENT CARD
+===================================================== */
+
+.event-card {
+    position: relative;
+
+    overflow: hidden;
+
+    background: var(--navy-light);
+
+    border: 1px solid rgba(255,255,255,.07);
+
+    border-radius: 18px;
+
+    transition: .35s ease;
+}
+
+.event-card:hover {
+    transform: translateY(-9px);
+
+    border-color: var(--border);
+
+    box-shadow: 0 20px 45px rgba(0,0,0,.3);
+}
+
+.event-image {
+    height: 230px;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+.event-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: .5s ease;
+}
+
+.event-card:hover .event-image img {
+    transform: scale(1.08);
+}
+
+
+/* =====================================================
+   DATE
+===================================================== */
+
+.event-date {
+    position: absolute;
+
+    top: 15px;
+    left: 15px;
+
+    width: 62px;
+
+    text-align: center;
+
+    background: rgba(7,17,31,.94);
+
+    border: 1px solid var(--gold);
+
+    border-radius: 10px;
+
+    padding: 7px;
+}
+
+.event-date strong {
+    display: block;
+
+    color: var(--gold);
+
+    font-family: 'Cormorant Garamond', serif;
+
+    font-size: 25px;
+
+    line-height: 1;
+}
+
+.event-date span {
+    color: var(--white);
+
+    font-size: 8px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1px;
+}
+
+
+/* =====================================================
+   EVENT TYPE
+===================================================== */
+
+.event-type {
+    position: absolute;
+
+    right: 15px;
+    top: 15px;
+
+    padding: 7px 12px;
+
+    border-radius: 20px;
+
+    background: var(--gold);
+
+    color: var(--navy);
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1px;
+}
+
+
+/* =====================================================
+   CARD CONTENT
+===================================================== */
+
+.event-content {
+    padding: 25px;
+}
+
+.event-content h3 {
+    font-family: 'Cormorant Garamond', serif;
+
+    font-size: 30px;
+
+    margin-bottom: 10px;
+}
+
+.event-content p {
+    color: var(--muted);
+
+    font-size: 13px;
+
+    line-height: 1.7;
+
+    margin-bottom: 18px;
+}
+
+.event-meta {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 9px;
+
+    padding-top: 15px;
+
+    border-top: 1px solid rgba(255,255,255,.07);
+}
+
+.event-meta span {
+    color: var(--muted);
+
+    font-size: 11px;
+}
+
+.event-meta i {
+    color: var(--gold);
+
+    margin-right: 7px;
+}
+
+
+/* =====================================================
+   CALENDAR CTA
+===================================================== */
+
+.calendar-section {
+    padding: 100px 7%;
+}
+
+.calendar-box {
+    position: relative;
+
+    overflow: hidden;
+
+    padding: 70px 30px;
+
+    text-align: center;
+
+    border: 1px solid var(--border);
+
+    border-radius: 25px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(215,173,85,.08),
+            rgba(7,17,31,.2)
+        );
+}
+
+.calendar-box::before {
+    content: "";
+
+    position: absolute;
+
+    width: 280px;
+    height: 280px;
+
+    border: 1px solid rgba(215,173,85,.12);
+
+    border-radius: 50%;
+
+    left: -130px;
+    top: -120px;
+}
+
+.calendar-box i {
+    color: var(--gold);
+
+    font-size: 38px;
+
+    margin-bottom: 15px;
+}
+
+.calendar-box h2 {
+    font-family: 'Cormorant Garamond', serif;
+
+    font-size: 48px;
+
+    margin-bottom: 10px;
+}
+
+.calendar-box p {
+    color: var(--muted);
+
+    max-width: 600px;
+
+    margin: 0 auto 25px;
+
+    line-height: 1.8;
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer {
+    background: var(--navy-dark);
+
+    padding: 70px 7% 25px;
+
+    border-top: 1px solid rgba(215,173,85,.15);
+}
+
+.footer-top {
+    display: grid;
+
+    grid-template-columns: 1.5fr 1fr 1fr;
+
+    gap: 50px;
+
+    padding-bottom: 50px;
+}
+
+.footer-logo {
+    margin-bottom: 20px;
+}
+
+.footer-about p {
+    color: var(--muted);
+
+    max-width: 420px;
+
+    line-height: 1.8;
+
+    font-size: 14px;
+}
+
+.footer-title {
+    color: var(--gold);
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    text-transform: uppercase;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 20px;
+}
+
+.footer-links {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+}
+
+.footer-links a {
+    color: var(--muted);
+
+    font-size: 14px;
+
+    transition: .3s ease;
+}
+
+.footer-links a:hover {
+    color: var(--gold);
+
+    padding-left: 5px;
+}
+
+.socials {
+    display: flex;
+
+    gap: 10px;
+}
+
+.socials a {
+    width: 40px;
+    height: 40px;
+
+    display: grid;
+    place-items: center;
+
+    border: 1px solid rgba(215,173,85,.25);
+
+    border-radius: 50%;
+
+    color: var(--gold);
+
+    transition: .3s ease;
+}
+
+.socials a:hover {
+    background: var(--gold);
+
+    color: var(--navy);
+
+    transform: translateY(-3px);
+}
+
+.footer-bottom {
+    padding-top: 22px;
+
+    text-align: center;
+
+    border-top: 1px solid rgba(255,255,255,.07);
+
+    color: #6f7a86;
+
+    font-size: 12px;
+}
+
+
+/* =====================================================
+   BACK TOP
+===================================================== */
+
+.back-top {
+    position: fixed;
+
+    right: 25px;
+    bottom: 25px;
+
+    width: 45px;
+    height: 45px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 50%;
+
+    background: var(--gold);
+
+    color: var(--navy);
+
+    cursor: pointer;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transition: .3s ease;
+
+    z-index: 999;
+}
+
+.back-top.show {
+    opacity: 1;
+
+    visibility: visible;
+}
+
+.back-top:hover {
+    transform: translateY(-4px);
+}
+
+
+/* =====================================================
+   REVEAL
+===================================================== */
+
+.reveal {
+    opacity: 0;
+
+    transform: translateY(35px);
+
+    transition: .8s ease;
+}
+
+.reveal.show {
+    opacity: 1;
+
+    transform: translateY(0);
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media(max-width: 950px) {
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-links {
+        position: absolute;
+
+        top: 76px;
+        right: 0;
+
+        width: 100%;
+
+        padding: 25px;
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        background: rgba(7,17,31,.98);
+
+        border-top: 1px solid rgba(215,173,85,.15);
+
+        transform: translateY(-150%);
+
+        opacity: 0;
+
+        transition: .35s ease;
+    }
+
+    .nav-links.open {
+        transform: translateY(0);
+
+        opacity: 1;
+    }
+
+    .featured-event {
+        grid-template-columns: 1fr;
+    }
+
+    .events-grid {
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    .footer-top {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+
+@media(max-width: 600px) {
+
+    .announcement {
+        height: 36px;
+
+        padding: 0 10px;
+
+        font-size: 10px;
+
+        text-align: center;
+    }
+
+    .navbar {
+        top: 36px;
+
+        height: 70px;
+
+        padding: 0 5%;
+    }
+
+    .logo img {
+        width: 38px;
+        height: 38px;
+    }
+
+    .logo-text strong {
+        font-size: 17px;
+    }
+
+    .logo-text span {
+        font-size: 6px;
+
+        letter-spacing: 2px;
+    }
+
+    .nav-links {
+        top: 70px;
+    }
+
+    .hero {
+        min-height: 65vh;
+
+        padding: 140px 6% 70px;
+    }
+
+    .hero h1 {
+        font-size: 55px;
+    }
+
+    .hero p {
+        font-size: 14px;
+    }
+
+    .section {
+        padding: 75px 5%;
+    }
+
+    .featured-image {
+        min-height: 300px;
+    }
+
+    .featured-content {
+        padding: 35px 25px;
+    }
+
+    .featured-content h3 {
+        font-size: 40px;
+    }
+
+    .event-details {
+        grid-template-columns: 1fr;
+    }
+
+    .countdown {
+        flex-wrap: wrap;
+    }
+
+    .events-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .calendar-section {
+        padding: 70px 5%;
+    }
+
+    .calendar-box {
+        padding: 55px 20px;
+    }
+
+    .calendar-box h2 {
+        font-size: 40px;
+    }
+
+    .footer-top {
+        grid-template-columns: 1fr;
+
+        gap: 35px;
+    }
+
+    footer {
+        padding: 55px 6% 25px;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     ANNOUNCEMENT
+===================================================== -->
+
+<div class="announcement">
+
+    <i class="fa-solid fa-calendar-days"></i>
+
+    Join Us For Our Upcoming Church Events
+
+</div>
+
+
+
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
+
+<header class="navbar" id="navbar">
+
+    <a href="index.html" class="logo">
+
+        <img
+            src="keith.PNG"
+            alt="Gospel Wonders Mission Church Logo"
+        >
+
+        <div class="logo-text">
+
+            <strong>Gospel Wonders</strong>
+
+            <span>Mission Church</span>
+
+        </div>
+
+    </a>
+
+
+    <nav class="nav-links" id="navLinks">
+
+        <a href="index.html">Home</a>
+
+        <a href="about.html">About</a>
+
+        <a href="ministries.html">Ministries</a>
+
+        <a href="sermons.html">Sermons</a>
+
+        <a href="events.html" class="active">Events</a>
+
+        <a href="gallery.html">Gallery</a>
+
+        <a href="contact.html">Contact</a>
+
+        <a href="#" class="donate-btn">
+            Donate
+        </a>
+
+    </nav>
+
+
+    <div class="menu-toggle" id="menuToggle">
+
+        <i class="fa-solid fa-bars"></i>
+
+    </div>
+
+</header>
+
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="hero">
+
+    <div class="hero-content reveal">
+
+        <small>
+            Connect • Worship • Fellowship
+        </small>
+
+        <h1>
+            Upcoming <span>Events</span>
+        </h1>
+
+        <p>
+            Be part of what God is doing through Gospel Wonders
+            Mission Church. Discover upcoming worship services,
+            conferences, fellowship gatherings and special events.
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     EVENTS SECTION
+===================================================== -->
+
+<section class="section">
+
+    <div class="section-heading reveal">
+
+        <small>
+            What's Happening
+        </small>
+
+        <h2>
+            Join Us
+        </h2>
+
+        <p>
+            There is always something happening at Gospel Wonders
+            Mission Church. Come worship, learn, fellowship and
+            grow together.
+        </p>
+
+    </div>
+
+
+
+    <!-- =================================================
+         FEATURED EVENT
+    ================================================== -->
+
+    <div class="featured-event reveal">
+
+        <div class="featured-image">
+
+            <img
+                src="event-featured.jpg"
+                alt="Featured Church Event"
+            >
+
+            <div class="featured-badge">
+                Featured Event
+            </div>
+
+        </div>
+
+
+        <div class="featured-content">
+
+            <small>
+                Upcoming Special Event
+            </small>
+
+            <h3>
+                Worship & Prayer Gathering
+            </h3>
+
+            <p>
+                Come together with the church family for a special
+                time of worship, prayer, encouragement and fellowship.
+                Everyone is welcome.
+            </p>
+
+
+            <div class="event-details">
+
+                <div class="event-detail">
+
+                    <i class="fa-regular fa-calendar"></i>
+
+                    <span>
+                        20 December 2026
+                    </span>
+
+                </div>
+
+
+                <div class="event-detail">
+
+                    <i class="fa-regular fa-clock"></i>
+
+                    <span>
+                        4:00 PM
+                    </span>
+
+                </div>
+
+
+                <div class="event-detail">
+
+                    <i class="fa-solid fa-location-dot"></i>
+
+                    <span>
+                        Church Grounds
+                    </span>
+
+                </div>
+
+
+                <div class="event-detail">
+
+                    <i class="fa-solid fa-users"></i>
+
+                    <span>
+                        Everyone Welcome
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <a href="#" class="btn">
+
+                <i class="fa-solid fa-calendar-plus"></i>
+
+                Event Details
+
+            </a>
+
+
+            <div class="countdown-title">
+                Event Countdown
+            </div>
+
+
+            <div class="countdown">
+
+                <div class="time-box">
+
+                    <strong id="days">
+                        00
+                    </strong>
+
+                    <span>
+                        Days
+                    </span>
+
+                </div>
+
+
+                <div class="time-box">
+
+                    <strong id="hours">
+                        00
+                    </strong>
+
+                    <span>
+                        Hours
+                    </span>
+
+                </div>
+
+
+                <div class="time-box">
+
+                    <strong id="minutes">
+                        00
+                    </strong>
+
+                    <span>
+                        Minutes
+                    </span>
+
+                </div>
+
+
+                <div class="time-box">
+
+                    <strong id="seconds">
+                        00
+                    </strong>
+
+                    <span>
+                        Seconds
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =================================================
+         EVENTS HEADING
+    ================================================== -->
+
+    <div class="section-heading reveal">
+
+        <small>
+            Church Calendar
+        </small>
+
+        <h2>
+            More Events
+        </h2>
+
+        <p>
+            Keep checking this page for upcoming activities
+            and special church gatherings.
+        </p>
+
+    </div>
+
+
+
+    <!-- =================================================
+         EVENTS GRID
+    ================================================== -->
+
+    <div class="events-grid">
+
+
+        <!-- EVENT 1 -->
+
+        <article class="event-card reveal">
+
+            <div class="event-image">
+
+                <img
+                    src="event-1.jpg"
+                    alt="Sunday Worship"
+                >
+
+                <div class="event-date">
+
+                    <strong>06</strong>
+
+                    <span>Dec</span>
+
+                </div>
+
+                <div class="event-type">
+                    Worship
+                </div>
+
+            </div>
+
+
+            <div class="event-content">
+
+                <h3>
+                    Sunday Worship Service
+                </h3>
+
+                <p>
+                    Join us for a powerful time of worship,
+                    fellowship and teaching from God's Word.
+                </p>
+
+
+                <div class="event-meta">
+
+                    <span>
+                        <i class="fa-regular fa-clock"></i>
+                        9:00 AM
+                    </span>
+
+                    <span>
+                        <i class="fa-solid fa-location-dot"></i>
+                        Church Grounds
+                    </span>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- EVENT 2 -->
+
+        <article class="event-card reveal">
+
+            <div class="event-image">
+
+                <img
+                    src="event-2.jpg"
+                    alt="Prayer Meeting"
+                >
+
+                <div class="event-date">
+
+                    <strong>09</strong>
+
+                    <span>Dec</span>
+
+                </div>
+
+                <div class="event-type">
+                    Prayer
+                </div>
+
+            </div>
+
+
+            <div class="event-content">
+
+                <h3>
+                    Midweek Prayer
+                </h3>
+
+                <p>
+                    A dedicated time to seek God together
+                    through prayer and fellowship.
+                </p>
+
+
+                <div class="event-meta">
+
+                    <span>
+                        <i class="fa-regular fa-clock"></i>
+                        5:00 PM
+                    </span>
+
+                    <span>
+                        <i class="fa-solid fa-location-dot"></i>
+                        Church Grounds
+                    </span>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- EVENT 3 -->
+
+        <article class="event-card reveal">
+
+            <div class="event-image">
+
+                <img
+                    src="event-3.jpg"
+                    alt="Youth Fellowship"
+                >
+
+                <div class="event-date">
+
+                    <strong>12</strong>
+
+                    <span>Dec</span>
+
+                </div>
+
+                <div class="event-type">
+                    Youth
+                </div>
+
+            </div>
+
+
+            <div class="event-content">
+
+                <h3>
+                    Youth Fellowship
+                </h3>
+
+                <p>
+                    A special gathering for young people to
+                    connect, learn and grow in faith.
+                </p>
+
+
+                <div class="event-meta">
+
+                    <span>
+                        <i class="fa-regular fa-clock"></i>
+                        3:00 PM
+                    </span>
+
+                    <span>
+                        <i class="fa-solid fa-location-dot"></i>
+                        Church Grounds
+                    </span>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- EVENT 4 -->
+
+        <article class="event-card reveal">
+
+            <div class="event-image">
+
+                <img
+                    src="event-4.jpg"
+                    alt="Bible Study"
+                >
+
+                <div class="event-date">
+
+                    <strong>16</strong>
+
+                    <span>Dec</span>
+
+                </div>
+
+                <div class="event-type">
+                    Bible Study
+                </div>
+
+            </div>
+
+
+            <div class="event-content">
+
+                <h3>
+                    Bible Study
+                </h3>
+
+                <p>
+                    Grow deeper in understanding God's Word
+                    through group Bible study.
+                </p>
+
+
+                <div class="event-meta">
+
+                    <span>
+                        <i class="fa-regular fa-clock"></i>
+                        5:30 PM
+                    </span>
+
+                    <span>
+                        <i class="fa-solid fa-location-dot"></i>
+                        Church Grounds
+                    </span>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- EVENT 5 -->
+
+        <article class="event-card reveal">
+
+            <div class="event-image">
+
+                <img
+                    src="event-5.jpg"
+                    alt="Christmas Celebration"
+                >
+
+                <div class="event-date">
+
+                    <strong>25</strong>
+
+                    <span>Dec</span>
+
+                </div>
+
+                <div class="event-type">
+                    Celebration
+                </div>
+
+            </div>
+
+
+            <div class="event-content">
+
+                <h3>
+                    Christmas Celebration
+                </h3>
+
+                <p>
+                    Celebrate the joy of Christ's birth together
+                    with the church family.
+                </p>
+
+
+                <div class="event-meta">
+
+                    <span>
+                        <i class="fa-regular fa-clock"></i>
+                        10:00 AM
+                    </span>
+
+                    <span>
+                        <i class="fa-solid fa-location-dot"></i>
+                        Church Grounds
+                    </span>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- EVENT 6 -->
+
+        <article class="event-card reveal">
+
+            <div class="event-image">
+
+                <img
+                    src="event-6.jpg"
+                    alt="Thanksgiving Service"
+                >
+
+                <div class="event-date">
+
+                    <strong>31</strong>
+
+                    <span>Dec</span>
+
+                </div>
+
+                <div class="event-type">
+                    Thanksgiving
+                </div>
+
+            </div>
+
+
+            <div class="event-content">
+
+                <h3>
+                    Thanksgiving Service
+                </h3>
+
+                <p>
+                    Come together as we give thanks to God
+                    for His goodness and faithfulness.
+                </p>
+
+
+                <div class="event-meta">
+
+                    <span>
+                        <i class="fa-regular fa-clock"></i>
+                        4:00 PM
+                    </span>
+
+                    <span>
+                        <i class="fa-solid fa-location-dot"></i>
+                        Church Grounds
+                    </span>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CALENDAR CTA
+===================================================== -->
+
+<section class="calendar-section">
+
+    <div class="calendar-box reveal">
+
+        <i class="fa-regular fa-calendar-days"></i>
+
+        <h2>
+            Don't Miss What God Is Doing
+        </h2>
+
+        <p>
+            Stay connected with Gospel Wonders Mission Church
+            and be part of our worship services, fellowship
+            gatherings and special events.
+        </p>
+
+        <a href="contact.html" class="btn">
+
+            <i class="fa-solid fa-arrow-right"></i>
+
+            Contact Us
+
+        </a>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    <div class="footer-top">
+
+
+        <div class="footer-about">
+
+            <div class="logo footer-logo">
+
+                <img
+                    src="keith.PNG"
+                    alt="Gospel Wonders Mission Church Logo"
+                >
+
+                <div class="logo-text">
+
+                    <strong>
+                        Gospel Wonders
+                    </strong>
+
+                    <span>
+                        Mission Church
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <p>
+                Gospel Wonders Mission Church is a Christian church
+                located in the Bulenga Gogonya area of Wakiso District,
+                Uganda.
+            </p>
+
+        </div>
+
+
+
+        <div>
+
+            <div class="footer-title">
+                Quick Links
+            </div>
+
+            <div class="footer-links">
+
+                <a href="index.html">
+                    Home
+                </a>
+
+                <a href="about.html">
+                    About
+                </a>
+
+                <a href="ministries.html">
+                    Ministries
+                </a>
+
+                <a href="sermons.html">
+                    Sermons
+                </a>
+
+                <a href="events.html">
+                    Events
+                </a>
+
+                <a href="gallery.html">
+                    Gallery
+                </a>
+
+                <a href="contact.html">
+                    Contact
+                </a>
+
+            </div>
+
+        </div>
+
+
+
+        <div>
+
+            <div class="footer-title">
+                Follow Us
+            </div>
+
+            <div class="socials">
+
+                <a href="#" aria-label="Facebook">
+                    <i class="fa-brands fa-facebook-f"></i>
+                </a>
+
+                <a href="#" aria-label="YouTube">
+                    <i class="fa-brands fa-youtube"></i>
+                </a>
+
+                <a href="#" aria-label="Instagram">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+
+                <a href="#" aria-label="TikTok">
+                    <i class="fa-brands fa-tiktok"></i>
+                </a>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        © <span id="year"></span>
+
+        Gospel Wonders Mission Church.
+
+        All Rights Reserved.
+
+    </div>
+
+</footer>
+
+
+
+<!-- =====================================================
+     BACK TO TOP
+===================================================== -->
+
+<div class="back-top" id="backTop">
+
+    <i class="fa-solid fa-arrow-up"></i>
+
+</div>
+
+
+
+<script>
+
+/* =====================================================
+   MOBILE MENU
+===================================================== */
+
+const menuToggle =
+    document.getElementById("menuToggle");
+
+const navLinks =
+    document.getElementById("navLinks");
+
+
+menuToggle.addEventListener("click", () => {
+
+    navLinks.classList.toggle("open");
+
+    const icon =
+        menuToggle.querySelector("i");
+
+
+    if (navLinks.classList.contains("open")) {
+
+        icon.classList.remove("fa-bars");
+
+        icon.classList.add("fa-xmark");
+
+    } else {
+
+        icon.classList.remove("fa-xmark");
+
+        icon.classList.add("fa-bars");
+
+    }
+
+});
+
+
+/* =====================================================
+   CLOSE MOBILE MENU
+===================================================== */
+
+document.querySelectorAll(".nav-links a")
+.forEach(link => {
+
+    link.addEventListener("click", () => {
+
+        navLinks.classList.remove("open");
+
+        const icon =
+            menuToggle.querySelector("i");
+
+        icon.classList.remove("fa-xmark");
+
+        icon.classList.add("fa-bars");
+
+    });
+
+});
+
+
+/* =====================================================
+   NAVBAR SCROLL
+===================================================== */
+
+const navbar =
+    document.getElementById("navbar");
+
+
+window.addEventListener("scroll", () => {
+
+    if (window.scrollY > 50) {
+
+        navbar.classList.add("scrolled");
+
+    } else {
+
+        navbar.classList.remove("scrolled");
+
+    }
+
+});
+
+
+/* =====================================================
+   EVENT COUNTDOWN
+===================================================== */
+
+const eventDate =
+    new Date("December 20, 2026 16:00:00").getTime();
+
+
+function updateCountdown() {
+
+    const now =
+        new Date().getTime();
+
+    const distance =
+        eventDate - now;
+
+
+    if (distance <= 0) {
+
+        document.getElementById("days").textContent = "00";
+        document.getElementById("hours").textContent = "00";
+        document.getElementById("minutes").textContent = "00";
+        document.getElementById("seconds").textContent = "00";
+
+        return;
+
+    }
+
+
+    const days =
+        Math.floor(
+            distance / (1000 * 60 * 60 * 24)
+        );
+
+
+    const hours =
+        Math.floor(
+            (distance %
+                (1000 * 60 * 60 * 24))
+            /
+            (1000 * 60 * 60)
+        );
+
+
+    const minutes =
+        Math.floor(
+            (distance %
+                (1000 * 60 * 60))
+            /
+            (1000 * 60)
+        );
+
+
+    const seconds =
+        Math.floor(
+            (distance %
+                (1000 * 60))
+            /
+            1000
+        );
+
+
+    document.getElementById("days")
+        .textContent =
+        String(days).padStart(2,"0");
+
+
+    document.getElementById("hours")
+        .textContent =
+        String(hours).padStart(2,"0");
+
+
+    document.getElementById("minutes")
+        .textContent =
+        String(minutes).padStart(2,"0");
+
+
+    document.getElementById("seconds")
+        .textContent =
+        String(seconds).padStart(2,"0");
+
+}
+
+
+updateCountdown();
+
+setInterval(updateCountdown,1000);
+
+
+/* =====================================================
+   SCROLL REVEAL
+===================================================== */
+
+const revealElements =
+    document.querySelectorAll(".reveal");
+
+
+const revealObserver =
+    new IntersectionObserver(
+
+        entries => {
+
+            entries.forEach(entry => {
+
+                if (entry.isIntersecting) {
+
+                    entry.target.classList.add("show");
+
+                }
+
+            });
+
+        },
+
+        {
+            threshold: .12
+        }
+
+    );
+
+
+revealElements.forEach(element => {
+
+    revealObserver.observe(element);
+
+});
+
+
+/* =====================================================
+   BACK TO TOP
+===================================================== */
+
+const backTop =
+    document.getElementById("backTop");
+
+
+window.addEventListener("scroll", () => {
+
+    if (window.scrollY > 500) {
+
+        backTop.classList.add("show");
+
+    } else {
+
+        backTop.classList.remove("show");
+
+    }
+
+});
+
+
+backTop.addEventListener("click", () => {
+
+    window.scrollTo({
+
+        top: 0,
+
+        behavior: "smooth"
+
+    });
+
+});
+
+
+/* =====================================================
+   CURRENT YEAR
+===================================================== */
+
+document.getElementById("year")
+.textContent =
+new Date().getFullYear();
+
+</script>
+
+</body>
+</html>
