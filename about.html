@@ -3,35 +3,32 @@
 
 <head>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="description"
-          content="Learn about Gospel Wonders Mission Church in Bulenga Gogonya, Wakiso District, Uganda.">
+<meta name="description"
+content="Learn about Gospel Wonders Mission Church in Bulenga Gogonya, Wakiso District, Uganda.">
 
-    <meta name="theme-color" content="#07111f">
+<meta name="theme-color" content="#07111f">
 
-    <title>About Us | Gospel Wonders Mission Church</title>
+<title>About Us | Gospel Wonders Mission Church</title>
 
-    <!-- FAVICON -->
-    <link rel="icon" type="image/png" href="keith.PNG">
+<link rel="icon" type="image/png" href="keith.PNG">
 
-    <!-- GOOGLE FONTS -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap"
-          rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap"
+rel="stylesheet">
 
-    <!-- FONT AWESOME -->
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
 
 <style>
 
 /* =========================================================
-   MASTER RESET
+   RESET
 ========================================================= */
 
 * {
@@ -61,21 +58,14 @@ button {
 }
 
 :root {
-
     --navy: #07111f;
     --navy2: #0d1b2f;
-
-    --gold: #d7ad55;
-    --gold-light: #f0d28a;
-
+    --gold: #d4af37;
+    --gold-light: #f0d46a;
     --white: #ffffff;
-
     --muted: #64748b;
-
     --light: #f8fafc;
-
-    --shadow:
-        0 20px 60px rgba(7,17,31,.15);
+    --shadow: 0 20px 60px rgba(7,17,31,.15);
 }
 
 
@@ -84,10 +74,8 @@ button {
 ========================================================= */
 
 #loader {
-
     position: fixed;
     inset: 0;
-
     z-index: 99999;
 
     background: var(--navy);
@@ -96,110 +84,81 @@ button {
     align-items: center;
     justify-content: center;
 
-    transition:
-        opacity .6s ease,
-        visibility .6s ease;
+    transition: .6s ease;
 }
 
 #loader.hide {
-
     opacity: 0;
     visibility: hidden;
 }
 
 .loader-content {
-
     text-align: center;
     color: white;
 }
 
-.loader-cross {
+.loader-logo {
+    width: 75px;
+    height: 75px;
 
-    width: 55px;
-    height: 70px;
+    object-fit: cover;
 
-    position: relative;
+    border-radius: 50%;
 
-    margin: auto auto 20px;
+    border: 3px solid var(--gold);
+
+    padding: 3px;
+
+    margin-bottom: 20px;
+
+    animation: logoPulse 1.8s infinite;
 }
 
-.loader-cross::before {
+@keyframes logoPulse {
 
-    content: "";
+    0%,100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 rgba(212,175,55,0);
+    }
 
-    position: absolute;
+    50% {
+        transform: scale(1.08);
+        box-shadow: 0 0 30px rgba(212,175,55,.35);
+    }
 
-    width: 12px;
-    height: 65px;
-
-    background: var(--gold);
-
-    left: 50%;
-
-    transform: translateX(-50%);
-
-    border-radius: 10px;
-}
-
-.loader-cross::after {
-
-    content: "";
-
-    position: absolute;
-
-    width: 45px;
-    height: 12px;
-
-    background: var(--gold);
-
-    top: 18px;
-    left: 50%;
-
-    transform: translateX(-50%);
-
-    border-radius: 10px;
 }
 
 .loader-content p {
-
-    font-size: 12px;
-
-    letter-spacing: 4px;
-
+    font-size: 11px;
+    letter-spacing: 3px;
     text-transform: uppercase;
 }
 
 
 /* =========================================================
-   ANNOUNCEMENT BAR
+   ANNOUNCEMENT
 ========================================================= */
 
 .announcement {
-
     height: 38px;
 
     background: var(--gold);
-
     color: var(--navy);
 
     display: flex;
-
     align-items: center;
     justify-content: center;
 
     gap: 10px;
 
     font-size: 12px;
-
     font-weight: 700;
 
     position: relative;
-
     z-index: 1001;
 }
 
 .announcement i {
-
     animation: pulse 1.5s infinite;
 }
 
@@ -208,60 +167,57 @@ button {
     50% {
         transform: scale(1.25);
     }
+
 }
 
 
 /* =========================================================
-   NAVIGATION — MATCHES SECOND DESIGN
+   HEADER / NAVIGATION
 ========================================================= */
 
-.navbar {
+.header {
 
     position: fixed;
 
     top: 38px;
-
     left: 0;
 
     width: 100%;
 
-    z-index: 1000;
+    height: 75px;
 
-    padding: 15px 5%;
-
-    transition: .4s ease;
-}
-
-.navbar.scrolled {
-
-    top: 0;
-
-    padding: 10px 5%;
-
-    background: rgba(7,17,31,.96);
-
-    backdrop-filter: blur(18px);
-
-    box-shadow:
-        0 8px 35px rgba(0,0,0,.25);
-}
-
-.nav-container {
-
-    max-width: 1400px;
-
-    margin: auto;
+    padding: 0 5%;
 
     display: flex;
 
     align-items: center;
 
     justify-content: space-between;
+
+    z-index: 1000;
+
+    background: rgba(7,17,31,.78);
+
+    backdrop-filter: blur(15px);
+
+    border-bottom: 1px solid rgba(212,175,55,.12);
+
+    transition: .4s ease;
+}
+
+.header.scrolled {
+
+    top: 0;
+
+    background: rgba(7,17,31,.96);
+
+    box-shadow:
+        0 8px 35px rgba(0,0,0,.25);
 }
 
 
 /* =========================================================
-   LOGO
+   CHURCH LOGO
 ========================================================= */
 
 .logo {
@@ -272,41 +228,49 @@ button {
 
     gap: 10px;
 
-    text-decoration: none;
-
     color: white;
 
     flex-shrink: 0;
 }
 
 
-/* ACTUAL CHURCH LOGO */
+/* CIRCULAR CHURCH LOGO */
 
 .logo img {
 
-    width: 40px;
+    width: 45px;
+    height: 45px;
 
-    height: 40px;
-
-    object-fit: contain;
+    object-fit: cover;
 
     display: block;
 
-    border-radius: 5px;
+    border-radius: 50%;
+
+    border: 2px solid var(--gold);
+
+    padding: 2px;
+
+    background: var(--navy);
 
     transition: .3s ease;
+
+    box-shadow:
+        0 0 0 rgba(212,175,55,0);
 }
-
-
-/* LOGO HOVER */
 
 .logo:hover img {
 
     transform: scale(1.08);
+
+    box-shadow:
+        0 0 20px rgba(212,175,55,.35);
 }
 
 
-/* LOGO TEXT */
+/* =========================================================
+   LOGO TEXT
+========================================================= */
 
 .logo-text {
 
@@ -321,13 +285,11 @@ button {
 
 .logo-text strong {
 
-    display: block;
-
     font-family:
         "Cormorant Garamond",
         serif;
 
-    font-size: 20px;
+    font-size: 21px;
 
     font-weight: 700;
 
@@ -338,9 +300,7 @@ button {
 
 .logo-text span {
 
-    display: block;
-
-    margin-top: 4px;
+    margin-top: 5px;
 
     font-size: 8px;
 
@@ -350,32 +310,28 @@ button {
 
     text-transform: uppercase;
 
-    color: #ffffff;
+    color: white;
 
     white-space: nowrap;
 }
 
 
 /* =========================================================
-   NAVIGATION LINKS
+   NAVIGATION
 ========================================================= */
 
-.nav-links {
+.navbar {
 
     display: flex;
 
     align-items: center;
 
-    gap: 25px;
-
-    list-style: none;
+    gap: 27px;
 }
 
-.nav-links a {
+.navbar a {
 
-    text-decoration: none;
-
-    color: rgba(255,255,255,.9);
+    color: white;
 
     font-size: 13px;
 
@@ -386,51 +342,43 @@ button {
     transition: .3s ease;
 }
 
-.nav-links a::after {
+.navbar a:hover {
+
+    color: var(--gold);
+}
+
+.navbar a.active {
+
+    color: var(--gold);
+}
+
+.navbar a.active::after {
 
     content: "";
 
     position: absolute;
 
     left: 0;
-
     bottom: -8px;
 
-    width: 0;
-
+    width: 100%;
     height: 2px;
 
     background: var(--gold);
-
-    transition: .3s ease;
-}
-
-.nav-links a:hover,
-.nav-links a.active {
-
-    color: var(--gold-light);
-}
-
-.nav-links a:hover::after,
-.nav-links a.active::after {
-
-    width: 100%;
 }
 
 
-/* =========================================================
-   CONTACT BUTTON
-========================================================= */
+/* CONTACT BUTTON */
 
 .nav-button {
 
-    padding: 10px 18px !important;
+    padding: 10px 18px;
 
     border: 1px solid var(--gold);
 
-    border-radius: 30px;
+    border-radius: 5px;
 
-    color: var(--gold-light) !important;
+    color: var(--gold) !important;
 }
 
 .nav-button:hover {
@@ -438,11 +386,6 @@ button {
     background: var(--gold);
 
     color: var(--navy) !important;
-}
-
-.nav-button::after {
-
-    display: none !important;
 }
 
 
@@ -463,8 +406,6 @@ button {
     font-size: 25px;
 
     cursor: pointer;
-
-    z-index: 1002;
 }
 
 
@@ -474,7 +415,7 @@ button {
 
 .about-hero {
 
-    min-height: 65vh;
+    min-height: 70vh;
 
     position: relative;
 
@@ -507,12 +448,10 @@ button {
 
     border-radius: 50%;
 
-    border:
-        1px solid
-        rgba(215,173,85,.15);
+    border: 1px solid
+        rgba(212,175,55,.15);
 
     right: -200px;
-
     bottom: -260px;
 }
 
@@ -572,7 +511,7 @@ button {
         serif;
 
     font-size:
-        clamp(55px, 8vw, 90px);
+        clamp(55px,8vw,90px);
 
     line-height: .9;
 
@@ -627,6 +566,7 @@ section {
     text-align: center;
 
     margin-left: auto;
+
     margin-right: auto;
 }
 
@@ -709,7 +649,7 @@ section {
         url("church-about.jpg")
         center/cover no-repeat;
 
-    border-radius: 3px;
+    border-radius: 5px;
 }
 
 .about-image::before {
@@ -721,9 +661,7 @@ section {
     inset:
         -15px 15px 15px -15px;
 
-    border:
-        1px solid
-        var(--gold);
+    border: 1px solid var(--gold);
 
     z-index: -1;
 }
@@ -784,7 +722,7 @@ section {
 
 
 /* =========================================================
-   MISSION / VISION / VALUES
+   MISSION VISION VALUES
 ========================================================= */
 
 .mvv {
@@ -840,6 +778,7 @@ section {
     display: flex;
 
     align-items: center;
+
     justify-content: center;
 
     background: #f5ecd8;
@@ -988,6 +927,11 @@ section {
     margin-bottom: 30px;
 }
 
+
+/* =========================================================
+   BUTTON
+========================================================= */
+
 .btn {
 
     display: inline-flex;
@@ -1000,7 +944,7 @@ section {
 
     padding: 15px 24px;
 
-    border-radius: 4px;
+    border-radius: 5px;
 
     font-size: 13px;
 
@@ -1018,17 +962,18 @@ section {
 
 .btn-primary:hover {
 
-    transform:
-        translateY(-4px);
+    transform: translateY(-4px);
+
+    background: var(--gold-light);
 
     box-shadow:
         0 12px 30px
-        rgba(215,173,85,.3);
+        rgba(212,175,55,.3);
 }
 
 
 /* =========================================================
-   PRAYER CTA
+   PRAYER
 ========================================================= */
 
 .prayer {
@@ -1108,8 +1053,7 @@ section {
 
 .prayer .btn:hover {
 
-    transform:
-        translateY(-4px);
+    transform: translateY(-4px);
 }
 
 
@@ -1218,6 +1162,7 @@ footer {
     display: flex;
 
     align-items: center;
+
     justify-content: center;
 
     border-radius: 50%;
@@ -1236,8 +1181,7 @@ footer {
 
     color: var(--navy);
 
-    transform:
-        translateY(-3px);
+    transform: translateY(-3px);
 }
 
 .footer-bottom {
@@ -1313,7 +1257,7 @@ footer {
 
 
 /* =========================================================
-   SCROLL REVEAL
+   REVEAL
 ========================================================= */
 
 .reveal {
@@ -1343,7 +1287,14 @@ footer {
 
 @media (max-width: 950px) {
 
-    .nav-links {
+    .header {
+
+        height: 70px;
+
+        top: 38px;
+    }
+
+    .navbar {
 
         position: fixed;
 
@@ -1369,7 +1320,7 @@ footer {
             rgba(0,0,0,.3);
     }
 
-    .nav-links.open {
+    .navbar.active {
 
         right: 0;
     }
@@ -1377,6 +1328,8 @@ footer {
     .menu-toggle {
 
         display: block;
+
+        z-index: 1002;
     }
 
     .who-grid {
@@ -1398,15 +1351,11 @@ footer {
 }
 
 
-/* =========================================================
-   MOBILE PHONES
-========================================================= */
-
-@media (max-width: 650px) {
+@media (max-width: 600px) {
 
     .announcement {
 
-        height: 35px;
+        height: 34px;
 
         font-size: 9px;
 
@@ -1415,44 +1364,37 @@ footer {
         text-align: center;
     }
 
-    .navbar {
+    .header {
 
-        top: 35px;
+        top: 34px;
 
-        padding:
-            13px 5%;
-    }
+        height: 68px;
 
-    .navbar.scrolled {
-
-        top: 0;
-
-        padding:
-            10px 5%;
+        padding: 0 4%;
     }
 
     .logo img {
 
-        width: 36px;
+        width: 38px;
 
-        height: 36px;
+        height: 38px;
     }
 
     .logo-text strong {
 
-        font-size: 17px;
+        font-size: 16px;
     }
 
     .logo-text span {
 
-        font-size: 6px;
+        font-size: 7px;
 
         letter-spacing: 2px;
     }
 
     .about-hero-container {
 
-        padding-top: 180px;
+        padding-top: 160px;
     }
 
     .about-hero h1 {
@@ -1492,6 +1434,49 @@ footer {
 
         flex-direction: column;
     }
+
+}
+
+
+/* =========================================================
+   EXTRA SMALL DEVICES
+========================================================= */
+
+@media (max-width: 400px) {
+
+    .logo img {
+
+        width: 35px;
+
+        height: 35px;
+    }
+
+    .logo-text strong {
+
+        font-size: 14px;
+    }
+
+    .logo-text span {
+
+        font-size: 6px;
+    }
+
+    .about-hero h1 {
+
+        font-size: 48px;
+    }
+
+}
+
+
+/* =========================================================
+   OPTIONAL LIGHT MODE
+========================================================= */
+
+body.light-mode {
+
+    background: #f8fafc;
+
 }
 
 </style>
@@ -1510,7 +1495,11 @@ footer {
 
     <div class="loader-content">
 
-        <div class="loader-cross"></div>
+        <img
+            src="keith.PNG"
+            class="loader-logo"
+            alt="Gospel Wonders Mission Church"
+        >
 
         <p>
             Gospel Wonders Mission Church
@@ -1537,112 +1526,95 @@ footer {
 
 
 <!-- =========================================================
-     NAVIGATION
+     HEADER
 ========================================================= -->
 
-<header class="navbar" id="navbar">
-
-    <div class="nav-container">
+<header class="header" id="header">
 
 
-        <!-- CHURCH LOGO -->
+    <!-- CHURCH LOGO -->
 
-        <a href="index.html" class="logo">
+    <a href="index.html" class="logo">
 
-            <img
-                src="keith.PNG"
-                alt="Gospel Wonders Mission Church Logo"
-            >
+        <img
+            src="keith.PNG"
+            alt="Gospel Wonders Mission Church Logo"
+        >
 
-            <div class="logo-text">
+        <div class="logo-text">
 
-                <strong>
-                    Gospel Wonders
-                </strong>
+            <strong>
+                Gospel Wonders
+            </strong>
 
-                <span>
-                    Mission Church
-                </span>
-
-            </div>
-
-        </a>
-
-
-        <!-- NAVIGATION -->
-
-        <nav>
-
-            <ul class="nav-links" id="navLinks">
-
-                <li>
-                    <a href="index.html">
-                        Home
-                    </a>
-                </li>
-
-                <li>
-                    <a href="about.html" class="active">
-                        About
-                    </a>
-                </li>
-
-                <li>
-                    <a href="ministries.html">
-                        Ministries
-                    </a>
-                </li>
-
-                <li>
-                    <a href="sermons.html">
-                        Sermons
-                    </a>
-                </li>
-
-                <li>
-                    <a href="events.html">
-                        Events
-                    </a>
-                </li>
-
-                <li>
-                    <a href="gallery.html">
-                        Gallery
-                    </a>
-                </li>
-
-                <li>
-                    <a href="contact.html"
-                       class="nav-button">
-                        Contact Us
-                    </a>
-                </li>
-
-            </ul>
-
-        </nav>
-
-
-        <!-- MOBILE MENU -->
-
-        <div class="menu-toggle" id="menuToggle">
-
-            <i class="fa-solid fa-bars"></i>
+            <span>
+                Mission Church
+            </span>
 
         </div>
 
+    </a>
 
-    </div>
+
+    <!-- MOBILE MENU -->
+
+    <button
+        class="menu-toggle"
+        id="menuToggle"
+        aria-label="Open menu">
+
+        <i class="fa-solid fa-bars"></i>
+
+    </button>
+
+
+    <!-- NAVIGATION -->
+
+    <nav class="navbar" id="navbar">
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="about.html" class="active">
+            About
+        </a>
+
+        <a href="ministries.html">
+            Ministries
+        </a>
+
+        <a href="sermons.html">
+            Sermons
+        </a>
+
+        <a href="events.html">
+            Events
+        </a>
+
+        <a href="gallery.html">
+            Gallery
+        </a>
+
+        <a href="contact.html" class="nav-button">
+            Contact Us
+        </a>
+
+    </nav>
 
 </header>
 
 
 <!-- =========================================================
-     ABOUT HERO
+     MAIN
 ========================================================= -->
 
 <main>
 
+
+<!-- =========================================================
+     ABOUT HERO
+========================================================= -->
 
 <section class="about-hero">
 
@@ -1737,7 +1709,7 @@ footer {
 
 
 <!-- =========================================================
-     MISSION / VISION / COMMUNITY
+     FOUNDATION
 ========================================================= -->
 
 <section class="mvv">
@@ -1905,8 +1877,9 @@ footer {
 
         </p>
 
-        <a href="contact.html"
-           class="btn btn-primary">
+        <a
+            href="contact.html"
+            class="btn btn-primary">
 
             Get In Touch
 
@@ -1943,8 +1916,9 @@ footer {
         </div>
 
 
-        <a href="prayer.html"
-           class="btn">
+        <a
+            href="prayer.html"
+            class="btn">
 
             Submit A Prayer Request
 
@@ -1970,10 +1944,10 @@ footer {
 
         <div class="footer-brand">
 
-            <!-- FOOTER LOGO -->
 
-            <a href="index.html"
-               class="logo">
+            <!-- SAME CIRCULAR LOGO -->
+
+            <a href="index.html" class="logo">
 
                 <img
                     src="keith.PNG"
@@ -2006,32 +1980,20 @@ footer {
 
             <div class="socials">
 
-                <a href="#"
-                   aria-label="Facebook">
-
+                <a href="#" aria-label="Facebook">
                     <i class="fa-brands fa-facebook-f"></i>
-
                 </a>
 
-                <a href="#"
-                   aria-label="YouTube">
-
+                <a href="#" aria-label="YouTube">
                     <i class="fa-brands fa-youtube"></i>
-
                 </a>
 
-                <a href="#"
-                   aria-label="Instagram">
-
+                <a href="#" aria-label="Instagram">
                     <i class="fa-brands fa-instagram"></i>
-
                 </a>
 
-                <a href="#"
-                   aria-label="WhatsApp">
-
+                <a href="#" aria-label="WhatsApp">
                     <i class="fa-brands fa-whatsapp"></i>
-
                 </a>
 
             </div>
@@ -2116,21 +2078,15 @@ footer {
             <ul class="footer-links">
 
                 <li>
-                    <a href="#">
-                        Bulenga Gogonya
-                    </a>
+                    Bulenga Gogonya
                 </li>
 
                 <li>
-                    <a href="#">
-                        Wakiso District
-                    </a>
+                    Wakiso District
                 </li>
 
                 <li>
-                    <a href="#">
-                        Uganda
-                    </a>
+                    Uganda
                 </li>
 
             </ul>
@@ -2166,8 +2122,9 @@ footer {
      BACK TO TOP
 ========================================================= -->
 
-<button id="backTop"
-        aria-label="Back to top">
+<button
+    id="backTop"
+    aria-label="Back to top">
 
     <i class="fa-solid fa-arrow-up"></i>
 
@@ -2180,39 +2137,40 @@ footer {
 
 <script>
 
+
 /* =========================================================
    LOADER
 ========================================================= */
 
-window.addEventListener("load", () => {
+window.addEventListener("load", function() {
 
-    setTimeout(() => {
+    setTimeout(function() {
 
         document
             .getElementById("loader")
             .classList.add("hide");
 
-    }, 700);
+    }, 900);
 
 });
 
 
 /* =========================================================
-   NAVBAR SCROLL EFFECT
+   HEADER SCROLL EFFECT
 ========================================================= */
 
-const navbar =
-    document.getElementById("navbar");
+const header =
+    document.getElementById("header");
 
-window.addEventListener("scroll", () => {
+window.addEventListener("scroll", function() {
 
     if (window.scrollY > 50) {
 
-        navbar.classList.add("scrolled");
+        header.classList.add("scrolled");
 
     } else {
 
-        navbar.classList.remove("scrolled");
+        header.classList.remove("scrolled");
 
     }
 
@@ -2226,19 +2184,18 @@ window.addEventListener("scroll", () => {
 const menuToggle =
     document.getElementById("menuToggle");
 
-const navLinks =
-    document.getElementById("navLinks");
+const navbar =
+    document.getElementById("navbar");
 
 
-menuToggle.addEventListener("click", () => {
+menuToggle.addEventListener("click", function() {
 
-    navLinks.classList.toggle("open");
+    navbar.classList.toggle("active");
 
     const icon =
         menuToggle.querySelector("i");
 
-
-    if (navLinks.classList.contains("open")) {
+    if (navbar.classList.contains("active")) {
 
         icon.classList.remove("fa-bars");
 
@@ -2260,12 +2217,12 @@ menuToggle.addEventListener("click", () => {
 ========================================================= */
 
 document
-    .querySelectorAll(".nav-links a")
-    .forEach(link => {
+    .querySelectorAll(".navbar a")
+    .forEach(function(link) {
 
-        link.addEventListener("click", () => {
+        link.addEventListener("click", function() {
 
-            navLinks.classList.remove("open");
+            navbar.classList.remove("active");
 
             const icon =
                 menuToggle.querySelector("i");
@@ -2286,13 +2243,12 @@ document
 const revealElements =
     document.querySelectorAll(".reveal");
 
-
 const revealObserver =
     new IntersectionObserver(
 
-        (entries) => {
+        function(entries) {
 
-            entries.forEach(entry => {
+            entries.forEach(function(entry) {
 
                 if (entry.isIntersecting) {
 
@@ -2316,7 +2272,7 @@ const revealObserver =
     );
 
 
-revealElements.forEach(element => {
+revealElements.forEach(function(element) {
 
     revealObserver.observe(element);
 
@@ -2330,8 +2286,7 @@ revealElements.forEach(element => {
 const backTop =
     document.getElementById("backTop");
 
-
-window.addEventListener("scroll", () => {
+window.addEventListener("scroll", function() {
 
     if (window.scrollY > 500) {
 
@@ -2346,7 +2301,7 @@ window.addEventListener("scroll", () => {
 });
 
 
-backTop.addEventListener("click", () => {
+backTop.addEventListener("click", function() {
 
     window.scrollTo({
 
@@ -2380,13 +2335,11 @@ const currentPage =
 
 
 document
-    .querySelectorAll(".nav-links a")
-    .forEach(link => {
+    .querySelectorAll(".navbar a")
+    .forEach(function(link) {
 
         const href =
             link.getAttribute("href")
-                .split("/")
-                .pop()
                 .toLowerCase();
 
         if (href === currentPage) {
