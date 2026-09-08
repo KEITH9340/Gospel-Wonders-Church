@@ -1,1110 +1,1809 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <meta name="description"
-          content="Gospel Wonders Mission Church - A Christian church in Bulenga Gogonya, Wakiso District, Uganda.">
-
-    <meta name="theme-color" content="#07111f">
-
-    <title>Gospel Wonders Mission Church | Bulenga Gogonya</title>
-
-    <link rel="icon" href="keith.PNG">
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap"
-          rel="stylesheet">
-
-    <!-- Font Awesome -->
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
-    <style>
-
-        /* =========================================================
-           MASTER RESET
-        ========================================================= */
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: "Inter", sans-serif;
-            background: #f8fafc;
-            color: #162033;
-            overflow-x: hidden;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        img {
-            max-width: 100%;
-            display: block;
-        }
-
-        button {
-            font-family: inherit;
-        }
-
-        :root {
-            --navy: #07111f;
-            --navy2: #0d1b2f;
-            --gold: #d7ad55;
-            --gold-light: #f0d28a;
-            --white: #ffffff;
-            --muted: #64748b;
-            --light: #f8fafc;
-            --border: rgba(255,255,255,.12);
-            --shadow: 0 20px 60px rgba(7,17,31,.15);
-        }
-
-
-        /* =========================================================
-           LOADER
-        ========================================================= */
-
-        #loader {
-            position: fixed;
-            inset: 0;
-            z-index: 99999;
-            background: var(--navy);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: opacity .6s ease, visibility .6s ease;
-        }
-
-        #loader.hide {
-            opacity: 0;
-            visibility: hidden;
-        }
-
-        .loader-content {
-            text-align: center;
-            color: white;
-        }
-
-        .loader-cross {
-            width: 55px;
-            height: 70px;
-            position: relative;
-            margin: auto auto 20px;
-        }
-
-        .loader-cross::before {
-            content: "";
-            position: absolute;
-            width: 12px;
-            height: 65px;
-            background: var(--gold);
-            left: 50%;
-            transform: translateX(-50%);
-            border-radius: 10px;
-        }
-
-        .loader-cross::after {
-            content: "";
-            position: absolute;
-            width: 45px;
-            height: 12px;
-            background: var(--gold);
-            top: 18px;
-            left: 50%;
-            transform: translateX(-50%);
-            border-radius: 10px;
-        }
-
-        .loader-content p {
-            font-size: 12px;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-        }
-
-
-        /* =========================================================
-           ANNOUNCEMENT BAR
-        ========================================================= */
-
-        .announcement {
-            height: 38px;
-            background: var(--gold);
-            color: var(--navy);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            font-size: 12px;
-            font-weight: 700;
-            letter-spacing: .5px;
-            position: relative;
-            z-index: 1001;
-        }
-
-        .announcement i {
-            animation: pulse 1.5s infinite;
-        }
-
-        @keyframes pulse {
-            50% {
-                transform: scale(1.25);
-            }
-        }
-
-
-        /* =========================================================
-           NAVIGATION
-        ========================================================= */
-
-        .navbar {
-            position: fixed;
-            top: 38px;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            padding: 18px 5%;
-            transition: .4s ease;
-        }
-
-        .navbar.scrolled {
-            top: 0;
-            padding: 12px 5%;
-            background: rgba(7,17,31,.94);
-            backdrop-filter: blur(18px);
-            box-shadow: 0 8px 35px rgba(0,0,0,.2);
-        }
-
-        .nav-container {
-            max-width: 1400px;
-            margin: auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            color: white;
-        }
-
-        .logo-symbol {
-            width: 43px;
-            height: 43px;
-            border: 1px solid rgba(215,173,85,.7);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--gold);
-            font-size: 18px;
-            background: rgba(255,255,255,.05);
-        }
-
-        .logo-text strong {
-            display: block;
-            font-family: "Cormorant Garamond", serif;
-            font-size: 21px;
-            letter-spacing: .5px;
-        }
-
-        .logo-text span {
-            display: block;
-            font-size: 8px;
-            letter-spacing: 2.5px;
-            text-transform: uppercase;
-            color: var(--gold-light);
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 28px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: rgba(255,255,255,.9);
-            font-size: 13px;
-            font-weight: 500;
-            position: relative;
-            transition: .3s;
-        }
-
-        .nav-links a::after {
-            content: "";
-            position: absolute;
-            left: 0;
-            bottom: -7px;
-            width: 0;
-            height: 2px;
-            background: var(--gold);
-            transition: .3s;
-        }
-
-        .nav-links a:hover,
-        .nav-links a.active {
-            color: var(--gold-light);
-        }
-
-        .nav-links a:hover::after,
-        .nav-links a.active::after {
-            width: 100%;
-        }
-
-        .nav-button {
-            padding: 11px 20px;
-            border: 1px solid var(--gold);
-            color: var(--gold-light) !important;
-            border-radius: 30px;
-        }
-
-        .nav-button:hover {
-            background: var(--gold);
-            color: var(--navy) !important;
-        }
-
-        .nav-button::after {
-            display: none;
-        }
-
-        .menu-toggle {
-            display: none;
-            color: white;
-            font-size: 25px;
-            cursor: pointer;
-        }
-
-
-        /* =========================================================
-           HERO
-        ========================================================= */
-
-        .hero {
-            min-height: 100vh;
-            position: relative;
-            display: flex;
-            align-items: center;
-            background:
-                linear-gradient(90deg,
-                rgba(4,12,23,.96) 0%,
-                rgba(4,12,23,.78) 45%,
-                rgba(4,12,23,.35) 100%),
-                linear-gradient(180deg,
-                rgba(4,12,23,.1),
-                rgba(4,12,23,.7)),
-                url("church-hero.jpg") center/cover no-repeat;
-
-            overflow: hidden;
-        }
-
-        .hero::after {
-            content: "";
-            position: absolute;
-            width: 600px;
-            height: 600px;
-            border-radius: 50%;
-            border: 1px solid rgba(215,173,85,.13);
-            right: -200px;
-            bottom: -250px;
-        }
-
-        .hero-container {
-            width: 100%;
-            max-width: 1400px;
-            margin: auto;
-            padding: 150px 5% 100px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero-content {
-            max-width: 750px;
-        }
-
-        .eyebrow {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            color: var(--gold-light);
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            font-size: 11px;
-            font-weight: 700;
-            margin-bottom: 22px;
-        }
-
-        .eyebrow::before {
-            content: "";
-            width: 35px;
-            height: 1px;
-            background: var(--gold);
-        }
-
-        .hero h1 {
-            color: white;
-            font-family: "Cormorant Garamond", serif;
-            font-size: clamp(52px, 7vw, 95px);
-            line-height: .92;
-            font-weight: 600;
-            margin-bottom: 25px;
-        }
-
-        .hero h1 span {
-            color: var(--gold-light);
-        }
-
-        .hero-description {
-            max-width: 600px;
-            color: rgba(255,255,255,.76);
-            font-size: 16px;
-            line-height: 1.8;
-            margin-bottom: 34px;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 14px;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 9px;
-            padding: 15px 24px;
-            border-radius: 4px;
-            font-size: 13px;
-            font-weight: 700;
-            transition: .3s;
-            cursor: pointer;
-        }
-
-        .btn-primary {
-            background: var(--gold);
-            color: var(--navy);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 30px rgba(215,173,85,.3);
-        }
-
-        .btn-outline {
-            color: white;
-            border: 1px solid rgba(255,255,255,.35);
-            background: rgba(255,255,255,.05);
-            backdrop-filter: blur(8px);
-        }
-
-        .btn-outline:hover {
-            border-color: var(--gold);
-            color: var(--gold-light);
-            transform: translateY(-4px);
-        }
-
-        .hero-location {
-            margin-top: 55px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            color: rgba(255,255,255,.6);
-            font-size: 12px;
-        }
-
-        .hero-location i {
-            color: var(--gold);
-        }
-
-        .scroll-indicator {
-            position: absolute;
-            bottom: 30px;
-            left: 5%;
-            color: rgba(255,255,255,.6);
-            font-size: 9px;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .scroll-indicator::after {
-            content: "";
-            width: 50px;
-            height: 1px;
-            background: var(--gold);
-        }
-
-
-        /* =========================================================
-           SECTION BASICS
-        ========================================================= */
-
-        section {
-            padding: 100px 5%;
-        }
-
-        .section-container {
-            max-width: 1200px;
-            margin: auto;
-        }
-
-        .section-heading {
-            max-width: 700px;
-            margin-bottom: 55px;
-        }
-
-        .section-heading.center {
-            text-align: center;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .section-label {
-            color: #aa8237;
-            font-size: 10px;
-            font-weight: 800;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            margin-bottom: 12px;
-        }
-
-        .section-heading h2 {
-            font-family: "Cormorant Garamond", serif;
-            font-size: clamp(40px, 5vw, 60px);
-            line-height: 1;
-            color: var(--navy);
-            margin-bottom: 18px;
-        }
-
-        .section-heading p {
-            color: var(--muted);
-            line-height: 1.8;
-            font-size: 14px;
-        }
-
-
-        /* =========================================================
-           WELCOME
-        ========================================================= */
-
-        .welcome {
-            background: white;
-        }
-
-        .welcome-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
-            align-items: center;
-        }
-
-        .welcome-image {
-            position: relative;
-            min-height: 500px;
-            background:
-                linear-gradient(135deg, rgba(7,17,31,.1), rgba(7,17,31,.55)),
-                url("church-welcome.jpg") center/cover;
-            border-radius: 3px;
-        }
-
-        .welcome-image::before {
-            content: "";
-            position: absolute;
-            inset: -15px 15px 15px -15px;
-            border: 1px solid var(--gold);
-            z-index: -1;
-        }
-
-        .welcome-badge {
-            position: absolute;
-            right: -25px;
-            bottom: 35px;
-            width: 145px;
-            height: 145px;
-            border-radius: 50%;
-            background: var(--navy);
-            color: white;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            box-shadow: var(--shadow);
-        }
-
-        .welcome-badge i {
-            color: var(--gold);
-            font-size: 25px;
-            margin-bottom: 8px;
-        }
-
-        .welcome-badge span {
-            font-size: 9px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-        .welcome-content h3 {
-            font-family: "Cormorant Garamond", serif;
-            font-size: 42px;
-            color: var(--navy);
-            margin-bottom: 18px;
-        }
-
-        .welcome-content p {
-            color: var(--muted);
-            line-height: 1.9;
-            font-size: 14px;
-            margin-bottom: 18px;
-        }
-
-        .signature {
-            margin-top: 30px;
-            color: var(--navy);
-            font-family: "Cormorant Garamond", serif;
-            font-size: 26px;
-        }
-
-
-        /* =========================================================
-           SERVICES
-        ========================================================= */
-
-        .services {
-            background: #f2f5f8;
-        }
-
-        .service-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-
-        .service-card {
-            background: white;
-            padding: 35px 30px;
-            border-top: 3px solid transparent;
-            transition: .35s;
-            box-shadow: 0 8px 30px rgba(7,17,31,.04);
-        }
-
-        .service-card:hover {
-            transform: translateY(-8px);
-            border-top-color: var(--gold);
-            box-shadow: var(--shadow);
-        }
-
-        .service-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #f5ecd8;
-            color: #a77b2d;
-            margin-bottom: 22px;
-            font-size: 18px;
-        }
-
-        .service-card h3 {
-            color: var(--navy);
-            margin-bottom: 9px;
-            font-size: 19px;
-        }
-
-        .service-card p {
-            color: var(--muted);
-            font-size: 13px;
-            line-height: 1.7;
-        }
-
-        .service-time {
-            display: inline-block;
-            margin-top: 18px;
-            font-size: 11px;
-            color: #a77b2d;
-            font-weight: 800;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-
-        /* =========================================================
-           VERSE
-        ========================================================= */
-
-        .verse {
-            padding: 110px 5%;
-            background:
-                linear-gradient(rgba(7,17,31,.94), rgba(7,17,31,.94)),
-                url("church-verse.jpg") center/cover fixed;
-            text-align: center;
-            color: white;
-        }
-
-        .verse i {
-            color: var(--gold);
-            font-size: 35px;
-            margin-bottom: 25px;
-        }
-
-        .verse blockquote {
-            max-width: 900px;
-            margin: auto;
-            font-family: "Cormorant Garamond", serif;
-            font-size: clamp(30px, 5vw, 52px);
-            line-height: 1.15;
-        }
-
-        .verse cite {
-            display: block;
-            margin-top: 25px;
-            font-style: normal;
-            color: var(--gold-light);
-            font-size: 11px;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-        }
-
-
-        /* =========================================================
-           FEATURES
-        ========================================================= */
-
-        .features {
-            background: white;
-        }
-
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-
-        .feature-card {
-            padding: 38px;
-            border: 1px solid #e7ebef;
-            transition: .3s;
-        }
-
-        .feature-card:hover {
-            border-color: var(--gold);
-            transform: translateY(-5px);
-        }
-
-        .feature-number {
-            font-family: "Cormorant Garamond", serif;
-            font-size: 45px;
-            color: #d8dfe7;
-            line-height: 1;
-            margin-bottom: 25px;
-        }
-
-        .feature-card h3 {
-            font-size: 19px;
-            margin-bottom: 12px;
-            color: var(--navy);
-        }
-
-        .feature-card p {
-            color: var(--muted);
-            line-height: 1.7;
-            font-size: 13px;
-        }
-
-
-        /* =========================================================
-           PRAYER CTA
-        ========================================================= */
-
-        .prayer {
-            background: var(--gold);
-            padding: 70px 5%;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .prayer::before {
-            content: "✦";
-            position: absolute;
-            right: 8%;
-            top: -80px;
-            font-size: 300px;
-            color: rgba(255,255,255,.12);
-        }
-
-        .prayer-container {
-            max-width: 1200px;
-            margin: auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 30px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .prayer h2 {
-            font-family: "Cormorant Garamond", serif;
-            color: var(--navy);
-            font-size: 48px;
-            margin-bottom: 8px;
-        }
-
-        .prayer p {
-            color: rgba(7,17,31,.7);
-            font-size: 14px;
-        }
-
-        .prayer .btn {
-            background: var(--navy);
-            color: white;
-            white-space: nowrap;
-        }
-
-        .prayer .btn:hover {
-            transform: translateY(-4px);
-        }
-
-
-        /* =========================================================
-           LOCATION
-        ========================================================= */
-
-        .location {
-            background: #f8fafc;
-        }
-
-        .location-grid {
-            display: grid;
-            grid-template-columns: .8fr 1.2fr;
-            gap: 30px;
-        }
-
-        .location-info {
-            background: var(--navy);
-            color: white;
-            padding: 45px;
-        }
-
-        .location-info h3 {
-            font-family: "Cormorant Garamond", serif;
-            font-size: 36px;
-            margin-bottom: 25px;
-        }
-
-        .location-item {
-            display: flex;
-            gap: 15px;
-            margin: 25px 0;
-        }
-
-        .location-item i {
-            color: var(--gold);
-            width: 20px;
-            margin-top: 3px;
-        }
-
-        .location-item span {
-            color: rgba(255,255,255,.7);
-            font-size: 13px;
-            line-height: 1.7;
-        }
-
-        .map-box {
-            min-height: 350px;
-            background:
-                linear-gradient(135deg, #dfe7e9, #cbd5d8);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #52616b;
-        }
-
-        .map-box div {
-            text-align: center;
-        }
-
-        .map-box i {
-            font-size: 45px;
-            color: var(--gold);
-            margin-bottom: 15px;
-        }
-
-
-        /* =========================================================
-           FOOTER
-        ========================================================= */
-
-        footer {
-            background: #040b14;
-            color: white;
-            padding: 70px 5% 25px;
-        }
-
-        .footer-grid {
-            max-width: 1200px;
-            margin: auto;
-            display: grid;
-            grid-template-columns: 1.4fr 1fr 1fr 1fr;
-            gap: 50px;
-            padding-bottom: 50px;
-        }
-
-        .footer-brand p {
-            color: rgba(255,255,255,.55);
-            font-size: 13px;
-            line-height: 1.8;
-            max-width: 330px;
-            margin-top: 20px;
-        }
-
-        .footer-title {
-            color: var(--gold-light);
-            font-size: 11px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 22px;
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin: 12px 0;
-        }
-
-        .footer-links a {
-            color: rgba(255,255,255,.58);
-            font-size: 13px;
-            transition: .3s;
-        }
-
-        .footer-links a:hover {
-            color: var(--gold-light);
-            padding-left: 5px;
-        }
-
-        .socials {
-            display: flex;
-            gap: 9px;
-            margin-top: 22px;
-        }
-
-        .socials a {
-            width: 38px;
-            height: 38px;
-            border: 1px solid rgba(255,255,255,.15);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            color: rgba(255,255,255,.7);
-            transition: .3s;
-        }
-
-        .socials a:hover {
-            background: var(--gold);
-            border-color: var(--gold);
-            color: var(--navy);
-            transform: translateY(-3px);
-        }
-
-        .footer-bottom {
-            max-width: 1200px;
-            margin: auto;
-            padding-top: 25px;
-            border-top: 1px solid rgba(255,255,255,.1);
-            display: flex;
-            justify-content: space-between;
-            gap: 20px;
-            color: rgba(255,255,255,.35);
-            font-size: 11px;
-        }
-
-
-        /* =========================================================
-           BACK TO TOP
-        ========================================================= */
-
-        #backTop {
-            position: fixed;
-            right: 25px;
-            bottom: 25px;
-            width: 45px;
-            height: 45px;
-            border: none;
-            border-radius: 50%;
-            background: var(--gold);
-            color: var(--navy);
-            cursor: pointer;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(20px);
-            transition: .3s;
-            z-index: 999;
-        }
-
-        #backTop.show {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-
-
-        /* =========================================================
-           SCROLL REVEAL
-        ========================================================= */
-
-        .reveal {
-            opacity: 0;
-            transform: translateY(35px);
-            transition: opacity .8s ease, transform .8s ease;
-        }
-
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-
-        /* =========================================================
-           RESPONSIVE DESIGN
-        ========================================================= */
-
-        @media (max-width: 950px) {
-
-            .nav-links {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                width: min(330px, 85%);
-                height: 100vh;
-                background: #07111f;
-                flex-direction: column;
-                justify-content: center;
-                gap: 28px;
-                transition: .4s;
-                box-shadow: -20px 0 60px rgba(0,0,0,.3);
-            }
-
-            .nav-links.open {
-                right: 0;
-            }
-
-            .menu-toggle {
-                display: block;
-                z-index: 1002;
-            }
-
-            .welcome-grid,
-            .location-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .welcome-image {
-                min-height: 450px;
-            }
-
-            .service-grid,
-            .feature-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-
-            .footer-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        @media (max-width: 650px) {
-
-            .announcement {
-                font-size: 9px;
-                padding: 0 10px;
-                text-align: center;
-            }
-
-            .logo-text strong {
-                font-size: 17px;
-            }
-
-            .logo-text span {
-                font-size: 6px;
-            }
-
-            .hero-container {
-                padding-top: 180px;
-            }
-
-            .hero h1 {
-                font-size: 57px;
-            }
-
-            .hero-description {
-                font-size: 14px;
-            }
-
-            section {
-                padding: 75px 5%;
-            }
-
-            .welcome-image {
-                min-height: 360px;
-            }
-
-            .welcome-badge {
-                right: 10px;
-            }
-
-            .service-grid,
-            .feature-grid,
-            .footer-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .prayer-container {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .prayer h2 {
-                font-size: 40px;
-            }
-
-            .location-info {
-                padding: 30px;
-            }
-
-            .footer-bottom {
-                flex-direction: column;
-            }
-
-            .scroll-indicator {
-                display: none;
-            }
-        }
-
-    </style>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description"
+content="Gospel Wonders Mission Church - A Christian church in Bulenga Gogonya, Wakiso District, Uganda.">
+
+<meta name="theme-color" content="#07111f">
+
+<title>Gospel Wonders Mission Church | Bulenga Gogonya</title>
+
+<link rel="icon" type="image/png" href="keith.PNG">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap"
+rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+
+<style>
+
+/* =========================================================
+   MASTER RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    background: #f8fafc;
+    color: #162033;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+button {
+    font-family: inherit;
+}
+
+:root {
+    --navy: #07111f;
+    --navy2: #0d1b2f;
+    --gold: #d7ad55;
+    --gold-light: #f0d28a;
+    --white: #ffffff;
+    --muted: #64748b;
+    --light: #f8fafc;
+    --border: rgba(255,255,255,.12);
+    --shadow: 0 20px 60px rgba(7,17,31,.15);
+}
+
+
+/* =========================================================
+   LOADER
+========================================================= */
+
+#loader {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+
+    background: var(--navy);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition:
+        opacity .6s ease,
+        visibility .6s ease;
+}
+
+#loader.hide {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.loader-content {
+    text-align: center;
+    color: white;
+}
+
+
+/* CIRCULAR LOADER LOGO */
+
+.loader-logo {
+
+    width: 75px;
+    height: 75px;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    border: 3px solid var(--gold);
+
+    padding: 3px;
+
+    background: var(--navy);
+
+    margin: 0 auto 20px;
+
+    animation: logoPulse 1.8s infinite;
+}
+
+@keyframes logoPulse {
+
+    0%,100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 rgba(215,173,85,0);
+    }
+
+    50% {
+        transform: scale(1.08);
+        box-shadow: 0 0 30px rgba(215,173,85,.35);
+    }
+
+}
+
+.loader-content p {
+
+    font-size: 12px;
+
+    letter-spacing: 4px;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   ANNOUNCEMENT BAR
+========================================================= */
+
+.announcement {
+
+    height: 38px;
+
+    background: var(--gold);
+
+    color: var(--navy);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    letter-spacing: .5px;
+
+    position: relative;
+
+    z-index: 1001;
+}
+
+.announcement i {
+
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+
+    50% {
+        transform: scale(1.25);
+    }
+
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.navbar {
+
+    position: fixed;
+
+    top: 38px;
+
+    left: 0;
+
+    width: 100%;
+
+    z-index: 1000;
+
+    padding: 18px 5%;
+
+    transition: .4s ease;
+}
+
+.navbar.scrolled {
+
+    top: 0;
+
+    padding: 12px 5%;
+
+    background: rgba(7,17,31,.94);
+
+    backdrop-filter: blur(18px);
+
+    box-shadow:
+        0 8px 35px rgba(0,0,0,.2);
+}
+
+.nav-container {
+
+    max-width: 1400px;
+
+    margin: auto;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+}
+
+
+/* =========================================================
+   CIRCULAR CHURCH LOGO
+========================================================= */
+
+.logo {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    color: white;
+
+    flex-shrink: 0;
+}
+
+.logo img {
+
+    width: 45px;
+
+    height: 45px;
+
+    object-fit: cover;
+
+    display: block;
+
+    border-radius: 50%;
+
+    border: 2px solid var(--gold);
+
+    padding: 2px;
+
+    background: var(--navy);
+
+    transition: .3s ease;
+
+    box-shadow:
+        0 0 0 rgba(215,173,85,0);
+}
+
+.logo:hover img {
+
+    transform: scale(1.08);
+
+    box-shadow:
+        0 0 20px rgba(215,173,85,.35);
+}
+
+
+/* =========================================================
+   LOGO TEXT
+========================================================= */
+
+.logo-text strong {
+
+    display: block;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 21px;
+
+    font-weight: 700;
+
+    letter-spacing: .5px;
+
+    color: var(--gold);
+}
+
+.logo-text span {
+
+    display: block;
+
+    margin-top: 4px;
+
+    font-size: 8px;
+
+    letter-spacing: 2.5px;
+
+    text-transform: uppercase;
+
+    color: var(--gold-light);
+}
+
+
+/* =========================================================
+   NAV LINKS
+========================================================= */
+
+.nav-links {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 28px;
+
+    list-style: none;
+}
+
+.nav-links a {
+
+    color:
+        rgba(255,255,255,.9);
+
+    font-size: 13px;
+
+    font-weight: 500;
+
+    position: relative;
+
+    transition: .3s;
+}
+
+.nav-links a::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+
+    bottom: -7px;
+
+    width: 0;
+
+    height: 2px;
+
+    background: var(--gold);
+
+    transition: .3s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+
+    color: var(--gold-light);
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+
+    width: 100%;
+}
+
+
+/* =========================================================
+   NAV BUTTON
+========================================================= */
+
+.nav-button {
+
+    padding: 11px 20px;
+
+    border: 1px solid var(--gold);
+
+    color: var(--gold-light) !important;
+
+    border-radius: 30px;
+}
+
+.nav-button:hover {
+
+    background: var(--gold);
+
+    color: var(--navy) !important;
+}
+
+.nav-button::after {
+
+    display: none;
+}
+
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+
+.menu-toggle {
+
+    display: none;
+
+    color: white;
+
+    background: none;
+
+    border: none;
+
+    font-size: 25px;
+
+    cursor: pointer;
+
+    z-index: 1002;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+
+    min-height: 100vh;
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            rgba(4,12,23,.96) 0%,
+            rgba(4,12,23,.78) 45%,
+            rgba(4,12,23,.35) 100%
+        ),
+
+        linear-gradient(
+            180deg,
+            rgba(4,12,23,.1),
+            rgba(4,12,23,.7)
+        ),
+
+        url("church-hero.jpg")
+        center/cover no-repeat;
+
+    overflow: hidden;
+}
+
+.hero::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 600px;
+
+    height: 600px;
+
+    border-radius: 50%;
+
+    border:
+        1px solid
+        rgba(215,173,85,.13);
+
+    right: -200px;
+
+    bottom: -250px;
+}
+
+.hero-container {
+
+    width: 100%;
+
+    max-width: 1400px;
+
+    margin: auto;
+
+    padding: 150px 5% 100px;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+.hero-content {
+
+    max-width: 750px;
+}
+
+.eyebrow {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    color: var(--gold-light);
+
+    text-transform: uppercase;
+
+    letter-spacing: 4px;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    margin-bottom: 22px;
+}
+
+.eyebrow::before {
+
+    content: "";
+
+    width: 35px;
+
+    height: 1px;
+
+    background: var(--gold);
+}
+
+.hero h1 {
+
+    color: white;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size:
+        clamp(52px,7vw,95px);
+
+    line-height: .92;
+
+    font-weight: 600;
+
+    margin-bottom: 25px;
+}
+
+.hero h1 span {
+
+    color: var(--gold-light);
+}
+
+.hero-description {
+
+    max-width: 600px;
+
+    color:
+        rgba(255,255,255,.76);
+
+    font-size: 16px;
+
+    line-height: 1.8;
+
+    margin-bottom: 34px;
+}
+
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.hero-buttons {
+
+    display: flex;
+
+    gap: 14px;
+
+    flex-wrap: wrap;
+}
+
+.btn {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 9px;
+
+    padding: 15px 24px;
+
+    border-radius: 4px;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    transition: .3s;
+
+    cursor: pointer;
+}
+
+.btn-primary {
+
+    background: var(--gold);
+
+    color: var(--navy);
+}
+
+.btn-primary:hover {
+
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 12px 30px
+        rgba(215,173,85,.3);
+}
+
+.btn-outline {
+
+    color: white;
+
+    border:
+        1px solid
+        rgba(255,255,255,.35);
+
+    background:
+        rgba(255,255,255,.05);
+
+    backdrop-filter: blur(8px);
+}
+
+.btn-outline:hover {
+
+    border-color: var(--gold);
+
+    color: var(--gold-light);
+
+    transform: translateY(-4px);
+}
+
+.hero-location {
+
+    margin-top: 55px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    color:
+        rgba(255,255,255,.6);
+
+    font-size: 12px;
+}
+
+.hero-location i {
+
+    color: var(--gold);
+}
+
+.scroll-indicator {
+
+    position: absolute;
+
+    bottom: 30px;
+
+    left: 5%;
+
+    color:
+        rgba(255,255,255,.6);
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+}
+
+.scroll-indicator::after {
+
+    content: "";
+
+    width: 50px;
+
+    height: 1px;
+
+    background: var(--gold);
+}
+
+
+/* =========================================================
+   SECTION BASICS
+========================================================= */
+
+section {
+
+    padding: 100px 5%;
+}
+
+.section-container {
+
+    max-width: 1200px;
+
+    margin: auto;
+}
+
+.section-heading {
+
+    max-width: 700px;
+
+    margin-bottom: 55px;
+}
+
+.section-heading.center {
+
+    text-align: center;
+
+    margin-left: auto;
+
+    margin-right: auto;
+}
+
+.section-label {
+
+    color: #aa8237;
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 4px;
+
+    text-transform: uppercase;
+
+    margin-bottom: 12px;
+}
+
+.section-heading h2 {
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size:
+        clamp(40px,5vw,60px);
+
+    line-height: 1;
+
+    color: var(--navy);
+
+    margin-bottom: 18px;
+}
+
+.section-heading p {
+
+    color: var(--muted);
+
+    line-height: 1.8;
+
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   WELCOME
+========================================================= */
+
+.welcome {
+
+    background: white;
+}
+
+.welcome-grid {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 80px;
+
+    align-items: center;
+}
+
+.welcome-image {
+
+    position: relative;
+
+    min-height: 500px;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            rgba(7,17,31,.1),
+            rgba(7,17,31,.55)
+        ),
+
+        url("church-welcome.jpg")
+        center/cover;
+
+    border-radius: 3px;
+}
+
+.welcome-image::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset:
+        -15px 15px 15px -15px;
+
+    border:
+        1px solid
+        var(--gold);
+
+    z-index: -1;
+}
+
+.welcome-badge {
+
+    position: absolute;
+
+    right: -25px;
+
+    bottom: 35px;
+
+    width: 145px;
+
+    height: 145px;
+
+    border-radius: 50%;
+
+    background: var(--navy);
+
+    color: white;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    box-shadow: var(--shadow);
+}
+
+.welcome-badge i {
+
+    color: var(--gold);
+
+    font-size: 25px;
+
+    margin-bottom: 8px;
+}
+
+.welcome-badge span {
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+}
+
+.welcome-content h3 {
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 42px;
+
+    color: var(--navy);
+
+    margin-bottom: 18px;
+}
+
+.welcome-content p {
+
+    color: var(--muted);
+
+    line-height: 1.9;
+
+    font-size: 14px;
+
+    margin-bottom: 18px;
+}
+
+.signature {
+
+    margin-top: 30px;
+
+    color: var(--navy);
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 26px;
+}
+
+
+/* =========================================================
+   SERVICES
+========================================================= */
+
+.services {
+
+    background: #f2f5f8;
+}
+
+.service-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap: 20px;
+}
+
+.service-card {
+
+    background: white;
+
+    padding: 35px 30px;
+
+    border-top:
+        3px solid transparent;
+
+    transition: .35s;
+
+    box-shadow:
+        0 8px 30px
+        rgba(7,17,31,.04);
+}
+
+.service-card:hover {
+
+    transform: translateY(-8px);
+
+    border-top-color:
+        var(--gold);
+
+    box-shadow:
+        var(--shadow);
+}
+
+.service-icon {
+
+    width: 50px;
+
+    height: 50px;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #f5ecd8;
+
+    color: #a77b2d;
+
+    margin-bottom: 22px;
+
+    font-size: 18px;
+}
+
+.service-card h3 {
+
+    color: var(--navy);
+
+    margin-bottom: 9px;
+
+    font-size: 19px;
+}
+
+.service-card p {
+
+    color: var(--muted);
+
+    font-size: 13px;
+
+    line-height: 1.7;
+}
+
+.service-time {
+
+    display: inline-block;
+
+    margin-top: 18px;
+
+    font-size: 11px;
+
+    color: #a77b2d;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   VERSE
+========================================================= */
+
+.verse {
+
+    padding: 110px 5%;
+
+    background:
+
+        linear-gradient(
+            rgba(7,17,31,.94),
+            rgba(7,17,31,.94)
+        ),
+
+        url("church-verse.jpg")
+        center/cover fixed;
+
+    text-align: center;
+
+    color: white;
+}
+
+.verse i {
+
+    color: var(--gold);
+
+    font-size: 35px;
+
+    margin-bottom: 25px;
+}
+
+.verse blockquote {
+
+    max-width: 900px;
+
+    margin: auto;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size:
+        clamp(30px,5vw,52px);
+
+    line-height: 1.15;
+}
+
+.verse cite {
+
+    display: block;
+
+    margin-top: 25px;
+
+    font-style: normal;
+
+    color: var(--gold-light);
+
+    font-size: 11px;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   FEATURES
+========================================================= */
+
+.features {
+
+    background: white;
+}
+
+.feature-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap: 20px;
+}
+
+.feature-card {
+
+    padding: 38px;
+
+    border:
+        1px solid #e7ebef;
+
+    transition: .3s;
+}
+
+.feature-card:hover {
+
+    border-color: var(--gold);
+
+    transform: translateY(-5px);
+}
+
+.feature-number {
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 45px;
+
+    color: #d8dfe7;
+
+    line-height: 1;
+
+    margin-bottom: 25px;
+}
+
+.feature-card h3 {
+
+    font-size: 19px;
+
+    margin-bottom: 12px;
+
+    color: var(--navy);
+}
+
+.feature-card p {
+
+    color: var(--muted);
+
+    line-height: 1.7;
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   PRAYER CTA
+========================================================= */
+
+.prayer {
+
+    background: var(--gold);
+
+    padding: 70px 5%;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+.prayer::before {
+
+    content: "✦";
+
+    position: absolute;
+
+    right: 8%;
+
+    top: -80px;
+
+    font-size: 300px;
+
+    color:
+        rgba(255,255,255,.12);
+}
+
+.prayer-container {
+
+    max-width: 1200px;
+
+    margin: auto;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 30px;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+.prayer h2 {
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    color: var(--navy);
+
+    font-size: 48px;
+
+    margin-bottom: 8px;
+}
+
+.prayer p {
+
+    color:
+        rgba(7,17,31,.7);
+
+    font-size: 14px;
+}
+
+.prayer .btn {
+
+    background: var(--navy);
+
+    color: white;
+
+    white-space: nowrap;
+}
+
+.prayer .btn:hover {
+
+    transform: translateY(-4px);
+}
+
+
+/* =========================================================
+   LOCATION
+========================================================= */
+
+.location {
+
+    background: #f8fafc;
+}
+
+.location-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        .8fr 1.2fr;
+
+    gap: 30px;
+}
+
+.location-info {
+
+    background: var(--navy);
+
+    color: white;
+
+    padding: 45px;
+}
+
+.location-info h3 {
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 36px;
+
+    margin-bottom: 25px;
+}
+
+.location-item {
+
+    display: flex;
+
+    gap: 15px;
+
+    margin: 25px 0;
+}
+
+.location-item i {
+
+    color: var(--gold);
+
+    width: 20px;
+
+    margin-top: 3px;
+}
+
+.location-item span {
+
+    color:
+        rgba(255,255,255,.7);
+
+    font-size: 13px;
+
+    line-height: 1.7;
+}
+
+.map-box {
+
+    min-height: 350px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #dfe7e9,
+            #cbd5d8
+        );
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color: #52616b;
+}
+
+.map-box div {
+
+    text-align: center;
+}
+
+.map-box i {
+
+    font-size: 45px;
+
+    color: var(--gold);
+
+    margin-bottom: 15px;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer {
+
+    background: #040b14;
+
+    color: white;
+
+    padding: 70px 5% 25px;
+}
+
+.footer-grid {
+
+    max-width: 1200px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        1.4fr 1fr 1fr 1fr;
+
+    gap: 50px;
+
+    padding-bottom: 50px;
+}
+
+.footer-brand p {
+
+    color:
+        rgba(255,255,255,.55);
+
+    font-size: 13px;
+
+    line-height: 1.8;
+
+    max-width: 330px;
+
+    margin-top: 20px;
+}
+
+.footer-title {
+
+    color: var(--gold-light);
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+
+    margin-bottom: 22px;
+}
+
+.footer-links {
+
+    list-style: none;
+}
+
+.footer-links li {
+
+    margin: 12px 0;
+}
+
+.footer-links a {
+
+    color:
+        rgba(255,255,255,.58);
+
+    font-size: 13px;
+
+    transition: .3s;
+}
+
+.footer-links a:hover {
+
+    color: var(--gold-light);
+
+    padding-left: 5px;
+}
+
+.socials {
+
+    display: flex;
+
+    gap: 9px;
+
+    margin-top: 22px;
+}
+
+.socials a {
+
+    width: 38px;
+
+    height: 38px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.15);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    color:
+        rgba(255,255,255,.7);
+
+    transition: .3s;
+}
+
+.socials a:hover {
+
+    background: var(--gold);
+
+    border-color: var(--gold);
+
+    color: var(--navy);
+
+    transform: translateY(-3px);
+}
+
+.footer-bottom {
+
+    max-width: 1200px;
+
+    margin: auto;
+
+    padding-top: 25px;
+
+    border-top:
+        1px solid
+        rgba(255,255,255,.1);
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    color:
+        rgba(255,255,255,.35);
+
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   BACK TO TOP
+========================================================= */
+
+#backTop {
+
+    position: fixed;
+
+    right: 25px;
+
+    bottom: 25px;
+
+    width: 45px;
+
+    height: 45px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: var(--gold);
+
+    color: var(--navy);
+
+    cursor: pointer;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transform:
+        translateY(20px);
+
+    transition: .3s;
+
+    z-index: 999;
+}
+
+#backTop.show {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    transform:
+        translateY(0);
+}
+
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+.reveal {
+
+    opacity: 0;
+
+    transform:
+        translateY(35px);
+
+    transition:
+        opacity .8s ease,
+        transform .8s ease;
+}
+
+.reveal.visible {
+
+    opacity: 1;
+
+    transform:
+        translateY(0);
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 950px) {
+
+    .nav-links {
+
+        position: fixed;
+
+        top: 0;
+
+        right: -100%;
+
+        width: min(330px,85%);
+
+        height: 100vh;
+
+        background: #07111f;
+
+        flex-direction: column;
+
+        justify-content: center;
+
+        gap: 28px;
+
+        transition: .4s;
+
+        box-shadow:
+            -20px 0 60px
+            rgba(0,0,0,.3);
+    }
+
+    .nav-links.open {
+
+        right: 0;
+    }
+
+    .menu-toggle {
+
+        display: block;
+    }
+
+    .welcome-grid,
+    .location-grid {
+
+        grid-template-columns: 1fr;
+    }
+
+    .welcome-image {
+
+        min-height: 450px;
+    }
+
+    .service-grid,
+    .feature-grid {
+
+        grid-template-columns:
+            1fr 1fr;
+    }
+
+    .footer-grid {
+
+        grid-template-columns:
+            1fr 1fr;
+    }
+
+}
+
+
+@media (max-width: 650px) {
+
+    .announcement {
+
+        height: 34px;
+
+        font-size: 9px;
+
+        padding: 0 10px;
+
+        text-align: center;
+    }
+
+    .navbar {
+
+        top: 34px;
+    }
+
+    .navbar.scrolled {
+
+        top: 0;
+    }
+
+    /* MOBILE CIRCULAR LOGO */
+
+    .logo img {
+
+        width: 38px;
+
+        height: 38px;
+
+        border-width: 2px;
+    }
+
+    .logo-text strong {
+
+        font-size: 16px;
+    }
+
+    .logo-text span {
+
+        font-size: 7px;
+
+        letter-spacing: 2px;
+    }
+
+    .hero-container {
+
+        padding-top: 180px;
+    }
+
+    .hero h1 {
+
+        font-size: 57px;
+    }
+
+    .hero-description {
+
+        font-size: 14px;
+    }
+
+    section {
+
+        padding: 75px 5%;
+    }
+
+    .welcome-image {
+
+        min-height: 360px;
+    }
+
+    .welcome-badge {
+
+        right: 10px;
+    }
+
+    .service-grid,
+    .feature-grid,
+    .footer-grid {
+
+        grid-template-columns: 1fr;
+    }
+
+    .prayer-container {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+    .prayer h2 {
+
+        font-size: 40px;
+    }
+
+    .location-info {
+
+        padding: 30px;
+    }
+
+    .footer-bottom {
+
+        flex-direction: column;
+    }
+
+    .scroll-indicator {
+
+        display: none;
+    }
+
+}
+
+
+@media (max-width: 400px) {
+
+    .logo img {
+
+        width: 35px;
+
+        height: 35px;
+    }
+
+    .logo-text strong {
+
+        font-size: 14px;
+    }
+
+    .logo-text span {
+
+        font-size: 6px;
+    }
+
+    .hero h1 {
+
+        font-size: 48px;
+    }
+
+}
+
+</style>
+
 </head>
 
 
@@ -1119,9 +1818,17 @@
 
     <div class="loader-content">
 
-        <div class="loader-cross"></div>
+        <!-- CIRCULAR CHURCH LOGO -->
 
-        <p>Gospel Wonders Mission Church</p>
+        <img
+            src="keith.PNG"
+            class="loader-logo"
+            alt="Gospel Wonders Mission Church Logo"
+        >
+
+        <p>
+            Gospel Wonders Mission Church
+        </p>
 
     </div>
 
@@ -1136,7 +1843,9 @@
 
     <i class="fa-solid fa-cross"></i>
 
-    <span>Welcome to Gospel Wonders Mission Church</span>
+    <span>
+        Welcome to Gospel Wonders Mission Church
+    </span>
 
 </div>
 
@@ -1149,65 +1858,94 @@
 
     <div class="nav-container">
 
+
+        <!-- CIRCULAR CHURCH LOGO -->
+
         <a href="index.html" class="logo">
 
-            <div class="logo-symbol">
-                <i class="fa-solid fa-cross"></i>
-            </div>
+            <img
+                src="keith.PNG"
+                alt="Gospel Wonders Mission Church Logo"
+            >
 
             <div class="logo-text">
 
-                <strong>Gospel Wonders</strong>
+                <strong>
+                    Gospel Wonders
+                </strong>
 
-                <span>Mission Church</span>
+                <span>
+                    Mission Church
+                </span>
 
             </div>
 
         </a>
 
 
+        <!-- MOBILE MENU -->
+
+        <button
+            class="menu-toggle"
+            id="menuToggle"
+            aria-label="Open navigation menu">
+
+            <i class="fa-solid fa-bars"></i>
+
+        </button>
+
+
+        <!-- NAVIGATION LINKS -->
+
         <nav>
 
             <ul class="nav-links" id="navLinks">
 
                 <li>
-                    <a href="index.html" class="active">Home</a>
+                    <a href="index.html" class="active">
+                        Home
+                    </a>
                 </li>
 
                 <li>
-                    <a href="about.html">About</a>
+                    <a href="about.html">
+                        About
+                    </a>
                 </li>
 
                 <li>
-                    <a href="ministries.html">Ministries</a>
+                    <a href="ministries.html">
+                        Ministries
+                    </a>
                 </li>
 
                 <li>
-                    <a href="sermons.html">Sermons</a>
+                    <a href="sermons.html">
+                        Sermons
+                    </a>
                 </li>
 
                 <li>
-                    <a href="events.html">Events</a>
+                    <a href="events.html">
+                        Events
+                    </a>
                 </li>
 
                 <li>
-                    <a href="gallery.html">Gallery</a>
+                    <a href="gallery.html">
+                        Gallery
+                    </a>
                 </li>
 
                 <li>
-                    <a href="contact.html" class="nav-button">Contact Us</a>
+                    <a href="contact.html" class="nav-button">
+                        Contact Us
+                    </a>
                 </li>
 
             </ul>
 
         </nav>
-
-
-        <div class="menu-toggle" id="menuToggle">
-
-            <i class="fa-solid fa-bars"></i>
-
-        </div>
 
     </div>
 
@@ -1215,10 +1953,15 @@
 
 
 <!-- =========================================================
-     HERO
+     MAIN
 ========================================================= -->
 
 <main>
+
+
+<!-- =========================================================
+     HERO
+========================================================= -->
 
 <section class="hero" id="home">
 
@@ -1230,10 +1973,17 @@
                 Welcome Home
             </div>
 
+
             <h1>
+
                 Experience<br>
-                <span>God's Wonders.</span>
+
+                <span>
+                    God's Wonders.
+                </span>
+
             </h1>
+
 
             <p class="hero-description">
 
@@ -1247,7 +1997,9 @@
 
             <div class="hero-buttons">
 
-                <a href="about.html" class="btn btn-primary">
+                <a
+                    href="about.html"
+                    class="btn btn-primary">
 
                     Discover Our Church
 
@@ -1255,7 +2007,10 @@
 
                 </a>
 
-                <a href="prayer.html" class="btn btn-outline">
+
+                <a
+                    href="prayer.html"
+                    class="btn btn-outline">
 
                     <i class="fa-solid fa-hands-praying"></i>
 
@@ -1304,7 +2059,9 @@
                 <i class="fa-solid fa-cross"></i>
 
                 <span>Faith</span>
+
                 <span>Hope</span>
+
                 <span>Love</span>
 
             </div>
@@ -1359,6 +2116,7 @@
 
     <div class="section-container">
 
+
         <div class="section-heading center reveal">
 
             <div class="section-label">
@@ -1386,14 +2144,20 @@
             <div class="service-card reveal">
 
                 <div class="service-icon">
+
                     <i class="fa-solid fa-sun"></i>
+
                 </div>
 
-                <h3>Sunday Worship</h3>
+                <h3>
+                    Sunday Worship
+                </h3>
 
                 <p>
+
                     Come together for worship, prayer,
                     fellowship and the Word of God.
+
                 </p>
 
                 <span class="service-time">
@@ -1406,14 +2170,20 @@
             <div class="service-card reveal">
 
                 <div class="service-icon">
+
                     <i class="fa-solid fa-book-bible"></i>
+
                 </div>
 
-                <h3>Bible Fellowship</h3>
+                <h3>
+                    Bible Fellowship
+                </h3>
 
                 <p>
+
                     Grow deeper in God's Word through
                     teaching, discussion and fellowship.
+
                 </p>
 
                 <span class="service-time">
@@ -1426,14 +2196,20 @@
             <div class="service-card reveal">
 
                 <div class="service-icon">
+
                     <i class="fa-solid fa-hands-praying"></i>
+
                 </div>
 
-                <h3>Prayer</h3>
+                <h3>
+                    Prayer
+                </h3>
 
                 <p>
+
                     A dedicated time to seek God together
                     through prayer and intercession.
+
                 </p>
 
                 <span class="service-time">
@@ -1480,6 +2256,7 @@
 
     <div class="section-container">
 
+
         <div class="section-heading center reveal">
 
             <div class="section-label">
@@ -1491,8 +2268,10 @@
             </h2>
 
             <p>
+
                 We desire to build a Christ-centered
                 community where lives are transformed.
+
             </p>
 
         </div>
@@ -1507,11 +2286,15 @@
                     01
                 </div>
 
-                <h3>Faith</h3>
+                <h3>
+                    Faith
+                </h3>
 
                 <p>
+
                     We encourage people to build a strong
                     and meaningful relationship with God.
+
                 </p>
 
             </div>
@@ -1523,11 +2306,15 @@
                     02
                 </div>
 
-                <h3>Worship</h3>
+                <h3>
+                    Worship
+                </h3>
 
                 <p>
+
                     We gather to honor God through worship,
                     praise, prayer and His Word.
+
                 </p>
 
             </div>
@@ -1539,11 +2326,15 @@
                     03
                 </div>
 
-                <h3>Community</h3>
+                <h3>
+                    Community
+                </h3>
 
                 <p>
+
                     We believe in supporting, encouraging
                     and caring for one another.
+
                 </p>
 
             </div>
@@ -1571,14 +2362,18 @@
             </h2>
 
             <p>
+
                 Whatever you are facing, you don't have
                 to walk through it alone.
+
             </p>
 
         </div>
 
 
-        <a href="prayer.html" class="btn">
+        <a
+            href="prayer.html"
+            class="btn">
 
             Submit a Prayer Request
 
@@ -1616,8 +2411,11 @@
                 <i class="fa-solid fa-location-dot"></i>
 
                 <span>
+
                     Bulenga Gogonya<br>
+
                     Wakiso District, Uganda
+
                 </span>
 
             </div>
@@ -1634,7 +2432,9 @@
             </div>
 
 
-            <a href="contact.html" class="btn btn-primary">
+            <a
+                href="contact.html"
+                class="btn btn-primary">
 
                 Contact Us
 
@@ -1651,9 +2451,13 @@
 
                 <i class="fa-solid fa-map-location-dot"></i>
 
-                <h3>Bulenga Gogonya</h3>
+                <h3>
+                    Bulenga Gogonya
+                </h3>
 
-                <p>Wakiso District, Uganda</p>
+                <p>
+                    Wakiso District, Uganda
+                </p>
 
             </div>
 
@@ -1677,21 +2481,30 @@
 
         <div class="footer-brand">
 
+
+            <!-- CIRCULAR FOOTER LOGO -->
+
             <a href="index.html" class="logo">
 
-                <div class="logo-symbol">
-                    <i class="fa-solid fa-cross"></i>
-                </div>
+                <img
+                    src="keith.PNG"
+                    alt="Gospel Wonders Mission Church Logo"
+                >
 
                 <div class="logo-text">
 
-                    <strong>Gospel Wonders</strong>
+                    <strong>
+                        Gospel Wonders
+                    </strong>
 
-                    <span>Mission Church</span>
+                    <span>
+                        Mission Church
+                    </span>
 
                 </div>
 
             </a>
+
 
             <p>
 
@@ -1705,19 +2518,27 @@
             <div class="socials">
 
                 <a href="#" aria-label="Facebook">
+
                     <i class="fa-brands fa-facebook-f"></i>
+
                 </a>
 
                 <a href="#" aria-label="YouTube">
+
                     <i class="fa-brands fa-youtube"></i>
+
                 </a>
 
                 <a href="#" aria-label="Instagram">
+
                     <i class="fa-brands fa-instagram"></i>
+
                 </a>
 
                 <a href="#" aria-label="WhatsApp">
+
                     <i class="fa-brands fa-whatsapp"></i>
+
                 </a>
 
             </div>
@@ -1733,10 +2554,29 @@
 
             <ul class="footer-links">
 
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="ministries.html">Ministries</a></li>
-                <li><a href="sermons.html">Sermons</a></li>
-                <li><a href="events.html">Events</a></li>
+                <li>
+                    <a href="about.html">
+                        About Us
+                    </a>
+                </li>
+
+                <li>
+                    <a href="ministries.html">
+                        Ministries
+                    </a>
+                </li>
+
+                <li>
+                    <a href="sermons.html">
+                        Sermons
+                    </a>
+                </li>
+
+                <li>
+                    <a href="events.html">
+                        Events
+                    </a>
+                </li>
 
             </ul>
 
@@ -1751,9 +2591,23 @@
 
             <ul class="footer-links">
 
-                <li><a href="gallery.html">Gallery</a></li>
-                <li><a href="prayer.html">Prayer Request</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li>
+                    <a href="gallery.html">
+                        Gallery
+                    </a>
+                </li>
+
+                <li>
+                    <a href="prayer.html">
+                        Prayer Request
+                    </a>
+                </li>
+
+                <li>
+                    <a href="contact.html">
+                        Contact
+                    </a>
+                </li>
 
             </ul>
 
@@ -1797,13 +2651,20 @@
     <div class="footer-bottom">
 
         <span>
+
             © <span id="year"></span>
+
             Gospel Wonders Mission Church.
+
             All Rights Reserved.
+
         </span>
 
+
         <span>
+
             Built with Faith • Hope • Love
+
         </span>
 
     </div>
@@ -1811,9 +2672,13 @@
 </footer>
 
 
-<!-- BACK TO TOP -->
+<!-- =========================================================
+     BACK TO TOP
+========================================================= -->
 
-<button id="backTop" aria-label="Back to top">
+<button
+    id="backTop"
+    aria-label="Back to top">
 
     <i class="fa-solid fa-arrow-up"></i>
 
@@ -1826,82 +2691,99 @@
 
 <script>
 
-    /* =========================================================
-       LOADER
-    ========================================================= */
 
-    window.addEventListener("load", () => {
+/* =========================================================
+   LOADER
+========================================================= */
 
-        setTimeout(() => {
+window.addEventListener("load", () => {
 
-            document.getElementById("loader")
-                .classList.add("hide");
+    setTimeout(() => {
 
-        }, 700);
+        document
+            .getElementById("loader")
+            .classList.add("hide");
 
-    });
+    }, 700);
 
-
-    /* =========================================================
-       NAVIGATION
-    ========================================================= */
-
-    const navbar = document.getElementById("navbar");
-
-    window.addEventListener("scroll", () => {
-
-        if (window.scrollY > 50) {
-
-            navbar.classList.add("scrolled");
-
-        } else {
-
-            navbar.classList.remove("scrolled");
-
-        }
-
-    });
+});
 
 
-    /* =========================================================
-       MOBILE MENU
-    ========================================================= */
+/* =========================================================
+   NAVIGATION SCROLL EFFECT
+========================================================= */
 
-    const menuToggle = document.getElementById("menuToggle");
-    const navLinks = document.getElementById("navLinks");
+const navbar =
+    document.getElementById("navbar");
 
-    menuToggle.addEventListener("click", () => {
+window.addEventListener("scroll", () => {
 
-        navLinks.classList.toggle("open");
+    if (window.scrollY > 50) {
 
-        const icon = menuToggle.querySelector("i");
+        navbar.classList.add("scrolled");
 
-        if (navLinks.classList.contains("open")) {
+    } else {
 
-            icon.classList.remove("fa-bars");
-            icon.classList.add("fa-xmark");
+        navbar.classList.remove("scrolled");
 
-        } else {
+    }
 
-            icon.classList.remove("fa-xmark");
-            icon.classList.add("fa-bars");
-
-        }
-
-    });
+});
 
 
-    /* Close mobile menu */
+/* =========================================================
+   MOBILE MENU
+========================================================= */
 
-    document.querySelectorAll(".nav-links a").forEach(link => {
+const menuToggle =
+    document.getElementById("menuToggle");
+
+const navLinks =
+    document.getElementById("navLinks");
+
+
+menuToggle.addEventListener("click", () => {
+
+    navLinks.classList.toggle("open");
+
+    const icon =
+        menuToggle.querySelector("i");
+
+
+    if (navLinks.classList.contains("open")) {
+
+        icon.classList.remove("fa-bars");
+
+        icon.classList.add("fa-xmark");
+
+    } else {
+
+        icon.classList.remove("fa-xmark");
+
+        icon.classList.add("fa-bars");
+
+    }
+
+});
+
+
+/* =========================================================
+   CLOSE MOBILE MENU
+========================================================= */
+
+document
+    .querySelectorAll(".nav-links a")
+    .forEach(link => {
 
         link.addEventListener("click", () => {
 
             navLinks.classList.remove("open");
 
-            const icon = menuToggle.querySelector("i");
+            const icon =
+                menuToggle.querySelector("i");
 
             icon.classList.remove("fa-xmark");
+
             icon.classList.add("fa-bars");
 
         });
@@ -1909,96 +2791,120 @@
     });
 
 
-    /* =========================================================
-       SCROLL REVEAL
-    ========================================================= */
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
 
-    const revealElements =
-        document.querySelectorAll(".reveal");
+const revealElements =
+    document.querySelectorAll(".reveal");
 
-    const revealObserver =
-        new IntersectionObserver((entries) => {
+
+const revealObserver =
+    new IntersectionObserver(
+
+        (entries) => {
 
             entries.forEach(entry => {
 
                 if (entry.isIntersecting) {
 
-                    entry.target.classList.add("visible");
+                    entry.target
+                        .classList
+                        .add("visible");
 
-                    revealObserver.unobserve(entry.target);
+                    revealObserver
+                        .unobserve(entry.target);
 
                 }
 
             });
 
-        }, {
+        },
 
+        {
             threshold: 0.12
-
-        });
-
-
-    revealElements.forEach(element => {
-
-        revealObserver.observe(element);
-
-    });
-
-
-    /* =========================================================
-       BACK TO TOP
-    ========================================================= */
-
-    const backTop = document.getElementById("backTop");
-
-    window.addEventListener("scroll", () => {
-
-        if (window.scrollY > 500) {
-
-            backTop.classList.add("show");
-
-        } else {
-
-            backTop.classList.remove("show");
-
         }
 
+    );
+
+
+revealElements.forEach(element => {
+
+    revealObserver.observe(element);
+
+});
+
+
+/* =========================================================
+   BACK TO TOP
+========================================================= */
+
+const backTop =
+    document.getElementById("backTop");
+
+
+window.addEventListener("scroll", () => {
+
+    if (window.scrollY > 500) {
+
+        backTop.classList.add("show");
+
+    } else {
+
+        backTop.classList.remove("show");
+
+    }
+
+});
+
+
+backTop.addEventListener("click", () => {
+
+    window.scrollTo({
+
+        top: 0,
+
+        behavior: "smooth"
+
     });
 
-
-    backTop.addEventListener("click", () => {
-
-        window.scrollTo({
-
-            top: 0,
-            behavior: "smooth"
-
-        });
-
-    });
+});
 
 
-    /* =========================================================
-       CURRENT YEAR
-    ========================================================= */
+/* =========================================================
+   CURRENT YEAR
+========================================================= */
 
-    document.getElementById("year").textContent =
-        new Date().getFullYear();
+document.getElementById("year").textContent =
+    new Date().getFullYear();
 
 
-    /* =========================================================
-       ACTIVE NAVIGATION
-    ========================================================= */
+/* =========================================================
+   ACTIVE NAVIGATION
+========================================================= */
 
-    const currentPage =
-        window.location.pathname.split("/").pop() || "index.html";
+const currentPage =
+    window.location.pathname
+        .split("/")
+        .pop()
+        .toLowerCase() || "index.html";
 
-    document.querySelectorAll(".nav-links a").forEach(link => {
+
+document
+    .querySelectorAll(".nav-links a")
+    .forEach(link => {
 
         const href =
-            link.getAttribute("href");
+            link.getAttribute("href")
+                .toLowerCase();
 
         if (href === currentPage) {
+
+            document
+                .querySelectorAll(".nav-links a")
+                .forEach(item =>
+                    item.classList.remove("active")
+                );
 
             link.classList.add("active");
 
