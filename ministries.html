@@ -1,0 +1,1752 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Ministries | Gospel Wonders Mission Church</title>
+
+    <link rel="icon" href="icon.png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+
+        /* ==============================
+           GLOBAL
+        ============================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Inter", sans-serif;
+            background: #f8f8f6;
+            color: #14213d;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            width: 100%;
+            display: block;
+        }
+
+        :root {
+            --navy: #071a33;
+            --navy-light: #102a4c;
+            --gold: #d6a84f;
+            --gold-light: #f0cf7a;
+            --white: #ffffff;
+            --cream: #f8f8f6;
+            --text: #26364d;
+            --muted: #718096;
+        }
+
+        .container {
+            width: min(1150px, 90%);
+            margin: auto;
+        }
+
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 55px;
+        }
+
+        .section-title span {
+            color: var(--gold);
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .section-title h2 {
+            font-family: "Cormorant Garamond", serif;
+            font-size: clamp(42px, 5vw, 62px);
+            line-height: 1;
+            margin: 12px 0 18px;
+            color: var(--navy);
+        }
+
+        .section-title p {
+            color: var(--muted);
+            line-height: 1.8;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: .3s ease;
+            border: 1px solid transparent;
+        }
+
+        .btn-primary {
+            background: var(--gold);
+            color: var(--navy);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-4px);
+            background: var(--gold-light);
+            box-shadow: 0 12px 30px rgba(214,168,79,.25);
+        }
+
+        .btn-outline {
+            border-color: rgba(255,255,255,.5);
+            color: white;
+        }
+
+        .btn-outline:hover {
+            background: white;
+            color: var(--navy);
+        }
+
+
+        /* ==============================
+           LOADER
+        ============================== */
+
+        #loader {
+            position: fixed;
+            inset: 0;
+            background: var(--navy);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: .6s ease;
+        }
+
+        .loader-content {
+            text-align: center;
+            color: white;
+        }
+
+        .loader-cross {
+            width: 50px;
+            height: 70px;
+            margin: auto;
+            position: relative;
+        }
+
+        .loader-cross::before {
+            content: "";
+            position: absolute;
+            width: 12px;
+            height: 65px;
+            background: var(--gold);
+            left: 19px;
+        }
+
+        .loader-cross::after {
+            content: "";
+            position: absolute;
+            width: 42px;
+            height: 12px;
+            background: var(--gold);
+            top: 17px;
+            left: 4px;
+        }
+
+        .loader-content p {
+            margin-top: 20px;
+            letter-spacing: 3px;
+            font-size: 12px;
+        }
+
+
+        /* ==============================
+           ANNOUNCEMENT BAR
+        ============================== */
+
+        .announcement {
+            background: var(--gold);
+            color: var(--navy);
+            padding: 9px 20px;
+            text-align: center;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+
+        /* ==============================
+           NAVBAR
+        ============================== */
+
+        .navbar {
+            position: fixed;
+            top: 38px;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 18px 0;
+            transition: .3s ease;
+        }
+
+        .navbar.scrolled {
+            top: 0;
+            background: rgba(7,26,51,.96);
+            backdrop-filter: blur(15px);
+            box-shadow: 0 8px 30px rgba(0,0,0,.15);
+        }
+
+        .nav-inner {
+            width: min(1150px, 90%);
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: white;
+            font-family: "Cormorant Garamond", serif;
+            font-size: 25px;
+            font-weight: 700;
+        }
+
+        .logo i {
+            color: var(--gold);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: rgba(255,255,255,.85);
+            font-size: 14px;
+            font-weight: 500;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            bottom: -7px;
+            left: 0;
+            transition: .3s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: white;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .menu-btn {
+            display: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+
+        /* ==============================
+           HERO
+        ============================== */
+
+        .page-hero {
+            min-height: 75vh;
+            background:
+                linear-gradient(rgba(7,26,51,.78), rgba(7,26,51,.85)),
+                url("church-ministries.jpg") center/cover no-repeat;
+
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-hero::before {
+            content: "";
+            position: absolute;
+            width: 450px;
+            height: 450px;
+            border: 1px solid rgba(214,168,79,.25);
+            border-radius: 50%;
+            right: -150px;
+            top: -100px;
+        }
+
+        .page-hero::after {
+            content: "";
+            position: absolute;
+            width: 250px;
+            height: 250px;
+            border: 1px solid rgba(214,168,79,.18);
+            border-radius: 50%;
+            left: -100px;
+            bottom: -100px;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            color: white;
+            max-width: 760px;
+        }
+
+        .hero-content span {
+            color: var(--gold-light);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .hero-content h1 {
+            font-family: "Cormorant Garamond", serif;
+            font-size: clamp(55px, 8vw, 90px);
+            line-height: .95;
+            margin: 18px 0 25px;
+        }
+
+        .hero-content p {
+            max-width: 650px;
+            color: rgba(255,255,255,.8);
+            line-height: 1.8;
+            font-size: 16px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 14px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+
+        /* ==============================
+           INTRO
+        ============================== */
+
+        .intro {
+            background: white;
+        }
+
+        .intro-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .intro-image {
+            position: relative;
+        }
+
+        .intro-image img {
+            height: 500px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .image-label {
+            position: absolute;
+            right: -25px;
+            bottom: 30px;
+            background: var(--gold);
+            color: var(--navy);
+            padding: 22px 25px;
+            border-radius: 8px;
+            font-weight: 700;
+            box-shadow: 0 15px 35px rgba(0,0,0,.15);
+        }
+
+        .intro-text span {
+            color: var(--gold);
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .intro-text h2 {
+            font-family: "Cormorant Garamond", serif;
+            font-size: 55px;
+            line-height: 1;
+            margin: 15px 0 22px;
+        }
+
+        .intro-text p {
+            color: var(--muted);
+            line-height: 1.9;
+            margin-bottom: 18px;
+        }
+
+
+        /* ==============================
+           MINISTRY CARDS
+        ============================== */
+
+        .ministries {
+            background: var(--cream);
+        }
+
+        .ministry-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .ministry-card {
+            background: white;
+            padding: 38px 30px;
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(7,26,51,.06);
+            transition: .4s ease;
+        }
+
+        .ministry-card::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 4px;
+            background: var(--gold);
+            left: 0;
+            top: 0;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: .4s;
+        }
+
+        .ministry-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(7,26,51,.12);
+        }
+
+        .ministry-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .ministry-icon {
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            background: rgba(214,168,79,.14);
+            color: var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 25px;
+            margin-bottom: 25px;
+            transition: .4s;
+        }
+
+        .ministry-card:hover .ministry-icon {
+            background: var(--gold);
+            color: var(--navy);
+            transform: rotateY(180deg);
+        }
+
+        .ministry-card h3 {
+            font-family: "Cormorant Garamond", serif;
+            font-size: 30px;
+            margin-bottom: 12px;
+            color: var(--navy);
+        }
+
+        .ministry-card p {
+            color: var(--muted);
+            line-height: 1.8;
+            font-size: 14px;
+        }
+
+        .ministry-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--gold);
+            font-size: 13px;
+            font-weight: 700;
+            margin-top: 20px;
+        }
+
+        .ministry-link i {
+            transition: .3s;
+        }
+
+        .ministry-card:hover .ministry-link i {
+            transform: translateX(6px);
+        }
+
+
+        /* ==============================
+           SCRIPTURE
+        ============================== */
+
+        .scripture {
+            padding: 110px 20px;
+            text-align: center;
+            color: white;
+            background:
+                linear-gradient(rgba(7,26,51,.9), rgba(7,26,51,.94)),
+                url("church-verse.jpg") center/cover fixed;
+        }
+
+        .scripture-icon {
+            color: var(--gold);
+            font-size: 30px;
+            margin-bottom: 25px;
+        }
+
+        .scripture blockquote {
+            max-width: 850px;
+            margin: auto;
+            font-family: "Cormorant Garamond", serif;
+            font-size: clamp(30px, 5vw, 48px);
+            line-height: 1.2;
+        }
+
+        .scripture cite {
+            display: block;
+            margin-top: 25px;
+            color: var(--gold-light);
+            font-style: normal;
+            font-family: "Inter", sans-serif;
+            font-size: 13px;
+            letter-spacing: 2px;
+        }
+
+
+        /* ==============================
+           INVOLVEMENT
+        ============================== */
+
+        .involvement {
+            background: white;
+        }
+
+        .involvement-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .involvement-card {
+            padding: 35px;
+            border: 1px solid #e8e8e8;
+            border-radius: 10px;
+            text-align: center;
+            transition: .3s;
+        }
+
+        .involvement-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-7px);
+        }
+
+        .involvement-card i {
+            color: var(--gold);
+            font-size: 32px;
+            margin-bottom: 18px;
+        }
+
+        .involvement-card h3 {
+            font-family: "Cormorant Garamond", serif;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .involvement-card p {
+            color: var(--muted);
+            line-height: 1.7;
+            font-size: 14px;
+        }
+
+
+        /* ==============================
+           CTA
+        ============================== */
+
+        .cta {
+            padding: 90px 0;
+            background: var(--navy);
+            color: white;
+        }
+
+        .cta-box {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+        }
+
+        .cta-text span {
+            color: var(--gold);
+            font-size: 13px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        .cta-text h2 {
+            font-family: "Cormorant Garamond", serif;
+            font-size: 50px;
+            line-height: 1;
+            margin-top: 12px;
+        }
+
+        .cta-text p {
+            margin-top: 15px;
+            color: rgba(255,255,255,.7);
+        }
+
+
+        /* ==============================
+           FOOTER
+        ============================== */
+
+        footer {
+            background: #041225;
+            color: white;
+            padding: 65px 0 25px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr 1fr;
+            gap: 50px;
+            padding-bottom: 45px;
+            border-bottom: 1px solid rgba(255,255,255,.1);
+        }
+
+        .footer-brand h3 {
+            font-family: "Cormorant Garamond", serif;
+            font-size: 32px;
+        }
+
+        .footer-brand p {
+            color: rgba(255,255,255,.6);
+            line-height: 1.8;
+            margin-top: 15px;
+            max-width: 430px;
+        }
+
+        footer h4 {
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,.65);
+            font-size: 14px;
+            transition: .3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+            transform: translateX(4px);
+        }
+
+        .socials {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .socials a {
+            width: 40px;
+            height: 40px;
+            border: 1px solid rgba(255,255,255,.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: .3s;
+        }
+
+        .socials a:hover {
+            background: var(--gold);
+            color: var(--navy);
+            transform: translateY(-4px);
+        }
+
+        .copyright {
+            text-align: center;
+            color: rgba(255,255,255,.45);
+            padding-top: 25px;
+            font-size: 13px;
+        }
+
+
+        /* ==============================
+           BACK TO TOP
+        ============================== */
+
+        #topBtn {
+            position: fixed;
+            right: 25px;
+            bottom: 25px;
+            width: 48px;
+            height: 48px;
+            border: none;
+            border-radius: 50%;
+            background: var(--gold);
+            color: var(--navy);
+            cursor: pointer;
+            display: none;
+            z-index: 999;
+            font-size: 18px;
+            box-shadow: 0 10px 25px rgba(0,0,0,.2);
+        }
+
+
+        /* ==============================
+           REVEAL ANIMATION
+        ============================== */
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(35px);
+            transition: .8s ease;
+        }
+
+        .reveal.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+
+        /* ==============================
+           RESPONSIVE
+        ============================== */
+
+        @media(max-width: 900px) {
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 280px;
+                height: 100vh;
+                background: var(--navy);
+                flex-direction: column;
+                padding: 110px 35px 40px;
+                gap: 25px;
+                transition: .4s;
+                box-shadow: -10px 0 40px rgba(0,0,0,.2);
+            }
+
+            .nav-links.open {
+                right: 0;
+            }
+
+            .menu-btn {
+                display: block;
+            }
+
+            .ministry-grid,
+            .involvement-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .intro-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .intro-image {
+                max-width: 700px;
+            }
+
+            .cta-box {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media(max-width: 600px) {
+
+            .announcement {
+                font-size: 11px;
+            }
+
+            .navbar {
+                top: 34px;
+            }
+
+            .page-hero {
+                min-height: 70vh;
+            }
+
+            .hero-content h1 {
+                font-size: 58px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .ministry-grid,
+            .involvement-grid,
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 75px 0;
+            }
+
+            .intro-image img {
+                height: 390px;
+            }
+
+            .image-label {
+                right: 15px;
+                bottom: 15px;
+            }
+
+            .intro-text h2,
+            .cta-text h2 {
+                font-size: 42px;
+            }
+
+            .scripture {
+                padding: 80px 20px;
+            }
+
+            .scripture blockquote {
+                font-size: 32px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+
+    <!-- ==============================
+         LOADER
+    ============================== -->
+
+    <div id="loader">
+        <div class="loader-content">
+
+            <div class="loader-cross"></div>
+
+            <p>GOSPEL WONDERS MISSION</p>
+
+        </div>
+    </div>
+
+
+    <!-- ==============================
+         ANNOUNCEMENT
+    ============================== -->
+
+    <div class="announcement">
+        <i class="fa-solid fa-cross"></i>
+        &nbsp; Welcome to Gospel Wonders Mission Church
+    </div>
+
+
+    <!-- ==============================
+         NAVBAR
+    ============================== -->
+
+    <nav class="navbar">
+
+        <div class="nav-inner">
+
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-cross"></i>
+                Gospel Wonders
+            </a>
+
+            <ul class="nav-links" id="navLinks">
+
+                <li>
+                    <a href="index.html">Home</a>
+                </li>
+
+                <li>
+                    <a href="about.html">About</a>
+                </li>
+
+                <li>
+                    <a href="ministries.html" class="active">
+                        Ministries
+                    </a>
+                </li>
+
+                <li>
+                    <a href="sermons.html">Sermons</a>
+                </li>
+
+                <li>
+                    <a href="gallery.html">Gallery</a>
+                </li>
+
+                <li>
+                    <a href="contact.html">Contact</a>
+                </li>
+
+            </ul>
+
+            <div class="menu-btn" id="menuBtn">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+
+        </div>
+
+    </nav>
+
+
+    <!-- ==============================
+         HERO
+    ============================== -->
+
+    <header class="page-hero">
+
+        <div class="container">
+
+            <div class="hero-content reveal">
+
+                <span>Serving • Growing • Reaching</span>
+
+                <h1>
+                    Our Ministries
+                </h1>
+
+                <p>
+                    Discover the different ways we serve God, build
+                    faith, strengthen families, and reach our community
+                    with the love of Jesus Christ.
+                </p>
+
+                <div class="hero-buttons">
+
+                    <a href="#ministries" class="btn btn-primary">
+                        Explore Ministries
+                        <i class="fa-solid fa-arrow-down"></i>
+                    </a>
+
+                    <a href="contact.html" class="btn btn-outline">
+                        Get Involved
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- ==============================
+         INTRO
+    ============================== -->
+
+    <section class="section intro">
+
+        <div class="container">
+
+            <div class="intro-grid">
+
+                <div class="intro-image reveal">
+
+                    <img
+                        src="church-ministries.jpg"
+                        alt="Church ministry">
+
+                    <div class="image-label">
+                        <i class="fa-solid fa-hands-praying"></i>
+                        &nbsp; Serving Together
+                    </div>
+
+                </div>
+
+
+                <div class="intro-text reveal">
+
+                    <span>One Church • Many Ways to Serve</span>
+
+                    <h2>
+                        There Is A Place For You
+                    </h2>
+
+                    <p>
+                        Ministry is more than attending church. It is
+                        using our gifts, time, talents and compassion
+                        to make a positive difference in the lives of
+                        others.
+                    </p>
+
+                    <p>
+                        At Gospel Wonders Mission Church, our ministries
+                        provide opportunities for people of different
+                        ages and backgrounds to grow spiritually, build
+                        meaningful relationships and serve others.
+                    </p>
+
+                    <a href="#ministries" class="btn btn-primary">
+                        Discover More
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==============================
+         MINISTRIES
+    ============================== -->
+
+    <section class="section ministries" id="ministries">
+
+        <div class="container">
+
+            <div class="section-title reveal">
+
+                <span>Our Areas of Ministry</span>
+
+                <h2>
+                    Serving With Purpose
+                </h2>
+
+                <p>
+                    Explore our ministry areas and discover where
+                    you can grow, connect and serve.
+                </p>
+
+            </div>
+
+
+            <div class="ministry-grid">
+
+
+                <!-- CARD 1 -->
+
+                <div class="ministry-card reveal">
+
+                    <div class="ministry-icon">
+                        <i class="fa-solid fa-person-praying"></i>
+                    </div>
+
+                    <h3>
+                        Prayer Ministry
+                    </h3>
+
+                    <p>
+                        A place where believers come together in prayer,
+                        seeking God's guidance, strength and blessings
+                        for individuals, families and the community.
+                    </p>
+
+                    <a href="prayer.html" class="ministry-link">
+                        Prayer Requests
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+
+                <!-- CARD 2 -->
+
+                <div class="ministry-card reveal">
+
+                    <div class="ministry-icon">
+                        <i class="fa-solid fa-child"></i>
+                    </div>
+
+                    <h3>
+                        Children's Ministry
+                    </h3>
+
+                    <p>
+                        Helping children discover God's love through
+                        age-appropriate Bible teaching, activities,
+                        worship and positive Christian relationships.
+                    </p>
+
+                    <a href="contact.html" class="ministry-link">
+                        Learn More
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+
+                <!-- CARD 3 -->
+
+                <div class="ministry-card reveal">
+
+                    <div class="ministry-icon">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+
+                    <h3>
+                        Youth Ministry
+                    </h3>
+
+                    <p>
+                        Encouraging young people to grow in faith,
+                        develop positive values, discover their gifts
+                        and make a difference in their generation.
+                    </p>
+
+                    <a href="contact.html" class="ministry-link">
+                        Join Us
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+
+                <!-- CARD 4 -->
+
+                <div class="ministry-card reveal">
+
+                    <div class="ministry-icon">
+                        <i class="fa-solid fa-house"></i>
+                    </div>
+
+                    <h3>
+                        Family Ministry
+                    </h3>
+
+                    <p>
+                        Supporting families through fellowship,
+                        encouragement, biblical teaching and practical
+                        guidance for stronger homes.
+                    </p>
+
+                    <a href="contact.html" class="ministry-link">
+                        Connect
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+
+                <!-- CARD 5 -->
+
+                <div class="ministry-card reveal">
+
+                    <div class="ministry-icon">
+                        <i class="fa-solid fa-music"></i>
+                    </div>
+
+                    <h3>
+                        Worship Ministry
+                    </h3>
+
+                    <p>
+                        Using music, singing and creative expression
+                        to lead the congregation into meaningful
+                        worship and praise.
+                    </p>
+
+                    <a href="contact.html" class="ministry-link">
+                        Get Involved
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+
+                <!-- CARD 6 -->
+
+                <div class="ministry-card reveal">
+
+                    <div class="ministry-icon">
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+
+                    <h3>
+                        Community Outreach
+                    </h3>
+
+                    <p>
+                        Taking the message of Christ beyond the church
+                        through compassion, service, encouragement and
+                        practical support for people in our community.
+                    </p>
+
+                    <a href="contact.html" class="ministry-link">
+                        Serve Others
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+
+                <!-- CARD 7 -->
+
+                <div class="ministry-card reveal">
+
+                    <div class="ministry-icon">
+                        <i class="fa-solid fa-book-bible"></i>
+                    </div>
+
+                    <h3>
+                        Bible Study
+                    </h3>
+
+                    <p>
+                        Creating opportunities to study Scripture,
+                        ask questions, strengthen understanding and
+                        apply God's Word to everyday life.
+                    </p>
+
+                    <a href="sermons.html" class="ministry-link">
+                        Explore Teaching
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+
+                <!-- CARD 8 -->
+
+                <div class="ministry-card reveal">
+
+                    <div class="ministry-icon">
+                        <i class="fa-solid fa-handshake-angle"></i>
+                    </div>
+
+                    <h3>
+                        Fellowship Ministry
+                    </h3>
+
+                    <p>
+                        Building genuine Christian friendships through
+                        fellowship, shared experiences, encouragement
+                        and a welcoming church family.
+                    </p>
+
+                    <a href="contact.html" class="ministry-link">
+                        Connect With Us
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+
+                <!-- CARD 9 -->
+
+                <div class="ministry-card reveal">
+
+                    <div class="ministry-icon">
+                        <i class="fa-solid fa-bullhorn"></i>
+                    </div>
+
+                    <h3>
+                        Evangelism
+                    </h3>
+
+                    <p>
+                        Sharing the Good News of Jesus Christ and
+                        encouraging people to discover the hope,
+                        grace and transformation found in Him.
+                    </p>
+
+                    <a href="contact.html" class="ministry-link">
+                        Get Involved
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==============================
+         SCRIPTURE
+    ============================== -->
+
+    <section class="scripture">
+
+        <div class="container">
+
+            <div class="scripture-icon">
+                <i class="fa-solid fa-book-open"></i>
+            </div>
+
+            <blockquote>
+                “As each has received a gift, use it to serve one another.”
+            </blockquote>
+
+            <cite>
+                1 Peter 4:10
+            </cite>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==============================
+         GET INVOLVED
+    ============================== -->
+
+    <section class="section involvement">
+
+        <div class="container">
+
+            <div class="section-title reveal">
+
+                <span>Take The Next Step</span>
+
+                <h2>
+                    Get Involved
+                </h2>
+
+                <p>
+                    Everyone has something valuable to contribute.
+                    Find a way to connect and serve.
+                </p>
+
+            </div>
+
+
+            <div class="involvement-grid">
+
+                <div class="involvement-card reveal">
+
+                    <i class="fa-solid fa-user-plus"></i>
+
+                    <h3>
+                        Connect
+                    </h3>
+
+                    <p>
+                        Become part of our church community and
+                        build meaningful relationships.
+                    </p>
+
+                </div>
+
+
+                <div class="involvement-card reveal">
+
+                    <i class="fa-solid fa-hand-holding-heart"></i>
+
+                    <h3>
+                        Serve
+                    </h3>
+
+                    <p>
+                        Use your gifts and abilities to serve God
+                        and bless other people.
+                    </p>
+
+                </div>
+
+
+                <div class="involvement-card reveal">
+
+                    <i class="fa-solid fa-seedling"></i>
+
+                    <h3>
+                        Grow
+                    </h3>
+
+                    <p>
+                        Grow spiritually through God's Word,
+                        prayer, worship and fellowship.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==============================
+         CTA
+    ============================== -->
+
+    <section class="cta">
+
+        <div class="container">
+
+            <div class="cta-box">
+
+                <div class="cta-text reveal">
+
+                    <span>Be Part Of The Journey</span>
+
+                    <h2>
+                        Find Your Place.
+                        Serve With Love.
+                    </h2>
+
+                    <p>
+                        We would love to welcome you into our church
+                        family and help you find a ministry where you
+                        can grow and serve.
+                    </p>
+
+                </div>
+
+                <a href="contact.html" class="btn btn-primary">
+                    Contact Us
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==============================
+         FOOTER
+    ============================== -->
+
+    <footer>
+
+        <div class="container">
+
+            <div class="footer-grid">
+
+
+                <div class="footer-brand">
+
+                    <h3>
+                        Gospel Wonders Mission
+                    </h3>
+
+                    <p>
+                        A Christian church located in the Bulenga
+                        Gogonya area of Wakiso District, Uganda.
+                        A place to worship, grow, connect and serve.
+                    </p>
+
+                    <div class="socials">
+
+                        <a href="#" aria-label="Facebook">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+
+                        <a href="#" aria-label="Instagram">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+
+                        <a href="#" aria-label="YouTube">
+                            <i class="fa-brands fa-youtube"></i>
+                        </a>
+
+                        <a href="#" aria-label="WhatsApp">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <div>
+
+                    <h4>
+                        Quick Links
+                    </h4>
+
+                    <div class="footer-links">
+
+                        <a href="index.html">Home</a>
+                        <a href="about.html">About Us</a>
+                        <a href="ministries.html">Ministries</a>
+                        <a href="sermons.html">Sermons</a>
+                        <a href="gallery.html">Gallery</a>
+
+                    </div>
+
+                </div>
+
+
+                <div>
+
+                    <h4>
+                        Connect
+                    </h4>
+
+                    <div class="footer-links">
+
+                        <a href="prayer.html">Prayer Request</a>
+                        <a href="contact.html">Contact Us</a>
+                        <a href="location.html">Our Location</a>
+                        <a href="join.html">Join Us</a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="copyright">
+
+                © <span id="year"></span>
+                Gospel Wonders Mission Church.
+                All Rights Reserved.
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- BACK TO TOP -->
+
+    <button id="topBtn" aria-label="Back to top">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+
+    <!-- ==============================
+         JAVASCRIPT
+    ============================== -->
+
+    <script>
+
+        /* ==========================
+           LOADER
+        ========================== */
+
+        window.addEventListener("load", () => {
+
+            const loader = document.getElementById("loader");
+
+            setTimeout(() => {
+
+                loader.style.opacity = "0";
+
+                setTimeout(() => {
+                    loader.style.display = "none";
+                }, 600);
+
+            }, 500);
+
+        });
+
+
+        /* ==========================
+           NAVBAR
+        ========================== */
+
+        const navbar = document.querySelector(".navbar");
+
+        window.addEventListener("scroll", () => {
+
+            if (window.scrollY > 50) {
+                navbar.classList.add("scrolled");
+            } else {
+                navbar.classList.remove("scrolled");
+            }
+
+        });
+
+
+        /* ==========================
+           MOBILE MENU
+        ========================== */
+
+        const menuBtn = document.getElementById("menuBtn");
+        const navLinks = document.getElementById("navLinks");
+
+        menuBtn.addEventListener("click", () => {
+
+            navLinks.classList.toggle("open");
+
+            const icon = menuBtn.querySelector("i");
+
+            if (navLinks.classList.contains("open")) {
+
+                icon.classList.remove("fa-bars");
+                icon.classList.add("fa-xmark");
+
+            } else {
+
+                icon.classList.remove("fa-xmark");
+                icon.classList.add("fa-bars");
+
+            }
+
+        });
+
+
+        /* Close mobile menu */
+
+        document.querySelectorAll(".nav-links a").forEach(link => {
+
+            link.addEventListener("click", () => {
+
+                navLinks.classList.remove("open");
+
+                const icon = menuBtn.querySelector("i");
+
+                icon.classList.remove("fa-xmark");
+                icon.classList.add("fa-bars");
+
+            });
+
+        });
+
+
+        /* ==========================
+           SCROLL REVEAL
+        ========================== */
+
+        const revealElements =
+            document.querySelectorAll(".reveal");
+
+        const revealObserver =
+            new IntersectionObserver((entries) => {
+
+                entries.forEach(entry => {
+
+                    if (entry.isIntersecting) {
+
+                        entry.target.classList.add("show");
+
+                        revealObserver.unobserve(entry.target);
+
+                    }
+
+                });
+
+            }, {
+                threshold: 0.12
+            });
+
+
+        revealElements.forEach(element => {
+            revealObserver.observe(element);
+        });
+
+
+        /* ==========================
+           BACK TO TOP
+        ========================== */
+
+        const topBtn = document.getElementById("topBtn");
+
+        window.addEventListener("scroll", () => {
+
+            if (window.scrollY > 500) {
+
+                topBtn.style.display = "flex";
+                topBtn.style.alignItems = "center";
+                topBtn.style.justifyContent = "center";
+
+            } else {
+
+                topBtn.style.display = "none";
+
+            }
+
+        });
+
+
+        topBtn.addEventListener("click", () => {
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+
+        });
+
+
+        /* ==========================
+           CURRENT YEAR
+        ========================== */
+
+        document.getElementById("year").textContent =
+            new Date().getFullYear();
+
+
+        /* ==========================
+           MINISTRY CARD STAGGER
+        ========================== */
+
+        const cards =
+            document.querySelectorAll(".ministry-card");
+
+        cards.forEach((card, index) => {
+
+            card.style.transitionDelay =
+                `${index * 70}ms`;
+
+        });
+
+    </script>
+
+</body>
+</html>
+```
