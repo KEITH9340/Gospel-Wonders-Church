@@ -1,0 +1,2729 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Gallery | Gospel Wonders Mission Church</title>
+
+<link rel="icon" href="keith.PNG">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+
+<style>
+
+/* =====================================================
+   ROOT
+===================================================== */
+
+:root {
+
+    --navy: #07111f;
+    --navy-light: #0d1c2e;
+    --navy-dark: #040b14;
+
+    --gold: #d7ad55;
+    --gold-light: #f0cf7a;
+
+    --white: #ffffff;
+    --text: #d7dde5;
+    --muted: #9da8b5;
+
+    --border: rgba(215,173,85,.25);
+
+}
+
+
+/* =====================================================
+   RESET
+===================================================== */
+
+* {
+
+    margin: 0;
+    padding: 0;
+
+    box-sizing: border-box;
+
+}
+
+
+html {
+
+    scroll-behavior: smooth;
+
+}
+
+
+body {
+
+    font-family: 'Inter', sans-serif;
+
+    background: var(--navy);
+
+    color: var(--white);
+
+    overflow-x: hidden;
+
+}
+
+
+a {
+
+    text-decoration: none;
+
+    color: inherit;
+
+}
+
+
+img {
+
+    max-width: 100%;
+
+    display: block;
+
+}
+
+
+/* =====================================================
+   ANNOUNCEMENT
+===================================================== */
+
+.announcement {
+
+    height: 38px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    background: var(--gold);
+
+    color: var(--navy);
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    letter-spacing: .5px;
+
+}
+
+
+.announcement i {
+
+    font-size: 14px;
+
+}
+
+
+/* =====================================================
+   NAVBAR
+===================================================== */
+
+.navbar {
+
+    position: fixed;
+
+    top: 38px;
+    left: 0;
+
+    width: 100%;
+    height: 76px;
+
+    z-index: 1000;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 0 7%;
+
+    background: rgba(7,17,31,.72);
+
+    backdrop-filter: blur(16px);
+
+    -webkit-backdrop-filter: blur(16px);
+
+    border-bottom:
+        1px solid rgba(255,255,255,.06);
+
+    transition: .35s ease;
+
+}
+
+
+.navbar.scrolled {
+
+    background: rgba(7,17,31,.97);
+
+    box-shadow:
+        0 8px 35px rgba(0,0,0,.35);
+
+}
+
+
+/* =====================================================
+   LOGO
+===================================================== */
+
+.logo {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+}
+
+
+.logo img {
+
+    width: 45px;
+    height: 45px;
+
+    object-fit: cover;
+
+    display: block;
+
+    border-radius: 50%;
+
+    border: 2px solid var(--gold);
+
+    padding: 2px;
+
+    background: var(--navy);
+
+    transition: .3s ease;
+
+}
+
+
+.logo:hover img {
+
+    transform: scale(1.08);
+
+    box-shadow:
+        0 0 18px rgba(215,173,85,.35);
+
+}
+
+
+.logo-text {
+
+    display: flex;
+
+    flex-direction: column;
+
+    line-height: 1;
+
+}
+
+
+.logo-text strong {
+
+    color: var(--gold);
+
+    font-family:
+        'Cormorant Garamond', serif;
+
+    font-size: 25px;
+
+    font-weight: 700;
+
+}
+
+
+.logo-text span {
+
+    color: var(--white);
+
+    font-size: 8px;
+
+    letter-spacing: 3px;
+
+    margin-top: 5px;
+
+}
+
+
+/* =====================================================
+   NAVIGATION
+===================================================== */
+
+.nav-links {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 30px;
+
+}
+
+
+.nav-links a {
+
+    position: relative;
+
+    color: #e7ebef;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    transition: .3s ease;
+
+}
+
+
+.nav-links a::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: -8px;
+
+    width: 0;
+    height: 2px;
+
+    background: var(--gold);
+
+    transition: .3s ease;
+
+}
+
+
+.nav-links a:hover,
+.nav-links a.active {
+
+    color: var(--gold);
+
+}
+
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+
+    width: 100%;
+
+}
+
+
+/* =====================================================
+   DONATE
+===================================================== */
+
+.donate-btn {
+
+    padding: 11px 20px;
+
+    border-radius: 30px;
+
+    background: var(--gold);
+
+    color: var(--navy) !important;
+
+    font-weight: 800 !important;
+
+}
+
+
+.donate-btn:hover {
+
+    background: var(--gold-light);
+
+    transform: translateY(-2px);
+
+}
+
+
+/* =====================================================
+   MOBILE MENU
+===================================================== */
+
+.menu-toggle {
+
+    display: none;
+
+    color: var(--gold);
+
+    font-size: 24px;
+
+    cursor: pointer;
+
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero {
+
+    min-height: 70vh;
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 150px 7% 90px;
+
+    background:
+
+        linear-gradient(
+            rgba(7,17,31,.70),
+            rgba(7,17,31,.94)
+        ),
+
+        url("church-gallery.jpg")
+        center/cover no-repeat;
+
+}
+
+
+.hero::before,
+.hero::after {
+
+    content: "";
+
+    position: absolute;
+
+    border:
+        1px solid rgba(215,173,85,.22);
+
+    border-radius: 50%;
+
+}
+
+
+.hero::before {
+
+    width: 300px;
+    height: 300px;
+
+    left: -130px;
+    top: 15%;
+
+}
+
+
+.hero::after {
+
+    width: 230px;
+    height: 230px;
+
+    right: -90px;
+    bottom: 8%;
+
+}
+
+
+.hero-content {
+
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 850px;
+
+}
+
+
+.hero small {
+
+    color: var(--gold);
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    letter-spacing: 4px;
+
+    text-transform: uppercase;
+
+}
+
+
+.hero h1 {
+
+    font-family:
+        'Cormorant Garamond', serif;
+
+    font-size:
+        clamp(55px,8vw,95px);
+
+    line-height: .9;
+
+    margin: 18px 0;
+
+}
+
+
+.hero h1 span {
+
+    color: var(--gold);
+
+}
+
+
+.hero p {
+
+    max-width: 650px;
+
+    margin: auto;
+
+    color: var(--text);
+
+    font-size: 16px;
+
+    line-height: 1.8;
+
+}
+
+
+/* =====================================================
+   SECTION
+===================================================== */
+
+.section {
+
+    padding: 100px 7%;
+
+}
+
+
+.section-heading {
+
+    max-width: 750px;
+
+    margin:
+        0 auto 50px;
+
+    text-align: center;
+
+}
+
+
+.section-heading small {
+
+    color: var(--gold);
+
+    text-transform: uppercase;
+
+    letter-spacing: 4px;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+}
+
+
+.section-heading h2 {
+
+    font-family:
+        'Cormorant Garamond', serif;
+
+    font-size:
+        clamp(40px,5vw,62px);
+
+    margin: 10px 0;
+
+}
+
+
+.section-heading p {
+
+    color: var(--muted);
+
+    line-height: 1.8;
+
+}
+
+
+/* =====================================================
+   FILTERS
+===================================================== */
+
+.filters {
+
+    display: flex;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 12px;
+
+    margin-bottom: 50px;
+
+}
+
+
+.filter-btn {
+
+    border:
+        1px solid var(--border);
+
+    background: transparent;
+
+    color: var(--text);
+
+    padding: 11px 22px;
+
+    border-radius: 30px;
+
+    cursor: pointer;
+
+    font-family: inherit;
+
+    font-weight: 600;
+
+    transition: .3s ease;
+
+}
+
+
+.filter-btn:hover,
+.filter-btn.active {
+
+    background: var(--gold);
+
+    color: var(--navy);
+
+    border-color: var(--gold);
+
+}
+
+
+/* =====================================================
+   GALLERY GRID
+===================================================== */
+
+.gallery-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap: 22px;
+
+}
+
+
+/* =====================================================
+   GALLERY ITEM
+===================================================== */
+
+.gallery-item {
+
+    position: relative;
+
+    height: 320px;
+
+    overflow: hidden;
+
+    border-radius: 18px;
+
+    background: var(--navy-light);
+
+    border:
+        1px solid rgba(255,255,255,.07);
+
+    cursor: pointer;
+
+    transition: .35s ease;
+
+}
+
+
+.gallery-item:hover {
+
+    transform: translateY(-7px);
+
+    border-color: var(--border);
+
+    box-shadow:
+        0 20px 45px rgba(0,0,0,.35);
+
+}
+
+
+.gallery-item img {
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: .6s ease;
+
+}
+
+
+.gallery-item:hover img {
+
+    transform: scale(1.08);
+
+}
+
+
+/* =====================================================
+   OVERLAY
+===================================================== */
+
+.gallery-overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: flex-end;
+
+    padding: 25px;
+
+    background:
+        linear-gradient(
+            transparent 35%,
+            rgba(4,11,20,.95)
+        );
+
+    opacity: 0;
+
+    transition: .35s ease;
+
+}
+
+
+.gallery-item:hover
+.gallery-overlay {
+
+    opacity: 1;
+
+}
+
+
+.gallery-overlay span {
+
+    color: var(--gold);
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    text-transform: uppercase;
+
+    letter-spacing: 2px;
+
+}
+
+
+.gallery-overlay h3 {
+
+    font-family:
+        'Cormorant Garamond', serif;
+
+    font-size: 28px;
+
+    margin-top: 5px;
+
+}
+
+
+.view-icon {
+
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    transform:
+        translate(-50%,-50%)
+        scale(.7);
+
+    width: 55px;
+    height: 55px;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 50%;
+
+    background: var(--gold);
+
+    color: var(--navy);
+
+    opacity: 0;
+
+    transition: .35s ease;
+
+}
+
+
+.gallery-item:hover
+.view-icon {
+
+    opacity: 1;
+
+    transform:
+        translate(-50%,-50%)
+        scale(1);
+
+}
+
+
+/* =====================================================
+   FEATURED WIDE IMAGE
+===================================================== */
+
+.gallery-item.wide {
+
+    grid-column: span 2;
+
+}
+
+
+/* =====================================================
+   LIGHTBOX
+===================================================== */
+
+.lightbox {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 2000;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 30px;
+
+    background:
+        rgba(0,0,0,.94);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transition: .3s ease;
+
+}
+
+
+.lightbox.active {
+
+    opacity: 1;
+
+    visibility: visible;
+
+}
+
+
+.lightbox img {
+
+    max-width: 90vw;
+
+    max-height: 85vh;
+
+    object-fit: contain;
+
+    border-radius: 10px;
+
+    box-shadow:
+        0 20px 80px rgba(0,0,0,.6);
+
+    transform: scale(.9);
+
+    transition: .3s ease;
+
+}
+
+
+.lightbox.active img {
+
+    transform: scale(1);
+
+}
+
+
+.close-lightbox {
+
+    position: absolute;
+
+    top: 25px;
+
+    right: 30px;
+
+    width: 48px;
+    height: 48px;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 50%;
+
+    background: var(--gold);
+
+    color: var(--navy);
+
+    font-size: 20px;
+
+    cursor: pointer;
+
+}
+
+
+.lightbox-caption {
+
+    position: absolute;
+
+    bottom: 25px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    color: var(--white);
+
+    font-size: 14px;
+
+    text-align: center;
+
+}
+
+
+/* =====================================================
+   GALLERY CTA
+===================================================== */
+
+.gallery-cta {
+
+    padding: 100px 7%;
+
+}
+
+
+.cta-box {
+
+    position: relative;
+
+    overflow: hidden;
+
+    padding: 75px 30px;
+
+    text-align: center;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 25px;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            rgba(215,173,85,.09),
+            rgba(7,17,31,.25)
+        );
+
+}
+
+
+.cta-box::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 300px;
+    height: 300px;
+
+    border:
+        1px solid rgba(215,173,85,.12);
+
+    border-radius: 50%;
+
+    left: -150px;
+    top: -150px;
+
+}
+
+
+.cta-box i {
+
+    color: var(--gold);
+
+    font-size: 40px;
+
+    margin-bottom: 15px;
+
+}
+
+
+.cta-box h2 {
+
+    font-family:
+        'Cormorant Garamond', serif;
+
+    font-size: 48px;
+
+    margin-bottom: 10px;
+
+}
+
+
+.cta-box p {
+
+    max-width: 650px;
+
+    margin:
+        0 auto 25px;
+
+    color: var(--muted);
+
+    line-height: 1.8;
+
+}
+
+
+/* =====================================================
+   BUTTON
+===================================================== */
+
+.btn {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 9px;
+
+    padding: 13px 23px;
+
+    border-radius: 30px;
+
+    background: var(--gold);
+
+    color: var(--navy);
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+    transition: .3s ease;
+
+}
+
+
+.btn:hover {
+
+    background: var(--gold-light);
+
+    transform: translateY(-3px);
+
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer {
+
+    background: var(--navy-dark);
+
+    padding: 70px 7% 25px;
+
+    border-top:
+        1px solid rgba(215,173,85,.15);
+
+}
+
+
+.footer-top {
+
+    display: grid;
+
+    grid-template-columns:
+        1.5fr 1fr 1fr;
+
+    gap: 50px;
+
+    padding-bottom: 50px;
+
+}
+
+
+.footer-logo {
+
+    margin-bottom: 20px;
+
+}
+
+
+.footer-about p {
+
+    color: var(--muted);
+
+    max-width: 420px;
+
+    line-height: 1.8;
+
+    font-size: 14px;
+
+}
+
+
+.footer-title {
+
+    color: var(--gold);
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    text-transform: uppercase;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 20px;
+
+}
+
+
+.footer-links {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+
+}
+
+
+.footer-links a {
+
+    color: var(--muted);
+
+    font-size: 14px;
+
+    transition: .3s ease;
+
+}
+
+
+.footer-links a:hover {
+
+    color: var(--gold);
+
+    padding-left: 5px;
+
+}
+
+
+.socials {
+
+    display: flex;
+
+    gap: 10px;
+
+}
+
+
+.socials a {
+
+    width: 40px;
+    height: 40px;
+
+    display: grid;
+
+    place-items: center;
+
+    border:
+        1px solid rgba(215,173,85,.25);
+
+    border-radius: 50%;
+
+    color: var(--gold);
+
+    transition: .3s ease;
+
+}
+
+
+.socials a:hover {
+
+    background: var(--gold);
+
+    color: var(--navy);
+
+    transform: translateY(-3px);
+
+}
+
+
+.footer-bottom {
+
+    padding-top: 22px;
+
+    text-align: center;
+
+    border-top:
+        1px solid rgba(255,255,255,.07);
+
+    color: #6f7a86;
+
+    font-size: 12px;
+
+}
+
+
+/* =====================================================
+   BACK TO TOP
+===================================================== */
+
+.back-top {
+
+    position: fixed;
+
+    right: 25px;
+    bottom: 25px;
+
+    width: 45px;
+    height: 45px;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 50%;
+
+    background: var(--gold);
+
+    color: var(--navy);
+
+    cursor: pointer;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transition: .3s ease;
+
+    z-index: 999;
+
+}
+
+
+.back-top.show {
+
+    opacity: 1;
+
+    visibility: visible;
+
+}
+
+
+.back-top:hover {
+
+    transform: translateY(-4px);
+
+}
+
+
+/* =====================================================
+   REVEAL
+===================================================== */
+
+.reveal {
+
+    opacity: 0;
+
+    transform: translateY(35px);
+
+    transition: .8s ease;
+
+}
+
+
+.reveal.show {
+
+    opacity: 1;
+
+    transform: translateY(0);
+
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media(max-width:950px) {
+
+    .menu-toggle {
+
+        display: block;
+
+    }
+
+
+    .nav-links {
+
+        position: absolute;
+
+        top: 76px;
+        right: 0;
+
+        width: 100%;
+
+        padding: 25px;
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        background:
+            rgba(7,17,31,.98);
+
+        border-top:
+            1px solid rgba(215,173,85,.15);
+
+        transform:
+            translateY(-150%);
+
+        opacity: 0;
+
+        transition: .35s ease;
+
+    }
+
+
+    .nav-links.open {
+
+        transform:
+            translateY(0);
+
+        opacity: 1;
+
+    }
+
+
+    .gallery-grid {
+
+        grid-template-columns:
+            repeat(2,1fr);
+
+    }
+
+
+    .gallery-item.wide {
+
+        grid-column: span 2;
+
+    }
+
+
+    .footer-top {
+
+        grid-template-columns:
+            1fr 1fr;
+
+    }
+
+}
+
+
+@media(max-width:600px) {
+
+    .announcement {
+
+        height: 36px;
+
+        padding: 0 10px;
+
+        font-size: 10px;
+
+        text-align: center;
+
+    }
+
+
+    .navbar {
+
+        top: 36px;
+
+        height: 70px;
+
+        padding: 0 5%;
+
+    }
+
+
+    .logo img {
+
+        width: 38px;
+        height: 38px;
+
+    }
+
+
+    .logo-text strong {
+
+        font-size: 17px;
+
+    }
+
+
+    .logo-text span {
+
+        font-size: 6px;
+
+        letter-spacing: 2px;
+
+    }
+
+
+    .nav-links {
+
+        top: 70px;
+
+    }
+
+
+    .hero {
+
+        min-height: 65vh;
+
+        padding:
+            140px 6% 70px;
+
+    }
+
+
+    .hero h1 {
+
+        font-size: 55px;
+
+    }
+
+
+    .hero p {
+
+        font-size: 14px;
+
+    }
+
+
+    .section {
+
+        padding: 75px 5%;
+
+    }
+
+
+    .gallery-grid {
+
+        grid-template-columns: 1fr;
+
+        gap: 16px;
+
+    }
+
+
+    .gallery-item,
+    .gallery-item.wide {
+
+        grid-column: span 1;
+
+        height: 280px;
+
+    }
+
+
+    .gallery-overlay {
+
+        opacity: 1;
+
+    }
+
+
+    .view-icon {
+
+        opacity: 1;
+
+        transform:
+            translate(-50%,-50%)
+            scale(.9);
+
+    }
+
+
+    .gallery-cta {
+
+        padding: 70px 5%;
+
+    }
+
+
+    .cta-box {
+
+        padding: 55px 20px;
+
+    }
+
+
+    .cta-box h2 {
+
+        font-size: 40px;
+
+    }
+
+
+    .footer-top {
+
+        grid-template-columns: 1fr;
+
+        gap: 35px;
+
+    }
+
+
+    footer {
+
+        padding:
+            55px 6% 25px;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     ANNOUNCEMENT
+===================================================== -->
+
+<div class="announcement">
+
+    <i class="fa-solid fa-camera"></i>
+
+    Moments • Memories • Fellowship
+
+</div>
+
+
+
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
+
+<header class="navbar" id="navbar">
+
+
+    <a href="index.html" class="logo">
+
+        <img
+            src="keith.PNG"
+            alt="Gospel Wonders Mission Church Logo"
+        >
+
+        <div class="logo-text">
+
+            <strong>
+                Gospel Wonders
+            </strong>
+
+            <span>
+                Mission Church
+            </span>
+
+        </div>
+
+    </a>
+
+
+    <nav class="nav-links" id="navLinks">
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="about.html">
+            About
+        </a>
+
+        <a href="ministries.html">
+            Ministries
+        </a>
+
+        <a href="sermons.html">
+            Sermons
+        </a>
+
+        <a href="events.html">
+            Events
+        </a>
+
+        <a href="gallery.html" class="active">
+            Gallery
+        </a>
+
+        <a href="contact.html">
+            Contact
+        </a>
+
+        <a href="#" class="donate-btn">
+            Donate
+        </a>
+
+    </nav>
+
+
+    <div class="menu-toggle" id="menuToggle">
+
+        <i class="fa-solid fa-bars"></i>
+
+    </div>
+
+</header>
+
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="hero">
+
+    <div class="hero-content reveal">
+
+        <small>
+            Our Church Family
+        </small>
+
+        <h1>
+            Photo <span>Gallery</span>
+        </h1>
+
+        <p>
+            Take a look at some of the moments, celebrations,
+            worship experiences and fellowship activities
+            shared by our church family.
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     GALLERY
+===================================================== -->
+
+<section class="section">
+
+
+    <div class="section-heading reveal">
+
+        <small>
+            Moments To Remember
+        </small>
+
+        <h2>
+            Our Memories
+        </h2>
+
+        <p>
+            Explore moments from worship services, church
+            events, youth activities, fellowship and more.
+        </p>
+
+    </div>
+
+
+
+    <!-- =================================================
+         FILTERS
+    ================================================== -->
+
+    <div class="filters reveal">
+
+        <button
+            class="filter-btn active"
+            data-filter="all">
+
+            All
+
+        </button>
+
+
+        <button
+            class="filter-btn"
+            data-filter="worship">
+
+            Worship
+
+        </button>
+
+
+        <button
+            class="filter-btn"
+            data-filter="events">
+
+            Events
+
+        </button>
+
+
+        <button
+            class="filter-btn"
+            data-filter="youth">
+
+            Youth
+
+        </button>
+
+
+        <button
+            class="filter-btn"
+            data-filter="fellowship">
+
+            Fellowship
+
+        </button>
+
+    </div>
+
+
+
+    <!-- =================================================
+         GALLERY GRID
+    ================================================== -->
+
+    <div class="gallery-grid" id="galleryGrid">
+
+
+        <!-- PHOTO 1 -->
+
+        <div
+            class="gallery-item wide reveal"
+            data-category="worship"
+            data-title="Sunday Worship">
+
+            <img
+                src="gallery-1.jpg"
+                alt="Sunday Worship">
+
+            <div class="gallery-overlay">
+
+                <span>
+                    Worship
+                </span>
+
+                <h3>
+                    Sunday Worship
+                </h3>
+
+            </div>
+
+            <div class="view-icon">
+
+                <i class="fa-solid fa-expand"></i>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- PHOTO 2 -->
+
+        <div
+            class="gallery-item reveal"
+            data-category="events"
+            data-title="Church Event">
+
+            <img
+                src="gallery-2.jpg"
+                alt="Church Event">
+
+            <div class="gallery-overlay">
+
+                <span>
+                    Events
+                </span>
+
+                <h3>
+                    Church Event
+                </h3>
+
+            </div>
+
+            <div class="view-icon">
+
+                <i class="fa-solid fa-expand"></i>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- PHOTO 3 -->
+
+        <div
+            class="gallery-item reveal"
+            data-category="youth"
+            data-title="Youth Fellowship">
+
+            <img
+                src="gallery-3.jpg"
+                alt="Youth Fellowship">
+
+            <div class="gallery-overlay">
+
+                <span>
+                    Youth
+                </span>
+
+                <h3>
+                    Youth Fellowship
+                </h3>
+
+            </div>
+
+            <div class="view-icon">
+
+                <i class="fa-solid fa-expand"></i>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- PHOTO 4 -->
+
+        <div
+            class="gallery-item reveal"
+            data-category="fellowship"
+            data-title="Church Fellowship">
+
+            <img
+                src="gallery-4.jpg"
+                alt="Church Fellowship">
+
+            <div class="gallery-overlay">
+
+                <span>
+                    Fellowship
+                </span>
+
+                <h3>
+                    Church Fellowship
+                </h3>
+
+            </div>
+
+            <div class="view-icon">
+
+                <i class="fa-solid fa-expand"></i>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- PHOTO 5 -->
+
+        <div
+            class="gallery-item wide reveal"
+            data-category="events"
+            data-title="Special Church Event">
+
+            <img
+                src="gallery-5.jpg"
+                alt="Special Church Event">
+
+            <div class="gallery-overlay">
+
+                <span>
+                    Events
+                </span>
+
+                <h3>
+                    Special Church Event
+                </h3>
+
+            </div>
+
+            <div class="view-icon">
+
+                <i class="fa-solid fa-expand"></i>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- PHOTO 6 -->
+
+        <div
+            class="gallery-item reveal"
+            data-category="worship"
+            data-title="Praise And Worship">
+
+            <img
+                src="gallery-6.jpg"
+                alt="Praise And Worship">
+
+            <div class="gallery-overlay">
+
+                <span>
+                    Worship
+                </span>
+
+                <h3>
+                    Praise & Worship
+                </h3>
+
+            </div>
+
+            <div class="view-icon">
+
+                <i class="fa-solid fa-expand"></i>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- PHOTO 7 -->
+
+        <div
+            class="gallery-item reveal"
+            data-category="youth"
+            data-title="Youth Gathering">
+
+            <img
+                src="gallery-7.jpg"
+                alt="Youth Gathering">
+
+            <div class="gallery-overlay">
+
+                <span>
+                    Youth
+                </span>
+
+                <h3>
+                    Youth Gathering
+                </h3>
+
+            </div>
+
+            <div class="view-icon">
+
+                <i class="fa-solid fa-expand"></i>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- PHOTO 8 -->
+
+        <div
+            class="gallery-item reveal"
+            data-category="fellowship"
+            data-title="Church Family">
+
+            <img
+                src="gallery-8.jpg"
+                alt="Church Family">
+
+            <div class="gallery-overlay">
+
+                <span>
+                    Fellowship
+                </span>
+
+                <h3>
+                    Church Family
+                </h3>
+
+            </div>
+
+            <div class="view-icon">
+
+                <i class="fa-solid fa-expand"></i>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- PHOTO 9 -->
+
+        <div
+            class="gallery-item reveal"
+            data-category="worship"
+            data-title="Worship Service">
+
+            <img
+                src="gallery-9.jpg"
+                alt="Worship Service">
+
+            <div class="gallery-overlay">
+
+                <span>
+                    Worship
+                </span>
+
+                <h3>
+                    Worship Service
+                </h3>
+
+            </div>
+
+            <div class="view-icon">
+
+                <i class="fa-solid fa-expand"></i>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- PHOTO 10 -->
+
+        <div
+            class="gallery-item reveal"
+            data-category="events"
+            data-title="Church Celebration">
+
+            <img
+                src="gallery-10.jpg"
+                alt="Church Celebration">
+
+            <div class="gallery-overlay">
+
+                <span>
+                    Events
+                </span>
+
+                <h3>
+                    Church Celebration
+                </h3>
+
+            </div>
+
+            <div class="view-icon">
+
+                <i class="fa-solid fa-expand"></i>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- PHOTO 11 -->
+
+        <div
+            class="gallery-item reveal"
+            data-category="fellowship"
+            data-title="Fellowship Day">
+
+            <img
+                src="gallery-11.jpg"
+                alt="Fellowship Day">
+
+            <div class="gallery-overlay">
+
+                <span>
+                    Fellowship
+                </span>
+
+                <h3>
+                    Fellowship Day
+                </h3>
+
+            </div>
+
+            <div class="view-icon">
+
+                <i class="fa-solid fa-expand"></i>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- PHOTO 12 -->
+
+        <div
+            class="gallery-item wide reveal"
+            data-category="worship"
+            data-title="Celebrating Together">
+
+            <img
+                src="gallery-12.jpg"
+                alt="Celebrating Together">
+
+            <div class="gallery-overlay">
+
+                <span>
+                    Worship
+                </span>
+
+                <h3>
+                    Celebrating Together
+                </h3>
+
+            </div>
+
+            <div class="view-icon">
+
+                <i class="fa-solid fa-expand"></i>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CTA
+===================================================== -->
+
+<section class="gallery-cta">
+
+    <div class="cta-box reveal">
+
+        <i class="fa-solid fa-camera-retro"></i>
+
+        <h2>
+            More Memories Are Coming
+        </h2>
+
+        <p>
+            Stay connected with Gospel Wonders Mission Church
+            as we continue sharing moments from our worship,
+            fellowship and church activities.
+        </p>
+
+        <a href="contact.html" class="btn">
+
+            <i class="fa-solid fa-arrow-right"></i>
+
+            Get In Touch
+
+        </a>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+
+    <div class="footer-top">
+
+
+        <div class="footer-about">
+
+            <div class="logo footer-logo">
+
+                <img
+                    src="keith.PNG"
+                    alt="Gospel Wonders Mission Church Logo">
+
+                <div class="logo-text">
+
+                    <strong>
+                        Gospel Wonders
+                    </strong>
+
+                    <span>
+                        Mission Church
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <p>
+                Gospel Wonders Mission Church is a Christian
+                church located in the Bulenga Gogonya area of
+                Wakiso District, Uganda.
+            </p>
+
+        </div>
+
+
+
+        <div>
+
+            <div class="footer-title">
+                Quick Links
+            </div>
+
+
+            <div class="footer-links">
+
+                <a href="index.html">
+                    Home
+                </a>
+
+                <a href="about.html">
+                    About
+                </a>
+
+                <a href="ministries.html">
+                    Ministries
+                </a>
+
+                <a href="sermons.html">
+                    Sermons
+                </a>
+
+                <a href="events.html">
+                    Events
+                </a>
+
+                <a href="gallery.html">
+                    Gallery
+                </a>
+
+                <a href="contact.html">
+                    Contact
+                </a>
+
+            </div>
+
+        </div>
+
+
+
+        <div>
+
+            <div class="footer-title">
+                Follow Us
+            </div>
+
+
+            <div class="socials">
+
+                <a href="#" aria-label="Facebook">
+
+                    <i class="fa-brands fa-facebook-f"></i>
+
+                </a>
+
+
+                <a href="#" aria-label="YouTube">
+
+                    <i class="fa-brands fa-youtube"></i>
+
+                </a>
+
+
+                <a href="#" aria-label="Instagram">
+
+                    <i class="fa-brands fa-instagram"></i>
+
+                </a>
+
+
+                <a href="#" aria-label="TikTok">
+
+                    <i class="fa-brands fa-tiktok"></i>
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        © <span id="year"></span>
+
+        Gospel Wonders Mission Church.
+
+        All Rights Reserved.
+
+    </div>
+
+</footer>
+
+
+
+<!-- =====================================================
+     LIGHTBOX
+===================================================== -->
+
+<div class="lightbox" id="lightbox">
+
+
+    <button class="close-lightbox" id="closeLightbox">
+
+        <i class="fa-solid fa-xmark"></i>
+
+    </button>
+
+
+    <img
+        id="lightboxImage"
+        src=""
+        alt="Gallery Image"
+    >
+
+
+    <div
+        class="lightbox-caption"
+        id="lightboxCaption">
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     BACK TO TOP
+===================================================== -->
+
+<div class="back-top" id="backTop">
+
+    <i class="fa-solid fa-arrow-up"></i>
+
+</div>
+
+
+
+<script>
+
+/* =====================================================
+   MOBILE MENU
+===================================================== */
+
+const menuToggle =
+    document.getElementById("menuToggle");
+
+const navLinks =
+    document.getElementById("navLinks");
+
+
+menuToggle.addEventListener("click", () => {
+
+    navLinks.classList.toggle("open");
+
+
+    const icon =
+        menuToggle.querySelector("i");
+
+
+    if (navLinks.classList.contains("open")) {
+
+        icon.classList.remove("fa-bars");
+
+        icon.classList.add("fa-xmark");
+
+    }
+
+    else {
+
+        icon.classList.remove("fa-xmark");
+
+        icon.classList.add("fa-bars");
+
+    }
+
+});
+
+
+/* =====================================================
+   CLOSE MOBILE NAV
+===================================================== */
+
+document.querySelectorAll(".nav-links a")
+.forEach(link => {
+
+    link.addEventListener("click", () => {
+
+        navLinks.classList.remove("open");
+
+        const icon =
+            menuToggle.querySelector("i");
+
+        icon.classList.remove("fa-xmark");
+
+        icon.classList.add("fa-bars");
+
+    });
+
+});
+
+
+/* =====================================================
+   NAVBAR SCROLL
+===================================================== */
+
+const navbar =
+    document.getElementById("navbar");
+
+
+window.addEventListener("scroll", () => {
+
+    if (window.scrollY > 50) {
+
+        navbar.classList.add("scrolled");
+
+    }
+
+    else {
+
+        navbar.classList.remove("scrolled");
+
+    }
+
+});
+
+
+/* =====================================================
+   GALLERY FILTER
+===================================================== */
+
+const filterButtons =
+    document.querySelectorAll(".filter-btn");
+
+const galleryItems =
+    document.querySelectorAll(".gallery-item");
+
+
+filterButtons.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+
+        filterButtons.forEach(btn => {
+
+            btn.classList.remove("active");
+
+        });
+
+
+        button.classList.add("active");
+
+
+        const filter =
+            button.getAttribute("data-filter");
+
+
+        galleryItems.forEach(item => {
+
+            const category =
+                item.getAttribute("data-category");
+
+
+            if (
+                filter === "all" ||
+                category === filter
+            ) {
+
+                item.style.display = "block";
+
+                setTimeout(() => {
+
+                    item.style.opacity = "1";
+
+                    item.style.transform =
+                        "translateY(0)";
+
+                },50);
+
+            }
+
+            else {
+
+                item.style.opacity = "0";
+
+                item.style.transform =
+                    "translateY(15px)";
+
+                setTimeout(() => {
+
+                    item.style.display = "none";
+
+                },250);
+
+            }
+
+        });
+
+    });
+
+});
+
+
+/* =====================================================
+   LIGHTBOX
+===================================================== */
+
+const lightbox =
+    document.getElementById("lightbox");
+
+const lightboxImage =
+    document.getElementById("lightboxImage");
+
+const lightboxCaption =
+    document.getElementById("lightboxCaption");
+
+const closeLightbox =
+    document.getElementById("closeLightbox");
+
+
+galleryItems.forEach(item => {
+
+    item.addEventListener("click", () => {
+
+
+        const image =
+            item.querySelector("img");
+
+
+        const title =
+            item.getAttribute("data-title");
+
+
+        lightboxImage.src =
+            image.src;
+
+
+        lightboxImage.alt =
+            image.alt;
+
+
+        lightboxCaption.textContent =
+            title;
+
+
+        lightbox.classList.add("active");
+
+
+        document.body.style.overflow =
+            "hidden";
+
+    });
+
+});
+
+
+/* =====================================================
+   CLOSE LIGHTBOX
+===================================================== */
+
+closeLightbox.addEventListener("click", closeGallery);
+
+
+lightbox.addEventListener("click", event => {
+
+    if (event.target === lightbox) {
+
+        closeGallery();
+
+    }
+
+});
+
+
+function closeGallery() {
+
+    lightbox.classList.remove("active");
+
+    document.body.style.overflow =
+        "";
+
+}
+
+
+/* =====================================================
+   ESC KEY
+===================================================== */
+
+document.addEventListener("keydown", event => {
+
+    if (
+        event.key === "Escape" &&
+        lightbox.classList.contains("active")
+    ) {
+
+        closeGallery();
+
+    }
+
+});
+
+
+/* =====================================================
+   SCROLL REVEAL
+===================================================== */
+
+const revealElements =
+    document.querySelectorAll(".reveal");
+
+
+const revealObserver =
+    new IntersectionObserver(
+
+        entries => {
+
+            entries.forEach(entry => {
+
+                if (entry.isIntersecting) {
+
+                    entry.target.classList.add("show");
+
+                }
+
+            });
+
+        },
+
+        {
+            threshold: .12
+        }
+
+    );
+
+
+revealElements.forEach(element => {
+
+    revealObserver.observe(element);
+
+});
+
+
+/* =====================================================
+   BACK TO TOP
+===================================================== */
+
+const backTop =
+    document.getElementById("backTop");
+
+
+window.addEventListener("scroll", () => {
+
+    if (window.scrollY > 500) {
+
+        backTop.classList.add("show");
+
+    }
+
+    else {
+
+        backTop.classList.remove("show");
+
+    }
+
+});
+
+
+backTop.addEventListener("click", () => {
+
+    window.scrollTo({
+
+        top: 0,
+
+        behavior: "smooth"
+
+    });
+
+});
+
+
+/* =====================================================
+   CURRENT YEAR
+===================================================== */
+
+document.getElementById("year").textContent =
+    new Date().getFullYear();
+
+</script>
+
+
+</body>
+
+</html>
