@@ -1,0 +1,1743 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Sermons | Gospel Wonders Mission Church</title>
+
+<link rel="icon" href="keith.PNG">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+
+/* ================================
+   ROOT
+================================ */
+
+:root {
+    --navy: #07111f;
+    --navy-light: #0d1c2e;
+    --gold: #d7ad55;
+    --gold-light: #f0cf7a;
+    --white: #ffffff;
+    --text: #d7dde5;
+    --muted: #9da8b5;
+    --glass: rgba(7,17,31,.82);
+    --border: rgba(215,173,85,.25);
+}
+
+
+/* ================================
+   RESET
+================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--navy);
+    color: var(--white);
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+
+/* ================================
+   ANNOUNCEMENT BAR
+================================ */
+
+.announcement {
+    height: 38px;
+    background: var(--gold);
+    color: var(--navy);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: .5px;
+}
+
+.announcement i {
+    font-size: 14px;
+}
+
+
+/* ================================
+   NAVBAR
+================================ */
+
+.navbar {
+    position: fixed;
+    top: 38px;
+    left: 0;
+    width: 100%;
+    height: 76px;
+    z-index: 1000;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 7%;
+
+    background: rgba(7,17,31,.72);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+
+    border-bottom: 1px solid rgba(255,255,255,.06);
+
+    transition: .35s ease;
+}
+
+.navbar.scrolled {
+    background: rgba(7,17,31,.96);
+    box-shadow: 0 8px 35px rgba(0,0,0,.35);
+}
+
+
+/* ================================
+   LOGO
+================================ */
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo img {
+    width: 45px;
+    height: 45px;
+
+    object-fit: cover;
+    display: block;
+
+    border-radius: 50%;
+
+    border: 2px solid var(--gold);
+    padding: 2px;
+
+    background: var(--navy);
+
+    transition: .3s ease;
+}
+
+.logo:hover img {
+    transform: scale(1.08);
+    box-shadow: 0 0 18px rgba(215,173,85,.35);
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+}
+
+.logo-text strong {
+    color: var(--gold);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.logo-text span {
+    color: var(--white);
+    font-size: 8px;
+    letter-spacing: 3px;
+    margin-top: 5px;
+}
+
+
+/* ================================
+   NAV LINKS
+================================ */
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.nav-links a {
+    position: relative;
+    color: #e7ebef;
+    font-size: 13px;
+    font-weight: 600;
+    transition: .3s ease;
+}
+
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    width: 0;
+    height: 2px;
+    background: var(--gold);
+    transition: .3s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--gold);
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    width: 100%;
+}
+
+
+/* ================================
+   DONATE BUTTON
+================================ */
+
+.donate-btn {
+    padding: 11px 20px;
+    border-radius: 30px;
+
+    background: var(--gold);
+    color: var(--navy) !important;
+
+    font-weight: 800 !important;
+
+    transition: .3s ease;
+}
+
+.donate-btn:hover {
+    background: var(--gold-light);
+    transform: translateY(-2px);
+}
+
+
+/* ================================
+   MOBILE MENU
+================================ */
+
+.menu-toggle {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--gold);
+}
+
+
+/* ================================
+   HERO
+================================ */
+
+.hero {
+    min-height: 72vh;
+
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 150px 7% 90px;
+
+    background:
+        linear-gradient(
+            rgba(7,17,31,.72),
+            rgba(7,17,31,.94)
+        ),
+        url("church-sermons.jpg") center/cover no-repeat;
+}
+
+.hero::before,
+.hero::after {
+    content: "";
+    position: absolute;
+    border: 1px solid rgba(215,173,85,.25);
+    border-radius: 50%;
+}
+
+.hero::before {
+    width: 280px;
+    height: 280px;
+    top: 18%;
+    left: -120px;
+}
+
+.hero::after {
+    width: 220px;
+    height: 220px;
+    right: -80px;
+    bottom: 10%;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 850px;
+}
+
+.hero small {
+    color: var(--gold);
+    font-weight: 800;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    font-size: 12px;
+}
+
+.hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(55px, 8vw, 95px);
+    line-height: .9;
+    margin: 18px 0;
+}
+
+.hero h1 span {
+    color: var(--gold);
+}
+
+.hero p {
+    max-width: 650px;
+    margin: auto;
+    color: var(--text);
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+
+/* ================================
+   SECTION
+================================ */
+
+.section {
+    padding: 100px 7%;
+}
+
+.section-heading {
+    text-align: center;
+    max-width: 750px;
+    margin: 0 auto 55px;
+}
+
+.section-heading small {
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.section-heading h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(40px, 5vw, 62px);
+    margin: 10px 0;
+}
+
+.section-heading p {
+    color: var(--muted);
+    line-height: 1.8;
+}
+
+
+/* ================================
+   FILTERS
+================================ */
+
+.filters {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 50px;
+}
+
+.filter-btn {
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text);
+
+    padding: 11px 22px;
+    border-radius: 30px;
+
+    cursor: pointer;
+
+    font-family: inherit;
+    font-weight: 600;
+
+    transition: .3s ease;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background: var(--gold);
+    color: var(--navy);
+    border-color: var(--gold);
+}
+
+
+/* ================================
+   FEATURED SERMON
+================================ */
+
+.featured {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+
+    background: var(--navy-light);
+
+    border: 1px solid var(--border);
+    border-radius: 24px;
+
+    overflow: hidden;
+
+    margin-bottom: 80px;
+
+    box-shadow: 0 20px 60px rgba(0,0,0,.25);
+}
+
+.featured-image {
+    min-height: 440px;
+    position: relative;
+}
+
+.featured-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.featured-image::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(7,17,31,.5)
+    );
+}
+
+.play-big {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%,-50%);
+
+    width: 75px;
+    height: 75px;
+
+    border-radius: 50%;
+
+    display: grid;
+    place-items: center;
+
+    background: var(--gold);
+    color: var(--navy);
+
+    z-index: 2;
+
+    font-size: 22px;
+
+    box-shadow: 0 0 0 10px rgba(215,173,85,.18);
+
+    transition: .3s ease;
+}
+
+.play-big:hover {
+    transform: translate(-50%,-50%) scale(1.1);
+}
+
+.featured-content {
+    padding: 55px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.featured-content small {
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.featured-content h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px;
+    margin: 12px 0;
+}
+
+.featured-content p {
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 25px;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+
+    width: fit-content;
+
+    padding: 13px 23px;
+
+    border-radius: 30px;
+
+    background: var(--gold);
+    color: var(--navy);
+
+    font-weight: 800;
+    font-size: 13px;
+
+    transition: .3s ease;
+}
+
+.btn:hover {
+    background: var(--gold-light);
+    transform: translateY(-3px);
+}
+
+
+/* ================================
+   SERMON GRID
+================================ */
+
+.sermon-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+}
+
+.sermon-card {
+    background: var(--navy-light);
+
+    border: 1px solid rgba(255,255,255,.07);
+
+    border-radius: 18px;
+
+    overflow: hidden;
+
+    transition: .35s ease;
+}
+
+.sermon-card:hover {
+    transform: translateY(-9px);
+    border-color: var(--border);
+    box-shadow: 0 20px 45px rgba(0,0,0,.3);
+}
+
+.sermon-image {
+    height: 230px;
+    position: relative;
+    overflow: hidden;
+}
+
+.sermon-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: .5s ease;
+}
+
+.sermon-card:hover .sermon-image img {
+    transform: scale(1.08);
+}
+
+.sermon-category {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+
+    padding: 7px 13px;
+
+    border-radius: 20px;
+
+    background: var(--gold);
+    color: var(--navy);
+
+    font-size: 10px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.play-small {
+    position: absolute;
+
+    right: 15px;
+    bottom: 15px;
+
+    width: 48px;
+    height: 48px;
+
+    border-radius: 50%;
+
+    display: grid;
+    place-items: center;
+
+    background: rgba(7,17,31,.9);
+    color: var(--gold);
+
+    border: 1px solid var(--gold);
+
+    transition: .3s ease;
+}
+
+.play-small:hover {
+    background: var(--gold);
+    color: var(--navy);
+}
+
+.sermon-info {
+    padding: 25px;
+}
+
+.sermon-info small {
+    color: var(--muted);
+    font-size: 11px;
+}
+
+.sermon-info h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 30px;
+    margin: 7px 0 10px;
+}
+
+.sermon-info p {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+
+/* ================================
+   VERSE SECTION
+================================ */
+
+.verse-section {
+    position: relative;
+
+    padding: 120px 7%;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            rgba(7,17,31,.82),
+            rgba(7,17,31,.92)
+        ),
+        url("church-verse.jpg") center/cover fixed;
+}
+
+.verse-section::before {
+    content: "“";
+
+    position: absolute;
+
+    top: 15px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    font-family: Georgia, serif;
+    font-size: 150px;
+
+    color: rgba(215,173,85,.12);
+}
+
+.verse-content {
+    position: relative;
+    max-width: 850px;
+    margin: auto;
+}
+
+.verse-content h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(35px, 5vw, 58px);
+    line-height: 1.2;
+}
+
+.verse-content p {
+    margin-top: 20px;
+    color: var(--gold);
+    font-weight: 700;
+}
+
+
+/* ================================
+   FOOTER
+================================ */
+
+footer {
+    background: #040b14;
+    padding: 70px 7% 25px;
+    border-top: 1px solid rgba(215,173,85,.15);
+}
+
+.footer-top {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 50px;
+    padding-bottom: 50px;
+}
+
+.footer-logo {
+    margin-bottom: 20px;
+}
+
+.footer-about p {
+    color: var(--muted);
+    line-height: 1.8;
+    max-width: 420px;
+    font-size: 14px;
+}
+
+.footer-title {
+    color: var(--gold);
+    font-weight: 800;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.footer-links a {
+    color: var(--muted);
+    font-size: 14px;
+    transition: .3s ease;
+}
+
+.footer-links a:hover {
+    color: var(--gold);
+    padding-left: 5px;
+}
+
+.socials {
+    display: flex;
+    gap: 10px;
+}
+
+.socials a {
+    width: 40px;
+    height: 40px;
+
+    border: 1px solid rgba(215,173,85,.25);
+
+    border-radius: 50%;
+
+    display: grid;
+    place-items: center;
+
+    color: var(--gold);
+
+    transition: .3s ease;
+}
+
+.socials a:hover {
+    background: var(--gold);
+    color: var(--navy);
+    transform: translateY(-3px);
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255,255,255,.07);
+
+    padding-top: 22px;
+
+    text-align: center;
+
+    color: #6f7a86;
+
+    font-size: 12px;
+}
+
+
+/* ================================
+   BACK TO TOP
+================================ */
+
+.back-top {
+    position: fixed;
+
+    right: 25px;
+    bottom: 25px;
+
+    width: 45px;
+    height: 45px;
+
+    border-radius: 50%;
+
+    display: grid;
+    place-items: center;
+
+    background: var(--gold);
+    color: var(--navy);
+
+    cursor: pointer;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition: .3s ease;
+
+    z-index: 999;
+}
+
+.back-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-top:hover {
+    transform: translateY(-4px);
+}
+
+
+/* ================================
+   REVEAL ANIMATION
+================================ */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(35px);
+    transition: .8s ease;
+}
+
+.reveal.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* ================================
+   RESPONSIVE
+================================ */
+
+@media(max-width: 950px) {
+
+    .nav-links {
+        position: absolute;
+
+        top: 76px;
+        right: 0;
+
+        width: 100%;
+
+        padding: 25px;
+
+        flex-direction: column;
+        align-items: flex-start;
+
+        background: rgba(7,17,31,.98);
+
+        border-top: 1px solid rgba(215,173,85,.15);
+
+        transform: translateY(-150%);
+        opacity: 0;
+
+        transition: .35s ease;
+    }
+
+    .nav-links.open {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .featured {
+        grid-template-columns: 1fr;
+    }
+
+    .sermon-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .footer-top {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+
+@media(max-width: 600px) {
+
+    .announcement {
+        font-size: 10px;
+        padding: 0 10px;
+        text-align: center;
+    }
+
+    .navbar {
+        padding: 0 5%;
+        height: 70px;
+    }
+
+    .logo img {
+        width: 38px;
+        height: 38px;
+    }
+
+    .logo-text strong {
+        font-size: 17px;
+    }
+
+    .logo-text span {
+        font-size: 6px;
+        letter-spacing: 2px;
+    }
+
+    .nav-links {
+        top: 70px;
+    }
+
+    .hero {
+        min-height: 65vh;
+        padding: 140px 6% 70px;
+    }
+
+    .hero h1 {
+        font-size: 55px;
+    }
+
+    .hero p {
+        font-size: 14px;
+    }
+
+    .section {
+        padding: 75px 5%;
+    }
+
+    .featured-content {
+        padding: 35px 25px;
+    }
+
+    .featured-content h3 {
+        font-size: 38px;
+    }
+
+    .featured-image {
+        min-height: 300px;
+    }
+
+    .sermon-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .sermon-image {
+        height: 240px;
+    }
+
+    .footer-top {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+
+    footer {
+        padding: 55px 6% 25px;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- ================================
+     ANNOUNCEMENT
+================================ -->
+
+<div class="announcement">
+    <i class="fa-solid fa-cross"></i>
+    Welcome to Gospel Wonders Mission Church
+</div>
+
+
+<!-- ================================
+     NAVBAR
+================================ -->
+
+<header class="navbar" id="navbar">
+
+    <a href="index.html" class="logo">
+
+        <img
+            src="keith.PNG"
+            alt="Gospel Wonders Mission Church Logo"
+        >
+
+        <div class="logo-text">
+            <strong>Gospel Wonders</strong>
+            <span>Mission Church</span>
+        </div>
+
+    </a>
+
+
+    <nav class="nav-links" id="navLinks">
+
+        <a href="index.html">Home</a>
+
+        <a href="about.html">About</a>
+
+        <a href="ministries.html">Ministries</a>
+
+        <a href="sermons.html" class="active">Sermons</a>
+
+        <a href="gallery.html">Gallery</a>
+
+        <a href="contact.html">Contact</a>
+
+        <a href="#" class="donate-btn">
+            Donate
+        </a>
+
+    </nav>
+
+
+    <div class="menu-toggle" id="menuToggle">
+        <i class="fa-solid fa-bars"></i>
+    </div>
+
+</header>
+
+
+
+<!-- ================================
+     HERO
+================================ -->
+
+<section class="hero">
+
+    <div class="hero-content reveal">
+
+        <small>Listen • Learn • Grow</small>
+
+        <h1>
+            Our <span>Sermons</span>
+        </h1>
+
+        <p>
+            Discover biblical teaching, encouragement and messages
+            designed to help you grow in faith and walk closer with God.
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================================
+     SERMONS
+================================ -->
+
+<section class="section">
+
+    <div class="section-heading reveal">
+
+        <small>Messages of Faith</small>
+
+        <h2>Listen To The Word</h2>
+
+        <p>
+            Explore our collection of sermons and find messages
+            that speak to your faith, family and Christian journey.
+        </p>
+
+    </div>
+
+
+    <!-- FILTERS -->
+
+    <div class="filters reveal">
+
+        <button class="filter-btn active" data-filter="all">
+            All
+        </button>
+
+        <button class="filter-btn" data-filter="faith">
+            Faith
+        </button>
+
+        <button class="filter-btn" data-filter="prayer">
+            Prayer
+        </button>
+
+        <button class="filter-btn" data-filter="family">
+            Family
+        </button>
+
+        <button class="filter-btn" data-filter="christian">
+            Christian Life
+        </button>
+
+    </div>
+
+
+
+    <!-- FEATURED -->
+
+    <div class="featured reveal">
+
+        <div class="featured-image">
+
+            <img
+                src="sermon-featured.jpg"
+                alt="Featured Sermon"
+            >
+
+            <a href="#" class="play-big">
+                <i class="fa-solid fa-play"></i>
+            </a>
+
+        </div>
+
+
+        <div class="featured-content">
+
+            <small>Featured Sermon • Faith</small>
+
+            <h3>Growing In Faith</h3>
+
+            <p>
+                A powerful message about trusting God,
+                strengthening your faith and remaining committed
+                to God's Word through every season of life.
+            </p>
+
+            <a href="#" class="btn">
+                <i class="fa-solid fa-play"></i>
+                Watch Sermon
+            </a>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- SERMON GRID -->
+
+    <div class="sermon-grid" id="sermonGrid">
+
+
+        <!-- CARD 1 -->
+
+        <article class="sermon-card reveal" data-category="faith">
+
+            <div class="sermon-image">
+
+                <img
+                    src="sermon-1.jpg"
+                    alt="Growing In Faith"
+                >
+
+                <span class="sermon-category">
+                    Faith
+                </span>
+
+                <a href="#" class="play-small">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+
+            </div>
+
+            <div class="sermon-info">
+
+                <small>Message 01</small>
+
+                <h3>Growing In Faith</h3>
+
+                <p>
+                    Learn how to develop a stronger and deeper
+                    relationship with God.
+                </p>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- CARD 2 -->
+
+        <article class="sermon-card reveal" data-category="prayer">
+
+            <div class="sermon-image">
+
+                <img
+                    src="sermon-2.jpg"
+                    alt="The Power Of Prayer"
+                >
+
+                <span class="sermon-category">
+                    Prayer
+                </span>
+
+                <a href="#" class="play-small">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+
+            </div>
+
+            <div class="sermon-info">
+
+                <small>Message 02</small>
+
+                <h3>The Power Of Prayer</h3>
+
+                <p>
+                    Discover the importance of prayer
+                    in the life of every believer.
+                </p>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- CARD 3 -->
+
+        <article class="sermon-card reveal" data-category="family">
+
+            <div class="sermon-image">
+
+                <img
+                    src="sermon-3.jpg"
+                    alt="Building Strong Families"
+                >
+
+                <span class="sermon-category">
+                    Family
+                </span>
+
+                <a href="#" class="play-small">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+
+            </div>
+
+            <div class="sermon-info">
+
+                <small>Message 03</small>
+
+                <h3>Building Strong Families</h3>
+
+                <p>
+                    Biblical principles for creating
+                    stronger and healthier families.
+                </p>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- CARD 4 -->
+
+        <article class="sermon-card reveal" data-category="christian">
+
+            <div class="sermon-image">
+
+                <img
+                    src="sermon-4.jpg"
+                    alt="Walking With God"
+                >
+
+                <span class="sermon-category">
+                    Christian Life
+                </span>
+
+                <a href="#" class="play-small">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+
+            </div>
+
+            <div class="sermon-info">
+
+                <small>Message 04</small>
+
+                <h3>Walking With God</h3>
+
+                <p>
+                    Practical encouragement for living
+                    a Christ-centered life every day.
+                </p>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- CARD 5 -->
+
+        <article class="sermon-card reveal" data-category="faith">
+
+            <div class="sermon-image">
+
+                <img
+                    src="sermon-5.jpg"
+                    alt="Hope In Christ"
+                >
+
+                <span class="sermon-category">
+                    Faith
+                </span>
+
+                <a href="#" class="play-small">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+
+            </div>
+
+            <div class="sermon-info">
+
+                <small>Message 05</small>
+
+                <h3>Hope In Christ</h3>
+
+                <p>
+                    Find encouragement and hope through
+                    the promises of God.
+                </p>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- CARD 6 -->
+
+        <article class="sermon-card reveal" data-category="prayer">
+
+            <div class="sermon-image">
+
+                <img
+                    src="sermon-6.jpg"
+                    alt="Trusting God"
+                >
+
+                <span class="sermon-category">
+                    Prayer
+                </span>
+
+                <a href="#" class="play-small">
+                    <i class="fa-solid fa-play"></i>
+                </a>
+
+            </div>
+
+            <div class="sermon-info">
+
+                <small>Message 06</small>
+
+                <h3>Trusting God</h3>
+
+                <p>
+                    Learn to trust God's direction even
+                    when the future is uncertain.
+                </p>
+
+            </div>
+
+        </article>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- ================================
+     BIBLE VERSE
+================================ -->
+
+<section class="verse-section">
+
+    <div class="verse-content reveal">
+
+        <h2>
+            "Your word is a lamp for my feet,
+            a light on my path."
+        </h2>
+
+        <p>
+            Psalm 119:105
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================================
+     FOOTER
+================================ -->
+
+<footer>
+
+    <div class="footer-top">
+
+
+        <div class="footer-about">
+
+            <div class="logo footer-logo">
+
+                <img
+                    src="keith.PNG"
+                    alt="Gospel Wonders Mission Church Logo"
+                >
+
+                <div class="logo-text">
+
+                    <strong>Gospel Wonders</strong>
+
+                    <span>Mission Church</span>
+
+                </div>
+
+            </div>
+
+
+            <p>
+                Gospel Wonders Mission Church is a Christian church
+                located in the Bulenga Gogonya area of Wakiso District,
+                Uganda.
+            </p>
+
+        </div>
+
+
+
+        <div>
+
+            <div class="footer-title">
+                Quick Links
+            </div>
+
+            <div class="footer-links">
+
+                <a href="index.html">Home</a>
+
+                <a href="about.html">About</a>
+
+                <a href="ministries.html">Ministries</a>
+
+                <a href="sermons.html">Sermons</a>
+
+                <a href="gallery.html">Gallery</a>
+
+                <a href="contact.html">Contact</a>
+
+            </div>
+
+        </div>
+
+
+
+        <div>
+
+            <div class="footer-title">
+                Follow Us
+            </div>
+
+            <div class="socials">
+
+                <a href="#" aria-label="Facebook">
+                    <i class="fa-brands fa-facebook-f"></i>
+                </a>
+
+                <a href="#" aria-label="YouTube">
+                    <i class="fa-brands fa-youtube"></i>
+                </a>
+
+                <a href="#" aria-label="Instagram">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+
+                <a href="#" aria-label="TikTok">
+                    <i class="fa-brands fa-tiktok"></i>
+                </a>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        © <span id="year"></span>
+        Gospel Wonders Mission Church.
+        All Rights Reserved.
+
+    </div>
+
+</footer>
+
+
+
+<!-- BACK TO TOP -->
+
+<div class="back-top" id="backTop">
+
+    <i class="fa-solid fa-arrow-up"></i>
+
+</div>
+
+
+
+<script>
+
+/* ================================
+   MOBILE MENU
+================================ */
+
+const menuToggle = document.getElementById("menuToggle");
+const navLinks = document.getElementById("navLinks");
+
+menuToggle.addEventListener("click", () => {
+
+    navLinks.classList.toggle("open");
+
+    const icon = menuToggle.querySelector("i");
+
+    if (navLinks.classList.contains("open")) {
+
+        icon.classList.remove("fa-bars");
+        icon.classList.add("fa-xmark");
+
+    } else {
+
+        icon.classList.remove("fa-xmark");
+        icon.classList.add("fa-bars");
+
+    }
+
+});
+
+
+/* ================================
+   CLOSE MOBILE MENU
+================================ */
+
+document.querySelectorAll(".nav-links a").forEach(link => {
+
+    link.addEventListener("click", () => {
+
+        navLinks.classList.remove("open");
+
+        const icon = menuToggle.querySelector("i");
+
+        icon.classList.remove("fa-xmark");
+        icon.classList.add("fa-bars");
+
+    });
+
+});
+
+
+/* ================================
+   NAVBAR SCROLL
+================================ */
+
+const navbar = document.getElementById("navbar");
+
+window.addEventListener("scroll", () => {
+
+    if (window.scrollY > 50) {
+
+        navbar.classList.add("scrolled");
+
+    } else {
+
+        navbar.classList.remove("scrolled");
+
+    }
+
+});
+
+
+/* ================================
+   FILTER SERMONS
+================================ */
+
+const filterButtons =
+    document.querySelectorAll(".filter-btn");
+
+const sermonCards =
+    document.querySelectorAll(".sermon-card");
+
+filterButtons.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        filterButtons.forEach(btn =>
+            btn.classList.remove("active")
+        );
+
+        button.classList.add("active");
+
+        const filter =
+            button.getAttribute("data-filter");
+
+        sermonCards.forEach(card => {
+
+            const category =
+                card.getAttribute("data-category");
+
+            if (filter === "all" || category === filter) {
+
+                card.style.display = "block";
+
+                setTimeout(() => {
+                    card.style.opacity = "1";
+                    card.style.transform = "translateY(0)";
+                }, 50);
+
+            } else {
+
+                card.style.opacity = "0";
+                card.style.transform = "translateY(15px)";
+
+                setTimeout(() => {
+                    card.style.display = "none";
+                }, 250);
+
+            }
+
+        });
+
+    });
+
+});
+
+
+/* ================================
+   SCROLL REVEAL
+================================ */
+
+const revealElements =
+    document.querySelectorAll(".reveal");
+
+const revealObserver =
+    new IntersectionObserver(
+        entries => {
+
+            entries.forEach(entry => {
+
+                if (entry.isIntersecting) {
+
+                    entry.target.classList.add("show");
+
+                }
+
+            });
+
+        },
+        {
+            threshold: .12
+        }
+    );
+
+
+revealElements.forEach(element => {
+
+    revealObserver.observe(element);
+
+});
+
+
+/* ================================
+   BACK TO TOP
+================================ */
+
+const backTop =
+    document.getElementById("backTop");
+
+window.addEventListener("scroll", () => {
+
+    if (window.scrollY > 500) {
+
+        backTop.classList.add("show");
+
+    } else {
+
+        backTop.classList.remove("show");
+
+    }
+
+});
+
+
+backTop.addEventListener("click", () => {
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+});
+
+
+/* ================================
+   CURRENT YEAR
+================================ */
+
+document.getElementById("year").textContent =
+    new Date().getFullYear();
+
+</script>
+
+</body>
+</html>
